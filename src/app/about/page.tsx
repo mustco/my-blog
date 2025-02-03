@@ -10,7 +10,7 @@ export default function About() {
         inspirasi melalui berbagai artikel informatif. Dengan visi{" "}
         <strong>"Berbagi Wawasan, Menginspirasi Perubahan"</strong>, blog ini
         hadir untuk menyajikan informasi yang bermanfaat, relevan, dan mendalam
-        bagi para pembaca.
+        bagi para pembaca..
       </p>
 
       <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-4 -tracking-tighter">
