@@ -1,10 +1,4 @@
-import {
-  Facebook,
-  Github,
-  Instagram,
-  Twitter,
-  Youtube,
-} from "@/components/SocialLinks";
+import { FaFacebook, FaGithub, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 export default function About() {
   return (
@@ -33,11 +27,41 @@ export default function About() {
       </p>
 
       <div className="flex gap-4 mt-3 text-4xl">
-        <Twitter />
-        <Instagram />
-        <Facebook />
-        <Youtube />
-        <Github />
+        <a
+          href="https://twitter.com/mustcoblog"
+          target="_blank"
+          className="text-blue-500 hover:underline"
+        >
+          <FaTwitter />
+        </a>
+        <a
+          href="https://instagram.com/mustcoblog"
+          target="_blank"
+          className="text-pink-500 hover:underline"
+        >
+          <FaInstagram />
+        </a>
+        <a
+          href="https://facebook.com/mustcoblog"
+          target="_blank"
+          className="text-blue-700 hover:underline"
+        >
+          <FaFacebook />
+        </a>
+        <a
+          href="https://youtube.com/mustcoblog"
+          target="_blank"
+          className="text-red-500 hover:underline"
+        >
+          <FaYoutube />
+        </a>
+        <a
+          href="https://youtube.com/mustcoblog"
+          target="_blank"
+          className="dark:text-white hover:underline"
+        >
+          <FaGithub />
+        </a>
       </div>
     </div>
   );
