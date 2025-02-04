@@ -3,9 +3,9 @@ import { supabase } from "../../../../../utils/supabase/server";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string[] } }
+  context: { params: { slug: string[] } }
 ) {
-  const [slug] = params.slug;
+  const [slug] = context.params.slug;
 
   const { data: post, error } = await supabase
     .from("posts")
