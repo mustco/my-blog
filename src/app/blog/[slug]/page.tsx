@@ -1,9 +1,10 @@
 export default async function DetailBlogTemplate({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{slug:string}>
 }) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}${params.slug}`, {
+  const slug = (await params).slug
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}${slug}`, {
     next: { revalidate: 60 }, 
   });
 

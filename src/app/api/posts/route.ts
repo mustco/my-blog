@@ -11,5 +11,4 @@ export async function GET() {
   return NextResponse.json({ posts, status: 200 }, );
 }
 
-export async function POST(req: Request) {}
 

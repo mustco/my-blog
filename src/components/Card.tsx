@@ -27,11 +27,11 @@ export default function Card({ datas }: { datas: Post }) {
           </h1>
           <div className="flex justify-between w-full items-center">
             <div className="flex items-center space-x-2">
-              <div className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start">
+              <div className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start text-center">
                 {datas.category}
               </div>
             </div>
-            <div className="dark:text-gray-300 text-sm">{formatedTimestamp(datas.created_at)}</div>
+            <div className="dark:text-gray-300 text-sm text-end">{formatedTimestamp(datas.created_at)}</div>
           </div>
         </div>
       </div>

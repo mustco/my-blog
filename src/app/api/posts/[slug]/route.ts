@@ -1,15 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "../../../../../utils/supabase/server";
+import { Metadata } from "next";
 
-type RouteParams = {
-  params: {
-    slug: string[];
-  };
+type Params = {
+  slug: string;
 };
-
-export async function GET(request: NextRequest, { params }: RouteParams) {
-  const [slug] = params.slug;
-
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{slug:string}>}
+){
+    const slug = (await params).slug
   const { data: post, error } = await supabase
     .from("posts")
     .select("*, articles(*)")
