@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import { supabase } from "../../../../../utils/supabase/server";
+import { NextRequest } from "next/server";
 
 export async function GET(
-  request: Request,
-  { params }: { params: { slug: string } }
+  request: NextRequest,
+  { params }: { params: { slug: string[] } }
 ) {
-  const { slug } = params;
+  const slug = params.slug.join("/"); 
 
   const { data: post, error } = await supabase
     .from("posts")
