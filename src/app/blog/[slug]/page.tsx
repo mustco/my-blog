@@ -4,7 +4,7 @@ export default async function DetailBlogTemplate({
   params: Promise<{slug:string}>
 }) {
   const slug = (await params).slug
-  const res = await fetch(`/api/posts/${slug}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts/${slug}`, {
     next: { revalidate: 60 }, 
   });
 

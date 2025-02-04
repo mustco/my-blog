@@ -1,9 +1,8 @@
-// import {CodeBlock} from "geist/components";
 import Card from "@/components/Card";
 import { Post } from "@/components/InterfacePost";
 
 async function getPosts() {
-  const res = await fetch(`/api/posts`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts`, {
     next: { revalidate: 60 },
   });
   const data = await res.json();
