@@ -1,20 +1,20 @@
-"use client"; // Tambahkan ini di baris pertama
+"use client"; 
 
 import { useEffect, useState } from "react";
+import { useParams } from "next/navigation"; 
 
-export default function DetailBlogTemplate({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default function DetailBlogTemplate() {
+  const { slug } = useParams();
   const [post, setPost] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    if (!slug) return;
+
     async function fetchPost() {
       try {
-        const res = await fetch(`/api/posts/${params.slug}`);
+        const res = await fetch(`/api/posts/${slug}`);
         if (!res.ok) throw new Error("Failed to fetch");
 
         const data = await res.json();
@@ -28,7 +28,7 @@ export default function DetailBlogTemplate({
     }
 
     fetchPost();
-  }, [params.slug]);
+  }, [slug]);
 
   if (loading) return <div>Loading...</div>;
   if (error || !post) return <div>Error fetching data</div>;
