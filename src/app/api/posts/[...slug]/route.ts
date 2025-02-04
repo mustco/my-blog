@@ -3,12 +3,14 @@ import { supabase } from "../../../../../utils/supabase/server";
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  context: { params: { slug: string } }
 ) {
+  const { slug } = context.params;
+
   const { data: post, error } = await supabase
     .from("posts")
     .select("*, articles(*)")
-    .eq("slug", params.slug)
+    .eq("slug", slug)
     .single();
 
   if (post?.articles) {
