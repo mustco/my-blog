@@ -6,6 +6,9 @@ import "./globals.css";
 import Container from "@/components/Container";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Nunito_Sans } from "next/font/google";
+
+const nunitoSans = Nunito_Sans({ subsets: ["latin"], weight: ["400", "900"] });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +29,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <title>Mustco Blog</title>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#171717] dark:text-white bg-white text-[#171717]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#171717] dark:text-white bg-white text-[#171717] leading-relaxed`}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
           <Navbar />
