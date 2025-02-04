@@ -3,7 +3,7 @@ import Card from "@/components/Card";
 import { Post } from "@/components/InterfacePost";
 
 async function getPosts() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}`, {
+  const res = await fetch(`/api/posts`, {
     next: { revalidate: 60 },
   });
   const data = await res.json();
