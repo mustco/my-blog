@@ -149,3 +149,8 @@
 //     </div>
 //   );
 // }
+
+
+export default function DashboardPost() {
+  return <>page not found</>;
+}
