@@ -1,9 +1,7 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { signIn } from "next-auth/react";
-import { pages } from "next/dist/build/templates/app-page";
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -12,8 +10,7 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // Contoh: Hardcoded user (ganti dengan database)
-        const user = { id: "1", name: "John Doe", email: "john@example.com" };
+        const user = { id: "1", name: "John Doe", email: "mustcoweb@example.com" };
 
         if (
           credentials?.email === user.email &&
@@ -26,7 +23,7 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async session({ session, token }:{session:any, token:any}) {
+    async session({ session, token }:{session:any,token:any}) {
       session.user.id = token.sub;
       return session;
     },
@@ -34,9 +31,11 @@ export const authOptions = {
   pages: {
     signIn: "/auth/login",
   },
- 
-  secret: process.env.NEXTAUTH_SECRET, // Pastikan ini ada di .env.local
+  secret: process.env.NEXTAUTH_SECRET, 
 };
 
 const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+
+// Next.js 15+ menggunakan `NextResponse` untuk API Route
+export const GET = handler;
+export const POST = handler;
