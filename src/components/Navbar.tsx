@@ -2,16 +2,19 @@ import { useTheme } from "next-themes";
 import { useState } from "react";
 import Link from "next/link";
 import { CiDark, CiLight } from "react-icons/ci";
-import { MdDarkMode } from "react-icons/md";
 import { IoIosMenu, IoMdClose, IoMdMenu } from "react-icons/io";
+import { usePathname } from "next/navigation";
 
 interface Post {
   className?: string;
 }
 export default function Navbar({ className }: Post) {
-  const { theme, setTheme } = useTheme(); 
+  const { theme, setTheme } = useTheme();
   const [showHello, setShowHello] = useState(false);
   const [search, setSearch] = useState("");
+  const pathname = usePathname();
+  // console.log(pathname);
+ 
 
   return (
     <div
@@ -21,7 +24,7 @@ export default function Navbar({ className }: Post) {
     >
       <div className="max-w-7xl flex justify-between items-center text-center mx-auto  border-black/5 px-5 ">
         <h1 className="text-xl py-4 md:py-5 px-0">
-          Mustco<span className="font-bold">Blog</span>
+          Mustco<span className="font-bold">Web</span>
         </h1>
         <ul className="md:flex space-x-2 hidden text-base h-full my-0">
           <li className="p-0">
@@ -50,14 +53,15 @@ export default function Navbar({ className }: Post) {
           </li>
         </ul>
         <div className="flex space-x-3">
+          
           <input
             type="search"
             placeholder="Search.."
             onChange={(e) => setSearch(e.target.value)}
             value={search}
-            className="bg-gray-100 px-2 py-1 dark:bg-gray-800 rounded-md self-center outline-none
+            className={`bg-gray-100 px-2 py-1 dark:bg-gray-800 rounded-md self-center outline-none
              focus:ring-1 dark:focus:ring-green-500 focus:ring-blue-600 hidden md:block
-             appearance-none text-gray-900 dark:text-white"
+             appearance-none text-gray-900 dark:text-white ${pathname !== "/blog" ? "md:invisible" : ""}`}
           />
 
           <button
@@ -84,7 +88,7 @@ export default function Navbar({ className }: Post) {
       </div>
 
       {showHello && (
-        <div className="md:hidden absolute top-auto left-0 right-0 mx-1 my-1 w-auto bg-white border px-5 py-5 border-gray-400 z-10 dark:bg-[#171717] dark:border-gray-500">
+        <div className="md:hidden absolute top-auto left-0 right-0 mx-1 my-1 w-auto bg-white border px-5 py-5 border-gray-300 rounded-lg z-10 dark:bg-[#212121] dark:border-gray-600">
           <ul className="flex flex-col text-base my-0 dark:text-white w-full gap-1">
             <li className="p-0">
               <Link

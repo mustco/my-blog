@@ -18,7 +18,7 @@ export default function Card({ datas }: { datas: Post }) {
             alt="logo"
             width={600}
             height={600}
-            className="rounded-md px-5 dark:bg-gray-100 h-full object-contain"
+            className="rounded-md dark:bg-gray-100 h-full object-center "
           />
         </div>
         <div className="flex flex-col space-y-5">

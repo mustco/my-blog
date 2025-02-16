@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <div className="relative md:p-8 my-8 p-4 dark:text-white dark:bg-[#171717]">
+    <div className="relative md:p-8 my-8 p-4 dark:text-white">
       <div className={"image-container md:w-4/5 mx-auto relative"}>
         <Image
           src="/images/technology.jpg"

@@ -3,9 +3,10 @@ export function formatedTimestamp(dateString: string): string {
 
   return new Intl.DateTimeFormat("id-ID", {
     year: "numeric",
-    month: "long",
+    month: "short",
     day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  }).format(date);
+    hour: "2-digit",
+    minute: "2-digit",
+  })
+    .format(date)
 }

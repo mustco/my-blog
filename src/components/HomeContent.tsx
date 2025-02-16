@@ -1,7 +1,7 @@
 export default function HomeContent() {
   return (
     //   <div className="flex flex-col gap-4 text-gray-600 dark:text-gray-300 my-5">
-    //     <h1 className="text-2xl font-bold mb-3">Selamat datang di MustcoBlog</h1>
+    //     <h1 className="text-2xl font-bold mb-3">Selamat datang di MustcoWeb</h1>
     //     <p className="text-base -tracking-tighter leading-relaxed">
     //       Tempat di mana wawasan dan pengetahuan dibagikan untuk memberikan
     //       inspirasi dan mendorong perubahan positif. Blog ini hadir dengan
@@ -21,10 +21,10 @@ export default function HomeContent() {
     //   </div>
 
     <div className="md:w-4/5 p-4 mx-auto card gap-3 my-5 md:p-8 flex flex-col justify-center">
-      <h1 className="text-2xl font-bold pb-5">Selamat Datang di MustcoBlog</h1>
+      <h1 className="text-2xl font-bold pb-5">Selamat Datang di MustcoWeb</h1>
 
       <p className="text-gray-700 dark:text-gray-300 -tracking-tighter leading-relaxed">
-        MustcoBlog adalah platform berbagi wawasan yang bertujuan untuk
+        MustcoWeb adalah platform berbagi wawasan yang bertujuan untuk
         menghadirkan informasi berkualitas dan menginspirasi perubahan positif.
         Dengan visi <strong>"Berbagi Wawasan, Menginspirasi Perubahan"</strong>,
         blog ini menyajikan berbagai artikel yang membahas beragam topik
@@ -39,7 +39,7 @@ export default function HomeContent() {
 
       <p className="text-gray-700 mt-4 dark:text-gray-300 -tracking-tighter">
         Kami percaya bahwa berbagi ilmu adalah langkah kecil namun berarti dalam
-        menciptakan perubahan. Selamat menjelajahi MustcoBlog, semoga setiap
+        menciptakan perubahan. Selamat menjelajahi MustcoWeb, semoga setiap
         artikel dapat memberikan inspirasi dan wawasan baru bagi Anda.
       </p>
 
