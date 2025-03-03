@@ -60,13 +60,13 @@ export default async function DetailBlogTemplate({
               </p>
             )}
             {article.element === "img" && (
-              <Image
+              <img
                 src={article.content}
                 alt="Article image"
                 width={600}
                 height={600}
                 className="rounded-lg border shadow-md bg-transparent border-gray-100 mb-10 dark:bg-gray-200"
-                priority
+                
               />
             )}
 
