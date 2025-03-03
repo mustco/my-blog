@@ -14,6 +14,10 @@ export default function Navbar({ className }: Post) {
   const [search, setSearch] = useState("");
   const pathname = usePathname();
   // console.log(pathname);
+  const handleSearch =()=>{
+
+
+  }
  
 
   return (
@@ -54,15 +58,7 @@ export default function Navbar({ className }: Post) {
         </ul>
         <div className="flex space-x-3">
           
-          <input
-            type="search"
-            placeholder="Search.."
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
-            className={`bg-gray-100 px-2 py-1 dark:bg-gray-800 rounded-md self-center outline-none
-             focus:ring-1 dark:focus:ring-green-500 focus:ring-blue-600 hidden md:block
-             appearance-none text-gray-900 dark:text-white ${pathname !== "/blog" ? "md:invisible" : ""}`}
-          />
+       
 
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

@@ -1,5 +1,15 @@
 import CodeSyntaxHighlight from "@/components/CodeSyntaxHighlight";
 import { formatedTimestamp } from "../../../../../utils/supabase/formatedTimestamp";
+import Image from "next/image";
+
+export const revalidate = 86400;
+export async function generateStaticParams() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts`).then(
+    (res) => res.json()
+  );
+
+  return res.posts.map((post: any) => ({ params: { slug: post.slug } }));
+}
 
 export default async function DetailBlogTemplate({
   params,
@@ -8,10 +18,7 @@ export default async function DetailBlogTemplate({
 }) {
   const slug = (await params).slug;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/posts/${slug}`,
-    {
-      next: { revalidate: 60 },
-    }
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/posts/${slug}`
   );
 
   if (!res.ok) {
@@ -53,17 +60,20 @@ export default async function DetailBlogTemplate({
               </p>
             )}
             {article.element === "img" && (
-              <img
+              <Image
                 src={article.content}
                 alt="Article image"
+                width={600}
+                height={600}
                 className="rounded-lg border shadow-md bg-transparent border-gray-100 mb-10 dark:bg-gray-200"
+                priority
               />
             )}
 
             {article.element === "li" && (
-                <li className="list-inside font-bold dark:text-gray-200">
-                  {article.content}
-                </li>
+              <li className="list-inside font-bold dark:text-gray-200">
+                {article.content}
+              </li>
             )}
             {article.element === "code" && (
               <CodeSyntaxHighlight code={article.content} />

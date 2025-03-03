@@ -25,9 +25,9 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={nunitoSans.className}>
+    <div className={`${nunitoSans.className} flex flex-col min-h-screen`}>
       <Navbar />
-      <Container>{children}</Container>
+      <Container className="flex-grow">{children}</Container>
       <Footer />
     </div>
   );

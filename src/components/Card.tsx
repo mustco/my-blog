@@ -13,12 +13,13 @@ export default function Card({ datas }: { datas: Post }) {
     >
       <div className="border border-gray-400 p-3 flex flex-col space-y-5 rounded-lg h-full justify-between">
         <div className="h-52 w-full flex flex-col justify-center">
-          <img
+          <Image
             src={datas.image}
             alt="logo"
             width={600}
             height={600}
-            className="rounded-md dark:bg-gray-100 h-full object-center "
+            className="rounded-md dark:bg-gray-100 h-full object-center"
+            priority
           />
         </div>
         <div className="flex flex-col space-y-5">
