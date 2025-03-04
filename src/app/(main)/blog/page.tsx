@@ -12,6 +12,7 @@ async function getPosts() {
       new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
   );
 }
+// comment
 export default async function Blog() {
   const datas: Post[] = await getPosts();
   console.log(datas);
