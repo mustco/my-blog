@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "../../../../../utils/supabase/server";
+import { supabase } from "../../../../../../utils/supabase/server";
 import { Metadata } from "next";
 
 type Params = {
@@ -7,9 +7,9 @@ type Params = {
 };
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{slug:string}>}
-){
-    const slug = (await params).slug
+  { params }: { params: Promise<{ slug: string }> }
+) {
+  const slug = (await params).slug;
   const { data: post, error } = await supabase
     .from("posts")
     .select("*, articles(*)")

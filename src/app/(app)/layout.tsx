@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import type { Metadata } from "next";
 import RootLayoutClient from "./RootLayoutClient"; // Import Client Component
 
@@ -12,5 +11,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <RootLayoutClient>{children}</RootLayoutClient>;
-}
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <RootLayoutClient>{children}</RootLayoutClient>
+      </body>
+    </html>
+  );
+} 
