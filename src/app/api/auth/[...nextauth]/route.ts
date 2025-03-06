@@ -11,11 +11,11 @@ const handler = NextAuth({
       },
       async authorize(credentials) {
         // Contoh: Hardcoded user (gantilah dengan database)
-        const user = { id: "1", name: "John Doe", email: "john@example.com" };
+        const user = { id: "1", name: "kobayashi", email: "kobayashi@gmail.com" };
 
         if (
           credentials?.email === user.email &&
-          credentials?.password === "password"
+          credentials?.password === "kobayashi0111710"
         ) {
           return user;
         }
