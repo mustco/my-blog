@@ -4,11 +4,14 @@ import Link from "next/link";
 import { CiDark, CiLight } from "react-icons/ci";
 import { IoIosMenu, IoMdClose, IoMdMenu } from "react-icons/io";
 import { usePathname } from "next/navigation";
+import { CgClose, CgMenuRight } from "react-icons/cg";
 
 interface Post {
   className?: string;
+  show?: boolean;
 }
-export default function Navbar({ className }: Post) {
+export default function Navbar({ className, show }: Post) {
+
   const { theme, setTheme } = useTheme();
   const [showHello, setShowHello] = useState(false);
   const [search, setSearch] = useState("");
@@ -18,17 +21,16 @@ export default function Navbar({ className }: Post) {
 
 
   }
- 
 
   return (
     <div
-      className={`relative shadow-md dark:shadow-sm dark:shadow-gray-500 ${
+      className={` fixed w-full shadow-md dark:shadow-sm dark:shadow-gray-500 bg-white dark:bg-[#212121] z-50 ${
         className ? className : ""
-      }`}
+      } ${show ? "translate-y-0 transition-all ease-in-out duration-500" : "-translate-y-16 md:-translate-y-20 transition-all ease-in-out duration-1000"}`}
     >
       <div className="max-w-7xl flex justify-between items-center text-center mx-auto  border-black/5 px-5 ">
-        <h1 className="text-xl py-4 md:py-5 px-0">
-          Mustco<span className="font-bold">Web</span>
+        <h1 className="text-xl py-4 md:py-5 px-0 font-mono select-none">
+            &lt;Mustco<span className="font-bold">Web</span> /&gt;
         </h1>
         <ul className="md:flex space-x-2 hidden text-base h-full my-0">
           <li className="p-0">
@@ -57,9 +59,6 @@ export default function Navbar({ className }: Post) {
           </li>
         </ul>
         <div className="flex space-x-3">
-          
-       
-
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="px-3 py-2 text-3xl hidden md:block"
@@ -78,12 +77,12 @@ export default function Navbar({ className }: Post) {
             onClick={() => setShowHello(!showHello)}
             className="text-3xl py-3 md:hidden"
           >
-            {!showHello ? <IoIosMenu /> : <IoMdClose />}
+            {!showHello ? <CgMenuRight /> : <CgClose />}
           </button>
         </div>
       </div>
 
-      {showHello && (
+      {showHello && show && (
         <div className="md:hidden absolute top-auto left-0 right-0 mx-1 my-1 w-auto bg-white border px-5 py-5 border-gray-300 rounded-lg z-10 dark:bg-[#212121] dark:border-gray-600">
           <ul className="flex flex-col text-base my-0 dark:text-white w-full gap-1">
             <li className="p-0">

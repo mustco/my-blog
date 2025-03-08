@@ -14,7 +14,7 @@ async function getPosts() {
 }
 export default async function Blog() {
   const datas: Post[] = await getPosts();
-  console.log(datas);
+  // console.log(datas);
   return (
     <div className="md:w-4/5 p-4 mx-auto card gap-3 my-5 md:p-8">
       <div className="flex justify-between mb-3 text-md md:text-lg">

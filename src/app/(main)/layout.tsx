@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Nunito_Sans } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 const nunitoSans = Nunito_Sans({ subsets: ["latin"], weight: ["400", "900"] });
 const geistSans = Geist({
@@ -24,10 +25,27 @@ export default function MainLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [scroll, setScroll] = useState(0);
+  const [showNavbar, setShowNavbar] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if(window.scrollY > scroll) {
+        setShowNavbar(false);
+      } else {
+        setShowNavbar(true);
+      }
+      setScroll(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scroll]);
   return (
     <div className={`${nunitoSans.className} flex flex-col min-h-screen`}>
-      <Navbar />
-      <Container className="flex-grow">{children}</Container>
+      <Navbar show={showNavbar} />
+      <Container className="flex-grow mt-16">{children}</Container>
       <Footer />
     </div>
   );

@@ -20,20 +20,22 @@ const CodeSyntaxHighlight = ({ code }: { code: string }) => {
       <SyntaxHighlighter
         language="javascript"
         style={darcula}
-        className="rounded-lg"
+        className="rounded-lg relative"
       >
         {code}
       </SyntaxHighlighter>
-      <button
-        onClick={handleCopy}
-        className="absolute top-1 right-1 rounded-md px-[1px] py-[3px] text-gray-200 text-sm bg-blue-700 dark:bg-green-800 dark:text-gray-200" 
-      >
-        {clipboard ? (
-          <LuClipboardCheck className="text-xl" />
-        ) : (
-          <LuClipboard className="text-xl" />
-        )}
-      </button>
+      <div className="absolute h-full bottom-0 right-0 ">
+        <button
+          onClick={handleCopy}
+          className="sticky top-4 mt-1 mr-1 mb-1  rounded-md px-[1px] py-[3px] text-gray-200 text-sm bg-blue-700 dark:bg-green-800 dark:text-gray-200"
+        >
+          {clipboard ? (
+            <LuClipboardCheck className="text-xl" />
+          ) : (
+            <LuClipboard className="text-xl" />
+          )}
+        </button>
+      </div>
     </div>
   );
 };

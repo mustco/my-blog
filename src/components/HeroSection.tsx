@@ -17,7 +17,7 @@ export default function HeroSection() {
         <div className="flex justify-between w-full md:w-2/3 items-center">
           <div className="flex items-center space-x-2">
             <Image
-              src="/images/profiles/JasonFrancisco.png"
+              src="/images/profiles/my_profiles.jpeg"
               alt="logo"
               width={30}
               height={30}

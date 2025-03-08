@@ -35,7 +35,7 @@ export default function About() {
           <FaTwitter />
         </a>
         <a
-          href="https://instagram.com/MustcoWeb"
+          href="https://instagram.com/mustofaadnan_03"
           target="_blank"
           className="text-pink-500 hover:underline"
         >
