@@ -16,7 +16,7 @@ const CodeSyntaxHighlight = ({ code }: { code: string }) => {
     }, 5000);
   };
   return (
-    <div className="relative w-full md:w-2/3 mb-5">
+    <div className="relative w-full md:w-2/3 my-[10px]">
       <SyntaxHighlighter
         language="javascript"
         style={darcula}

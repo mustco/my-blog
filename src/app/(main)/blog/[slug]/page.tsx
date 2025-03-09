@@ -26,11 +26,10 @@ export default async function DetailBlogTemplate({
   }
 
   const { post } = await res.json();
-
   if (!post) return <div>Loading...</div>;
 
   return (
-    <div className="md:w-4/5 p-4 mx-auto card gap-5 my-5 md:p-8 flex flex-col text-gray-700 dark:text-gray-200">
+    <div className="md:w-4/5 p-4 mx-auto card gap-10 my-5 md:p-8 flex flex-col text-gray-700 dark:text-gray-200">
       <div className="flex justify-between">
         <div className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start">
           {post.category}
@@ -39,23 +38,38 @@ export default async function DetailBlogTemplate({
           {formatedTimestamp(post.created_at)}
         </div>
       </div>
-      <h1 className="text-2xl font-bold pb-0 tracking-tight">{post.title}</h1>
+      <h1 className="text-3xl font-bold pb-0 tracking-tight">{post.title}</h1>
 
-      <div className="mt-6">
+      <div className="flex flex-col gap-5">
         {post.articles.map((article: any) => (
-          <div key={article.id} className="mb-1 ">
+          <div key={article.id} className="ea">
             {article.element === "h1" && (
-              <h1 className="text-lg font-bold pb-0 dark:text-gray-200 tracking-normal  mb-5 mt-5">
+              <h1 className="text-3xl font-bold dark:text-gray-200 tracking-normal">
                 {article.content}
               </h1>
             )}
             {article.element === "h2" && (
-              <h2 className="text-xl font-semibold dark:text-gray-200 tracking-normal  mt-10 mb-3">
+              <h2 className="text-2xl font-bold dark:text-gray-200 tracking-normal">
                 {article.content}
               </h2>
             )}
+            {article.element === "h3" && (
+              <h3 className="text-xl font-bold dark:text-gray-200 tracking-normal">
+                {article.content}
+              </h3>
+            )}
+            {article.element === "h4" && (
+              <h4 className="text-lg font-bold dark:text-gray-200 tracking-normal">
+                {article.content}
+              </h4>
+            )}
+            {article.element === "h5" && (
+              <h5 className="text-md font-bold dark:text-gray-200 tracking-normal">
+                {article.content}
+              </h5>
+            )}
             {article.element === "p" && (
-              <p className="text-gray-800 dark:text-gray-200 tracking-normal  mb-4">
+              <p className="text-gray-800 dark:text-gray-200 tracking-normal">
                 {article.content}
               </p>
             )}
@@ -65,8 +79,7 @@ export default async function DetailBlogTemplate({
                 alt="Article image"
                 width={600}
                 height={600}
-                className="rounded-lg border shadow-md bg-transparent border-gray-100 mb-10 dark:bg-gray-200"
-                
+                className="mb-5 rounded-lg border shadow-md bg-transparent border-gray-100 dark:bg-gray-200"
               />
             )}
 
