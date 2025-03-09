@@ -79,7 +79,7 @@ export default async function DetailBlogTemplate({
                 alt="Article image"
                 width={600}
                 height={600}
-                className="mb-5 rounded-lg border shadow-md bg-transparent border-gray-100 dark:bg-gray-200"
+                className="mb-5 rounded-lg border shadow-md bg-transparent border-gray-100 dark:bg-gray-200 pointer-events-none"
               />
             )}
 
