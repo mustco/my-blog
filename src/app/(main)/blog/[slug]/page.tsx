@@ -1,6 +1,7 @@
 import CodeSyntaxHighlight from "@/components/CodeSyntaxHighlight";
 import { formatedTimestamp } from "../../../../../utils/supabase/formatedTimestamp";
 import Image from "next/image";
+import Link from "next/link";
 
 export const revalidate = 86400;
 export async function generateStaticParams() {
@@ -27,7 +28,11 @@ export default async function DetailBlogTemplate({
 
   const { post } = await res.json();
   if (!post) return <div>Loading...</div>;
-
+  const underList = [
+    "**node_modules/** → Berisi semua dependensi proyek yang diinstal melalui npm, yarn, atau pnpm.",
+    "**public/** → Folder ini digunakan untuk menyimpan aset statis seperti gambar, ikon, dan file lainnya yang bisa diakses secara langsung. contoh: logo.",
+    "**src/app/** → Merupakan direktori utama, Menggunakan App Router (app/) yang merupakan fitur terbaru Next.js 13+.",
+  ];
   return (
     <div className="md:w-4/5 p-4 mx-auto card gap-10 my-5 md:p-8 flex flex-col text-gray-700 dark:text-gray-200">
       <div className="flex justify-between">
@@ -70,24 +75,102 @@ export default async function DetailBlogTemplate({
             )}
             {article.element === "p" && (
               <p className="text-gray-800 dark:text-gray-200 tracking-normal">
-                {article.content}
+                {article.content
+                  .split(/(\*\*.*?\*\*|!.*?!)/g) // Tambahkan regex untuk mendeteksi teks diapit `!`
+                  .map((part: string, index: number) => {
+                    if (part.startsWith("**") && part.endsWith("**")) {
+                      return (
+                        <span
+                          key={index}
+                          className="bg-blue-700 dark:bg-green-700 text-white px-2 rounded"
+                        >
+                          {part.replace(/\*\*/g, "")}
+                        </span>
+                      );
+                    } else if (part.startsWith("!") && part.endsWith("!")) {
+                      const link = part.replace(/!/g, ""); // Ambil teks dalam tanda `!`
+                      return (
+                        <a
+                          key={index}
+                          href={
+                            link.startsWith("http") ? link : `https://${link}`
+                          } // Tambahkan "https://" jika belum ada
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-500 underline"
+                        >
+                          {link}
+                        </a>
+                      );
+                    } else {
+                      return part;
+                    }
+                  })}
               </p>
             )}
+
             {article.element === "img" && (
               <img
                 src={article.content}
                 alt="Article image"
                 width={600}
                 height={600}
-                className="mb-5 rounded-lg border shadow-md bg-transparent border-gray-100 dark:bg-gray-200 pointer-events-none"
+                className="mb-5 rounded-lg shadow-md bg-transparent border-gray-100 dark:bg-gray-200 pointer-events-none"
               />
             )}
 
             {article.element === "li" && (
-              <li className="list-inside font-bold dark:text-gray-200">
-                {article.content}
-              </li>
+              <ul className="list-disc list-outside ms-5">
+                <li className=" dark:text-gray-200">
+                  {article.content
+                    .split(/(\*\*.*?\*\*)/g)
+                    .map((part: any, index: any) =>
+                      part.startsWith("**") && part.endsWith("**") ? (
+                        <span
+                          key={index}
+                          className="bg-blue-700 dark:bg-green-700 text-white px-2 rounded"
+                        >
+                          {part.replace(/\*\*/g, "")}
+                        </span>
+                      ) : (
+                        part
+                      )
+                    )}
+                </li>
+              </ul>
             )}
+
+            {article.element === "ul" && (
+              <ul className="list-disc list-outside ms-5 flex flex-col gap-4">
+                {JSON.parse(article.content).map(
+                  (item: string, index: number) => (
+                    <li key={index} className="dark:text-gray-200">
+                      {item
+                        .split(/(\*\*.*?\*\*)/g)
+                        .map((part: any, index: any) =>
+                          part.startsWith("**") && part.endsWith("**") ? (
+                            <span
+                              key={index}
+                              className="bg-blue-700 dark:bg-green-700 text-white px-2 rounded"
+                            >
+                              {part.replace(/\*\*/g, "")}
+                            </span>
+                          ) : (
+                            part
+                          )
+                        )}
+                    </li>
+                  )
+                )}
+              </ul>
+            )}
+
+            {/*             
+              <ol className="list-disc list-outside ms-5 dark:text-gray-200">
+                <li>eaddddddddd  dddddddddddddd ddddddd ddddddd dddddddd djksfksf skjfksfks fskhfskfhks</li>
+                <li>12</li>
+              </ol> */}
+
             {article.element === "code" && (
               <CodeSyntaxHighlight code={article.content} />
             )}
@@ -97,3 +180,26 @@ export default async function DetailBlogTemplate({
     </div>
   );
 }
+
+// [
+//   "**node_modules/** → Berisi semua dependensi proyek yang diinstal melalui npm, yarn, atau pnpm.",
+//   "**public/** → Folder ini digunakan untuk menyimpan aset statis seperti gambar, ikon, dan file lainnya yang bisa diakses secara langsung. contoh: logo.",
+//   "**src/app/** → Merupakan direktori utama, Menggunakan App Router (app/) yang merupakan fitur terbaru Next.js 13+.",
+//   "Di dalam folder **app/**, memiliki beberapa file penting yaitu:"
+// ]
+// [
+//   "**layout.tsx** → Layout utama yang membungkus semua halaman.",
+//   "**page.tsx** → Halaman utama dari aplikasi Next.js ini.",
+//   "**globals.css** → File CSS global untuk styling seluruh aplikasi.",
+//   "**page.module.css** → CSS module khusus untuk page.tsx.",
+//   "**.gitignore** → File untuk menentukan file/folder yang tidak di-track Git.",
+//   "**next.config.ts** → Konfigurasi Next.js.",
+//   "**package.json** → Berisi dependencies dan scripts proyek ini.",
+//   "**tsconfig.json** → Konfigurasi TypeScript.",
+// ]
+// [
+//   "**components/** → Supaya lebih rapi, kita buat komponen reusable seperti Navbar.tsx, Footer.tsx, Card.tsx, dll.",
+//   "**styles/** → Jika butuh CSS Module atau file khusus styling tiap halaman.",
+//   "**lib/** → Berisi helper functions / utilities, Kalau ada fungsi helper seperti fetching data dari API.",
+//   "**data/** → Kalau ada data statis seperti daftar kategori atau dummy data.",
+// ]
