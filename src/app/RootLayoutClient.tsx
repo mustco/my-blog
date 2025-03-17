@@ -33,6 +33,25 @@ export default function RootLayoutClient({
           <ThemeProvider attribute="class" defaultTheme="light">
             {children}
           </ThemeProvider>
+          {/* Tambahkan elemen untuk social bar agar bisa diatur posisinya */}
+          <div id="social-bar-ads" className="fixed top-4 right-4 z-50"></div>
+
+          {/* Gunakan dangerouslySetInnerHTML untuk memastikan script masuk ke dalam div */}
+
+          {/* <script
+            dangerouslySetInnerHTML={{
+              __html: `
+      setTimeout(() => {
+        var ads = document.querySelector("iframe"); // Ambil iframe iklan
+        var target = document.getElementById("social-bar-ads"); // Target div
+        if (ads && target) {
+          target.appendChild(ads); // Pindahkan iklan ke dalam div
+          ads.style.position = "static"; // Hapus posisi fixed
+        }
+      }, 2000); // Tunggu beberapa detik agar iklan muncul dulu
+    `,
+            }}
+          ></script> */}
         </body>
       </html>
     </SessionProvider>

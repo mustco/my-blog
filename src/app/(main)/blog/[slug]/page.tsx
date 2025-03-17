@@ -2,6 +2,9 @@ import CodeSyntaxHighlight from "@/components/CodeSyntaxHighlight";
 import { formatedTimestamp } from "../../../../../utils/supabase/formatedTimestamp";
 import Image from "next/image";
 import Link from "next/link";
+import AdvertisementBanner from "@/components/AdvertisementBanner";
+import dynamic from "next/dynamic";
+import PopupAd from "@/components/PopupAd";
 
 export const revalidate = 86400;
 export async function generateStaticParams() {
@@ -43,6 +46,8 @@ export default async function DetailBlogTemplate({
           {formatedTimestamp(post.created_at)}
         </div>
       </div>
+      {/* <AdvertisementBanner /> */}
+
       <h1 className="text-3xl font-bold pb-0 tracking-tight">{post.title}</h1>
 
       <div className="flex flex-col gap-5">
@@ -177,6 +182,8 @@ export default async function DetailBlogTemplate({
           </div>
         ))}
       </div>
+      {/* <AdvertisementBanner /> */}
+      <PopupAd />
     </div>
   );
 }

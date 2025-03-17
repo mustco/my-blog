@@ -1,4 +1,10 @@
-import { FaFacebook, FaGithub, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaGithub,
+  FaInstagram,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
 
 export default function About() {
   return (
@@ -19,9 +25,7 @@ export default function About() {
         bagi pembaca.
       </p>
 
-      <h2 className="text-xl font-semibold mt-6">
-        Terhubung dengan MustcoWeb
-      </h2>
+      <h2 className="text-xl font-semibold mt-6">Terhubung dengan MustcoWeb</h2>
       <p className="text-gray-600 dark:text-gray-300 -tracking-tighter">
         Ikuti dan dapatkan update terbaru di:
       </p>
@@ -29,13 +33,14 @@ export default function About() {
       <div className="flex gap-4 mt-3 text-4xl">
         <a
           href="https://twitter.com/MustcoWeb"
+          // https://www.effectiveratecpm.com/ywamwhbf5?key=2bef0110a8d315fd50cdee222322c25f
           target="_blank"
           className="text-blue-500 hover:underline"
         >
           <FaTwitter />
         </a>
         <a
-          href="https://instagram.com/mustofaadnan_03"
+          href="https://instagram.com/MustcoWeb"
           target="_blank"
           className="text-pink-500 hover:underline"
         >

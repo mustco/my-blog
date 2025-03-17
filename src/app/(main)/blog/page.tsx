@@ -18,7 +18,9 @@ export default async function Blog() {
   return (
     <div className="md:w-4/5 p-4 mx-auto card gap-3 my-5 md:p-8">
       <div className="flex justify-between mb-3 text-md md:text-lg">
-        <h2 className="mb-0 text-xl flex items-center font-bold">Recent Blog Post :</h2>
+        <h2 className="mb-0 text-xl flex items-center font-bold">
+          Recent Blog Post :
+        </h2>
         {/* <SearchComponent className="text-lg font-bold" datas={datas} /> */}
       </div>
       <div className="text-black/60 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  rounded-xl gap-5">

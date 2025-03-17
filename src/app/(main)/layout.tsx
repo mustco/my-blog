@@ -8,6 +8,8 @@ import Footer from "@/components/Footer";
 import { Nunito_Sans } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import { useEffect, useState } from "react";
+import AdvertisementBanner from "@/components/AdvertisementBanner";
+import PopupAd from "@/components/PopupAd";
 
 const nunitoSans = Nunito_Sans({ subsets: ["latin"], weight: ["400", "900"] });
 const geistSans = Geist({
@@ -46,6 +48,7 @@ export default function MainLayout({
     <div className={`${nunitoSans.className} flex flex-col min-h-screen`}>
       <Navbar show={showNavbar} />
       <Container className="flex-grow mt-16">{children}</Container>
+      {/* <AdvertisementBanner /> */}
       <Footer />
     </div>
   );

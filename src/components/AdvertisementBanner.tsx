@@ -1,15 +1,32 @@
 "use client";
+import Script from "next/script";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function AdvertisementBanner() {
+  const pathname = usePathname();
+  const [adKey, setAdKey] = useState(0); // Key untuk merender ulang script
+
+  useEffect(() => {
+    // console.log("Pathname changed:", pathname);
+    setTimeout(() => {
+      setAdKey((prevKey) => prevKey + 1);
+    });
+    // Ganti key agar script di-reload
+  }, [pathname]); // Setiap kali pathname berubah, script akan di-load ulang
+
   return (
-    <div className="p-0 md:p-8 flex justify-center mt-36 md:mt-20">
-      <div className="w-full md:w-2/3 lg:w-1/2 py-2 bg-gray-200 text-black/60 flex flex-col items-center rounded-xl space-y-1">
-        <p className="leading-normal text-gray-500 text-base">Advertisement</p>
-        <h1 className="text-xl font-bold text-gray-500 leading-tight">
-          You can place ads
-        </h1>
-        <p className="leading-normal text-gray-500 text-base">750x100</p>
-      </div>
-    </div>
+    <>
+      {/* Iklan akan direload setiap kali key berubah */}
+      <Script
+        key={adKey}
+        src="//pl26103797.effectiveratecpm.com/d364bfdf4cf646c4a2f590cdf0245fea/invoke.js"
+        strategy="afterInteractive"
+      />
+      <div
+        id="container-d364bfdf4cf646c4a2f590cdf0245fea"
+        className="my-4"
+      ></div>
+    </>
   );
 }
