@@ -22,7 +22,10 @@ export default function HeroSection() {
               width={30}
               height={30}
               className="rounded-full"
-              priority
+              priority={true}
+              // placeholder="blur"
+              // blurDataURL="data:image/png;base64"
+              // loading="lazy"
             />
             <span className="text-gray-600 dark:text-gray-300 font-bold text-sm">Mustco</span>
           </div>

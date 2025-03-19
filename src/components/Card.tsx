@@ -13,13 +13,15 @@ export default function Card({ datas }: { datas: Post }) {
     >
       <div className="border border-gray-400 p-3 flex flex-col space-y-5 rounded-lg h-full">
         <div className="h-52 relative w-full flex flex-col justify-center">
-          <Image
+          <img
             src={datas.image}
             alt="logo"
             width={600}
             height={600}
             className="rounded-md dark:bg-gray-100 h-full object-center"
-            priority
+            // loading="lazy"
+            // unoptimized
+            // quality={50}
           />
         </div>
         <div className="flex flex-col space-y-5 flex-grow justify-between">
@@ -32,7 +34,9 @@ export default function Card({ datas }: { datas: Post }) {
                 {datas.category}
               </div>
             </div>
-            <div className="dark:text-gray-300 text-sm text-end">{formatedTimestamp(datas.created_at)}</div>
+            <div className="dark:text-gray-300 text-sm text-end">
+              {formatedTimestamp(datas.created_at)}
+            </div>
           </div>
         </div>
       </div>

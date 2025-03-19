@@ -143,6 +143,9 @@ export default async function DetailBlogTemplate({
                 width={600}
                 height={600}
                 className="mb-5 rounded-lg shadow-md bg-transparent border-gray-100 dark:bg-gray-200 pointer-events-none"
+                // priority
+                // loading="lazy"
+                // quality={50}
               />
             )}
 
