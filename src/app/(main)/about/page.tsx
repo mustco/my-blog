@@ -6,6 +6,12 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 
+export async function generateMetadata() {
+  return {
+    title: "About",
+    description: "About · Berbagi wawasan dan menginspirasi perubahan.",
+  };
+}
 export default function About() {
   return (
     <div className="md:w-4/5 p-4 mx-auto card gap-3 my-5 md:p-8 min-h-screen flex flex-col justify-center">

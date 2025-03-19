@@ -2,6 +2,12 @@ import Card from "@/components/Card";
 import { Post } from "@/components/InterfacePost";
 import SearchComponent from "@/components/SearchComponent";
 
+export async function generateMetadata() {
+  return {
+    title: "Blog",
+    description: "Blog · Berbagi wawasan dan menginspirasi perubahan.",
+  };
+}
 async function getPosts() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts`, {
     next: { revalidate: 86400 },

@@ -5,6 +5,8 @@ import Link from "next/link";
 import AdvertisementBanner from "@/components/AdvertisementBanner";
 import dynamic from "next/dynamic";
 import PopupAd from "@/components/PopupAd";
+import AdBanner from "@/components/AdBanner";
+import { Metadata } from "next";
 
 export const revalidate = 86400;
 export async function generateStaticParams() {
@@ -13,6 +15,26 @@ export async function generateStaticParams() {
   );
 
   return res.posts.map((post: any) => ({ params: { slug: post.slug } }));
+}
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/posts/${(await params).slug}`
+  ).then((res) => res.json());
+  const { post } = res;
+  return {
+    title: `Blog · ${post.title}`,
+    description: `Artikel kategori ${post.category}: ${post.title}. Baca selengkapnya di MustcoWeb.`,
+    authors: [
+      {
+        name: post.author,
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${post.slug}`,
+      },
+    ],
+  };
 }
 
 export default async function DetailBlogTemplate({
@@ -179,11 +201,13 @@ export default async function DetailBlogTemplate({
             {article.element === "code" && (
               <CodeSyntaxHighlight code={article.content} />
             )}
+            {article.element === "ads" && <AdBanner />}
           </div>
         ))}
       </div>
       {/* <AdvertisementBanner /> */}
       <PopupAd />
+      {/* <AdBanner /> */}
     </div>
   );
 }

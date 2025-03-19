@@ -38,7 +38,7 @@ export default function PopupAd() {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm z-50">
-      <div className="relative bg-gray-200 rounded-lg shadow-lg text-center w-96 mx-5 h-28">
+      <div className="relative bg-gray-200 rounded-lg shadow-lg text-center w-96 mx-5 ">
         {/* Tombol Close "X" di pojok kanan atas */}
         <button
           onClick={handleClose}
@@ -47,7 +47,11 @@ export default function PopupAd() {
           <CgClose />
         </button>
         <div className="flex items-center justify-center text-gray-700">
-          Ads
+          <img
+            src="https://fusowjktlpehckfgwebs.supabase.co/storage/v1/object/public/images//kZz9iDdRyXDacyMoy85KBAxqON41qUDW.gif"
+            alt="Ads" className="rounded-lg pointer-events-none"
+            
+          />
           {/* <img src="/images/technology.jpg" alt="tutup" className="w-full h-full" /> */}
           {/* <p>ads</p> */}
         </div>

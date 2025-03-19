@@ -3,7 +3,10 @@ import type { Metadata } from "next";
 import RootLayoutClient from "./RootLayoutClient"; // Import Client Component
 
 export const metadata: Metadata = {
-  title: "MustcoWeb",
+  title: {
+    default: "MustcoWeb",
+    template: "MustcoWeb | %s ",
+  },
   description: "Berbagi wawasan dan menginspirasi perubahan.",
 };
 
