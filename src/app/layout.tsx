@@ -8,6 +8,9 @@ export const metadata: Metadata = {
     template: "MustcoWeb | %s ",
   },
   description: "Berbagi wawasan dan menginspirasi perubahan.",
+  icons: {
+    icon: "/J6lMsBKUjgf7pbkD4EMqeX6tteWEe0dY.png",
+  },
 };
 
 export default function RootLayout({
