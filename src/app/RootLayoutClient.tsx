@@ -6,7 +6,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Nunito_Sans } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import "./globals.css";
-import Head from "next/head";
 
 const nunitoSans = Nunito_Sans({ subsets: ["latin"], weight: ["400", "900"] });
 
@@ -28,12 +27,6 @@ export default function RootLayoutClient({
   return (
     <SessionProvider>
       <html lang="en" suppressHydrationWarning>
-        <Head>
-          <meta
-            name="google-site-verification"
-            content="LhEA7t7qLLK7ohvQGOGLrk19Zu0aQieVE4y7cm4YoGA"
-          />
-        </Head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#212121] dark:text-[#ECECEC] bg-white text-[#171717] leading-relaxed`}
         >

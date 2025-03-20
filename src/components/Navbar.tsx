@@ -17,9 +17,6 @@ export default function Navbar({ className, show }: Post) {
   const pathname = usePathname();
   // console.log(pathname);
   const handleSearch = () => {};
-  console.log(showHello);
-  console.log(show);
-  console.log(pathname);
   return (
     <div
       className={` fixed w-full shadow-md dark:shadow-sm dark:shadow-gray-500 bg-white dark:bg-[#212121] z-50 ${
