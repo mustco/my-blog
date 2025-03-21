@@ -6,6 +6,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Nunito_Sans } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import "./globals.css";
+import Script from "next/script";
 
 const nunitoSans = Nunito_Sans({ subsets: ["latin"], weight: ["400", "900"] });
 
@@ -27,6 +28,21 @@ export default function RootLayoutClient({
   return (
     <SessionProvider>
       <html lang="en" suppressHydrationWarning>
+        <head>
+          {/* Google Tag Manager */}
+          <Script
+            strategy="beforeInteractive"
+            src="https://www.googletagmanager.com/gtag/js?id=G-BLHPBPTR2D"
+          />
+          <Script id="google-analytics" strategy="beforeInteractive">
+            {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-BLHPBPTR2D');
+          `}
+          </Script>
+        </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#212121] dark:text-[#ECECEC] bg-white text-[#171717] leading-relaxed`}
         >
