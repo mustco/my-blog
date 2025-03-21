@@ -105,9 +105,9 @@ export default function Navbar({ className, show }: Post) {
       </div>
       {show && (
         <div
-          className={`md:hidden absolute top-full left-0 right-0 mx-1 my-1 w-auto bg-white border px-5 py-5 border-gray-300 rounded-lg z-10 font-bold dark:bg-[#212121] dark:border-gray-600 transition-all duration-300 ease-in-out transform overflow-hidden ${
+          className={`md:hidden absolute left-0 right-0  bg-white border border-gray-300 rounded-lg z-10 font-bold dark:bg-[#212121] dark:border-gray-600 transition-all duration-300 ease-in-out transform overflow-hidden ${
             showHello
-              ? "opacity-100 scale-100 translate-y-0 pointer-events-auto max-h-[300px]"
+              ? "opacity-100 px-5 py-5  mx-1 my-1 w-auto scale-100 translate-y-0 pointer-events-auto max-h-[300px]"
               : "opacity-0 scale-95 -translate-y-0 pointer-events-none max-h-0"
           }`}
         >

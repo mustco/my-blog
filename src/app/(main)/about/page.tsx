@@ -8,8 +8,8 @@ import {
 
 export async function generateMetadata() {
   return {
-    title: "About",
-    description: "About · Berbagi wawasan dan menginspirasi perubahan.",
+    title: "MustcoWeb - Tentang Kami",
+    description: "Tentang Kami - Berbagi wawasan dan menginspirasi perubahan.",
   };
 }
 export default function About() {

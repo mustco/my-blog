@@ -34,7 +34,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `Blog · ${post.title}`,
+    title: `MustcoWeb - ${post.title}`,
     description: `Artikel kategori ${post.category}: ${post.title}. Baca selengkapnya di MustcoWeb.`,
     authors: [
       {
@@ -43,7 +43,7 @@ export async function generateMetadata({
       },
     ],
     openGraph: {
-      title: `MustcoWeb | Blog · ${post.title}`,
+      title: `MustcoWeb - ${post.title}`,
       description: `Artikel kategori ${post.category}: ${post.title}. Baca selengkapnya di MustcoWeb.`,
       images: [
         {
@@ -57,7 +57,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `MustcoWeb | Blog · ${post.title}`,
+      title: `MustcoWeb - ${post.title}`,
       description: `Artikel kategori ${post.category}: ${post.title}. Baca selengkapnya di MustcoWeb.`,
       images: post.image,
     },

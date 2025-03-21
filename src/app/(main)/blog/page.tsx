@@ -4,8 +4,8 @@ import SearchComponent from "@/components/SearchComponent";
 
 export async function generateMetadata() {
   return {
-    title: "Blog",
-    description: "Blog · Berbagi wawasan dan menginspirasi perubahan.",
+    title: "MustcoWeb - Blog",
+    description: "Blog - Berbagi wawasan dan menginspirasi perubahan.",
   };
 }
 async function getPosts() {
