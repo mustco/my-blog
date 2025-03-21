@@ -25,6 +25,14 @@ export async function generateMetadata({
     `${process.env.NEXT_PUBLIC_SITE_URL}/api/posts/${(await params).slug}`
   ).then((res) => res.json());
   const { post } = res;
+
+  if (!post || !post.image) {
+    return {
+      title: "Post Not Found",
+      description: "The post you are looking for does not exist.",
+    };
+  }
+
   return {
     title: `Blog · ${post.title}`,
     description: `Artikel kategori ${post.category}: ${post.title}. Baca selengkapnya di MustcoWeb.`,
@@ -34,6 +42,25 @@ export async function generateMetadata({
         url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${post.slug}`,
       },
     ],
+    openGraph: {
+      title: `Blog · ${post.title}`,
+      description: `Artikel kategori ${post.category}: ${post.title}. Baca selengkapnya di MustcoWeb.`,
+      images: [
+        {
+          url: post.image,
+          width: 800,
+          height: 400,
+          alt: `Og Image ${post.category}`,
+        },
+      ],
+    },
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${post.slug}`,
+    twitter: {
+      card: "summary_large_image",
+      title: `Blog · ${post.title}`,
+      description: `Artikel kategori ${post.category}: ${post.title}. Baca selengkapnya di MustcoWeb.`,
+      images: post.image,
+    },
   };
 }
 
