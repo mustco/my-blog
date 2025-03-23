@@ -4,7 +4,7 @@
 import { ThemeProvider } from "next-themes";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Nunito_Sans } from "next/font/google";
-import { SessionProvider } from "next-auth/react";
+// import { SessionProvider } from "next-auth/react";
 import "./globals.css";
 import Script from "next/script";
 
@@ -26,7 +26,7 @@ export default function RootLayoutClient({
   children: React.ReactNode;
 }) {
   return (
-    <SessionProvider>
+    // <SessionProvider>
       <html lang="en" suppressHydrationWarning>
         <head>
           {/* Google Tag Manager */}
@@ -42,11 +42,30 @@ export default function RootLayoutClient({
             gtag('config', 'G-BLHPBPTR2D');
           `}
           </Script>
+          <Script
+            id="set-theme"
+            strategy="beforeInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+      (function() {
+        let theme = localStorage.getItem('theme');
+        if (!theme || theme === 'system') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    `,
+            }}
+          />
         </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#212121] dark:text-[#ECECEC] bg-white text-[#171717] leading-relaxed`}
         >
-          <ThemeProvider attribute="class" defaultTheme="light">
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             {children}
           </ThemeProvider>
           {/* Tambahkan elemen untuk social bar agar bisa diatur posisinya */}
@@ -70,6 +89,6 @@ export default function RootLayoutClient({
           ></script> */}
         </body>
       </html>
-    </SessionProvider>
+    // </SessionProvider>
   );
 }

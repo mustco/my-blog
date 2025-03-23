@@ -6,7 +6,7 @@ import Container from "@/components/Container";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Nunito_Sans } from "next/font/google";
-import { SessionProvider } from "next-auth/react";
+// import { SessionProvider } from "next-auth/react";
 import { useEffect, useState } from "react";
 import AdvertisementBanner from "@/components/AdvertisementBanner";
 import PopupAd from "@/components/PopupAd";

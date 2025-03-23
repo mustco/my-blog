@@ -1,26 +1,32 @@
-"use client"; // Agar bisa menggunakan useSession
+// "use client"; // Agar bisa menggunakan useSession
 
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import NotFound from "@/app/not-found";
 
-export default function Contact() {
-  const { data: session, status } = useSession();
-  const router = useRouter();
+// // import { useSession } from "next-auth/react";
+// import { useRouter } from "next/navigation";
+// import { useEffect } from "react";
 
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/login"); // Pakai replace agar tidak bisa kembali ke dashboard
-    }
-  }, [status, router]);
+// export default function Contact() {
+//   const { data: session, status } = useSession();
+//   const router = useRouter();
 
-  if (status === "loading") {
-    return <p>Loading...</p>; // Tambahkan layar loading agar tidak flash halaman
-  }
+//   useEffect(() => {
+//     if (status === "unauthenticated") {
+//       router.push("/login"); // Pakai replace agar tidak bisa kembali ke dashboard
+//     }
+//   }, [status, router]);
 
-  if (!session) {
-    return null; // Mencegah render konten sebelum redirect selesai
-  }
+//   if (status === "loading") {
+//     return <p>Loading...</p>; // Tambahkan layar loading agar tidak flash halaman
+//   }
 
-  return <h1>Dashboard</h1>; // Gantilah dengan konten dashboard-mu
+//   if (!session) {
+//     return null; // Mencegah render konten sebelum redirect selesai
+//   }
+
+//   return <h1>Dashboard</h1>; // Gantilah dengan konten dashboard-mu
+// }
+
+export default function Contact(){
+  return<NotFound/> ;
 }

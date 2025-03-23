@@ -10,7 +10,7 @@ export async function GET(
   { params }: { params: Promise<{slug:string}>}
 ){
     const slug = (await params).slug
-  const { data: post, error } = await supabase
+  const { data: post, error } = await supabase()
     .from("posts")
     .select("*, articles(*)")
     .eq("slug", slug)

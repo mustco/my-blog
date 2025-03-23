@@ -1,5 +1,6 @@
 // "use client";
-// import { signOut } from "next-auth/react";
+// import { logout } from "@/app/login/action";
+// // import { signOut } from "next-auth/react";
 // import Link from "next/link";
 
 // export default function DashboardLayout({
@@ -8,7 +9,7 @@
 //   children: React.ReactNode;
 // }) {
 //   return (
-//     <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
+//     <div className="flex h-screen">
 //       {/* Sidebar */}
 //       <div className="w-64 bg-white dark:bg-gray-800 shadow-lg">
 //         <div className="p-4 h-full flex flex-col justify-between">
@@ -27,7 +28,7 @@
 //           </div>
 //           <a
 //             className="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-//             onClick={() => signOut()}
+//             onClick={() => logout()}
 //           >
 //             Logout
 //           </a>

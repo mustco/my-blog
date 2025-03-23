@@ -1,7 +1,5 @@
+import NotFound from "@/app/not-found";
+
 export default function Contact() {
-    return (
-        <div>
-            <h1>Contact</h1>
-        </div>
-    );
+    return <NotFound/> ;
 }

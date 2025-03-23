@@ -1,5 +1,5 @@
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { CiDark, CiLight } from "react-icons/ci";
 import { IoIosMenu, IoMdClose, IoMdMenu } from "react-icons/io";
@@ -11,7 +11,15 @@ interface Post {
   show?: boolean;
 }
 export default function Navbar({ className, show }: Post) {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const currentTheme = theme === "system" ? systemTheme : theme;
+
   const [showHello, setShowHello] = useState(false);
   const [search, setSearch] = useState("");
   const pathname = usePathname();
@@ -55,10 +63,15 @@ export default function Navbar({ className, show }: Post) {
         </ul>
         <div className="flex space-x-3">
           <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
             className="px-3 py-2 text-3xl hidden md:block"
           >
-            {theme === "dark" ? <CiDark className="text-white" /> : <CiLight />}
+            {mounted &&
+              (currentTheme === "dark" ? (
+                <CiDark className="text-white" />
+              ) : (
+                <CiLight />
+              ))}
           </button>
         </div>
         <div className="md:hidden flex items-center">
@@ -66,20 +79,24 @@ export default function Navbar({ className, show }: Post) {
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="relative px-3 py-3 text-3xl w-10 h-10 flex items-center justify-center overflow-hidden "
           >
-            <CiDark
-              className={`absolute transition-all duration-500 ease-in-out ${
-                theme === "dark"
-                  ? "opacity-100 scale-100 translate-y-0"
-                  : "opacity-0  -translate-y-full"
-              }`}
-            />
-            <CiLight
-              className={`absolute transition-all duration-500 ease-in-out ${
-                theme === "dark"
-                  ? "opacity-0  -translate-y-full"
-                  : "opacity-100 scale-100 translate-y-0"
-              }`}
-            />
+            {mounted && (
+              <>
+                <CiDark
+                  className={`absolute transition-all duration-500 ease-in-out ${
+                    theme === "dark"
+                      ? "opacity-100 scale-100 translate-y-0"
+                      : "opacity-0  -translate-y-full"
+                  }`}
+                />
+                <CiLight
+                  className={`absolute transition-all duration-500 ease-in-out ${
+                    theme === "dark"
+                      ? "opacity-0  -translate-y-full"
+                      : "opacity-100 scale-100 translate-y-0"
+                  }`}
+                />
+              </>
+            )}
           </button>
 
           <button
@@ -105,7 +122,7 @@ export default function Navbar({ className, show }: Post) {
       </div>
       {show && (
         <div
-          className={`md:hidden absolute left-0 right-0  bg-white border border-gray-300 rounded-lg z-10 font-bold dark:bg-[#212121] dark:border-gray-600 transition-all duration-300 ease-in-out transform overflow-hidden ${
+          className={`md:hidden absolute left-0 right-0  bg-white border border-gray-500 rounded-lg z-10 font-bold dark:bg-[#212121] dark:border-gray-600 transition-all duration-300 ease-in-out transform overflow-hidden ${
             showHello
               ? "opacity-100 px-5 py-5  mx-1 my-1 w-auto scale-100 translate-y-0 pointer-events-auto max-h-[300px]"
               : "opacity-0 scale-95 -translate-y-0 pointer-events-none max-h-0"
@@ -115,7 +132,7 @@ export default function Navbar({ className, show }: Post) {
             <li className="p-0">
               <Link
                 onClick={() => setShowHello(false)}
-                className={`block py-3 hover:bg-blue-700 px-3  dark:hover:bg-green-700 hover:text-white active:text-white dark:hover:text-green-100 dark:active:text-white ${pathname === "/" ? "bg-blue-600 text-white dark:bg-green-600" : ""}`}
+                className={`block py-3 rounded-lg hover:bg-blue-700 px-3  dark:hover:bg-green-700 hover:text-white active:text-white dark:hover:text-green-100 dark:active:text-white ${pathname === "/" ? "bg-blue-600 text-white dark:bg-green-600" : ""}`}
                 href="/"
               >
                 Home
@@ -124,7 +141,7 @@ export default function Navbar({ className, show }: Post) {
             <li>
               <Link
                 onClick={() => setShowHello(false)}
-                className={`block py-3 hover:bg-blue-700 px-3  dark:hover:bg-green-700 hover:text-white active:text-white dark:hover:text-green-100 dark:active:text-white ${pathname.includes("blog") ? "bg-blue-600 text-white dark:bg-green-600" : ""}`}
+                className={`block py-3 rounded-lg hover:bg-blue-700 px-3  dark:hover:bg-green-700 hover:text-white active:text-white dark:hover:text-green-100 dark:active:text-white ${pathname.includes("blog") ? "bg-blue-600 text-white dark:bg-green-600" : ""}`}
                 href="/blog"
               >
                 Blog
@@ -133,7 +150,7 @@ export default function Navbar({ className, show }: Post) {
             <li>
               <Link
                 onClick={() => setShowHello(false)}
-                className={`block py-3 hover:bg-blue-700 px-3  dark:hover:bg-green-700 hover:text-white active:text-white dark:hover:text-green-100 dark:active:text-white ${pathname === "/about" ? "bg-blue-600 text-white dark:bg-green-600" : ""}`}
+                className={`block py-3 rounded-lg hover:bg-blue-700 px-3  dark:hover:bg-green-700 hover:text-white active:text-white dark:hover:text-green-100 dark:active:text-white ${pathname === "/about" ? "bg-blue-600 text-white dark:bg-green-600" : ""}`}
                 href="/about"
               >
                 About
