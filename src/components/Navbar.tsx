@@ -26,7 +26,7 @@ export default function Navbar({ className, show }: Post) {
   // console.log(pathname);
   const handleSearch = () => {};
   return (
-    <div
+    <nav
       className={` fixed w-full shadow-md dark:shadow-sm dark:shadow-gray-500 bg-white dark:bg-[#212121] z-50 ${
         className ? className : ""
       } ${show ? "translate-y-0 transition-all ease-in-out duration-500" : "-translate-y-16 md:-translate-y-20 transition-all ease-in-out duration-1000"}`}
@@ -159,6 +159,6 @@ export default function Navbar({ className, show }: Post) {
           </ul>
         </div>
       )}
-    </div>
+    </nav>
   );
 }

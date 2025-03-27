@@ -101,7 +101,7 @@ export default async function DetailBlogTemplate({
 
       <div className="flex flex-col gap-5">
         {post.articles.map((article: any) => (
-          <div key={article.id} className="ea">
+          <div key={article.id}>
             {article.element === "h1" && (
               <h1 className="text-3xl font-bold dark:text-gray-200 tracking-normal">
                 {article.content}
@@ -231,6 +231,12 @@ export default async function DetailBlogTemplate({
             {article.element === "code" && (
               <CodeSyntaxHighlight code={article.content} />
             )}
+            {article.element === "blockquote" && (
+              <blockquote className="border-l-4 text-lg border-blue-500 dark:border-green-500 pl-4 pe-1 italic text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-gray-800 py-1">
+                {article.content}
+              </blockquote>
+            )}
+
             {article.element === "ads" && <AdBanner />}
           </div>
         ))}

@@ -321,6 +321,7 @@ export default function DashboardPosts() {
                 <option value="ul">ul</option>
                 <option value="li">li</option>
                 <option value="ads">ads</option>
+                <option value="blockquote">blockquote</option>
               </select>
 
               <div className="my-3 flex items-center gap-1">
@@ -441,6 +442,9 @@ export default function DashboardPosts() {
                     placeholder="ads"
                     required
                   />
+                )}
+                {selected === "blockquote" && (
+                  <input type="text" value={content} onChange={(e) => setContent(e.target.value)} className="border border-black/30 rounded-md py-1 px-2 w-full dark:bg-white dark:text-black" placeholder="quote" required />
                 )}
               </div>
               {content || selectedDetailFile ? (
@@ -606,6 +610,11 @@ export default function DashboardPosts() {
 
                 {article.element === "code" && (
                   <CodeSyntaxHighlight code={article.content} />
+                )}
+                {article.element === "blockquote" && (
+                  <blockquote className="border-l-4 text-lg border-blue-500 dark:border-green-500 pl-4 pe-1 italic text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-gray-800 py-1">
+                    {article.content}
+                  </blockquote>
                 )}
                 {article.element === "ads" && <AdBanner />}
               </div>
