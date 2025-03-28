@@ -23,7 +23,10 @@ export default function Navbar({ className, show }: Post) {
   const [showHello, setShowHello] = useState(false);
   const [search, setSearch] = useState("");
   const pathname = usePathname();
-  // console.log(pathname);
+
+  useEffect(()=> {
+    setShowHello(false)
+  }, [pathname])
   const handleSearch = () => {};
   return (
     <nav

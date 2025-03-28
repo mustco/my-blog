@@ -612,7 +612,7 @@ export default function DashboardPosts() {
                   <CodeSyntaxHighlight code={article.content} />
                 )}
                 {article.element === "blockquote" && (
-                  <blockquote className="border-l-4 text-lg border-blue-500 dark:border-green-500 pl-4 pe-1 italic text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-gray-800 py-1">
+                  <blockquote className="border-l-4 text-lg border-blue-500 dark:border-green-500 pl-4 pe-1 italic text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-[rgb(43,43,43)] py-1">
                     {article.content}
                   </blockquote>
                 )}

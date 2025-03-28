@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import PopupAd from "@/components/PopupAd";
 import AdBanner from "@/components/AdBanner";
 import { Metadata } from "next";
+import Card from "@/components/Card";
 
 export const revalidate = 86400;
 export async function generateStaticParams() {
@@ -74,6 +75,15 @@ export default async function DetailBlogTemplate({
     `${process.env.NEXT_PUBLIC_SITE_URL}/api/posts/${slug}`
   );
 
+  const randomArticles = await fetch(
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/posts`
+  );
+  const random = await randomArticles.json();
+  const newRandom = random.posts.filter((item: any) => item.slug !== slug);
+  const randomThreeArticles = newRandom
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 5);
+
   if (!res.ok) {
     return <div className="text-red-500">Error fetching data</div>;
   }
@@ -86,7 +96,7 @@ export default async function DetailBlogTemplate({
     "**src/app/** → Merupakan direktori utama, Menggunakan App Router (app/) yang merupakan fitur terbaru Next.js 13+.",
   ];
   return (
-    <div className="md:w-4/5 p-4 mx-auto card gap-10 my-5 md:p-8 flex flex-col text-gray-700 dark:text-gray-200">
+    <div className="md:max-w-3xl p-4 mx-auto card gap-10 my-5 md:p-8 flex flex-col text-gray-700 dark:text-gray-200">
       <div className="flex justify-between">
         <div className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start">
           {post.category}
@@ -99,7 +109,7 @@ export default async function DetailBlogTemplate({
 
       <h1 className="text-3xl font-bold pb-0 tracking-tight">{post.title}</h1>
 
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 border-b-4 border-dashed pb-7 border-gray-300 dark:border-gray-300">
         {post.articles.map((article: any) => (
           <div key={article.id}>
             {article.element === "h1" && (
@@ -232,7 +242,7 @@ export default async function DetailBlogTemplate({
               <CodeSyntaxHighlight code={article.content} />
             )}
             {article.element === "blockquote" && (
-              <blockquote className="border-l-4 text-lg border-blue-500 dark:border-green-500 pl-4 pe-1 italic text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-gray-800 py-1">
+              <blockquote className="border-l-4 text-lg border-blue-500 dark:border-green-500 pl-4 pe-1 italic text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-[rgba(43,43,43)] py-1">
                 {article.content}
               </blockquote>
             )}
@@ -241,8 +251,47 @@ export default async function DetailBlogTemplate({
           </div>
         ))}
       </div>
+
+      <div className="flex flex-col items-center bg-gray-100 dark:bg-[rgba(43,43,43)] px-2 md:px-3 py-5">
+        {randomThreeArticles.length > 0 && (
+          <>
+            <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200 tracking-normal mb-5">
+              Artikel Lainnya
+            </h2>
+            <div className="grid grid-cols-1 gap-4">
+              <div className="grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 mt-5">
+                {randomThreeArticles.map((article: any) => (
+                  <div
+                    className="border-b-[1px] border-dashed md:border md:border-solid md:p-1 md:rounded-md cursor-pointer pb-3 border-gray-500 flex-1 group hover:scale-95 transition-all duration-200"
+                    key={article.id}
+                  >
+                    <Link
+                      href={`/blog/${article.slug}`}
+                      className="relative overflow-hidden rounded-lg w-full flex md:flex-col items-center  gap-3 text-lg font-semibold text-gray-800 dark:text-gray-200"
+                    >
+                        <img
+                          src={article.image}
+                          alt={article.category}
+                          className="rounded-lg shadow-md bg-transparent bg-white dark:bg-gray-200 w-1/3 md:w-full md:h-28 border border-gray-300 md:border-none lg:border-none transition-transform duration-300 md:group-hover:scale-110"
+                        />
+                      <p className="text-gray-700 dark:text-gray-200 text-sm">
+                        {article.title}
+                      </p>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
+        {randomThreeArticles.length === 0 && (
+          <div className="text-center text-gray-700 dark:text-gray-300 mt-5">
+            Tidak ada artikel terkait
+          </div>
+        )}
+      </div>
       {/* <AdvertisementBanner /> */}
-      <PopupAd />
+      {/* <PopupAd /> */}
       {/* <AdBanner /> */}
     </div>
   );

@@ -15,8 +15,8 @@ export default function Container(props: ContainerProps) {
       }`}
     >
       {props.children}
-      <div className="md:w-4/5 mx-auto p-5 md:p-8 flex flex-col items-center justify-center my-8 md:my-10 box-border">
-      </div>
+      {/* <div className="md:w-4/5 mx-auto p-5 md:p-8 flex flex-col items-center justify-center my-8 md:my-10 box-border">
+      </div> */}
     </div>
   );
 }
