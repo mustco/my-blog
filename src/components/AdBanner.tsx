@@ -1,11 +1,13 @@
 "use client";
 
 export default function AdBanner() {
+  const ads = [
+    "https://stiftais.top/4/9160895",
+    "https://www.effectiveratecpm.com/vcvcr7qsk?key=f35b406a64c9034a5bebb3ef500b573d",
+  ];
+
   const handleClick = () => {
-    window.open(
-      "https://www.effectiveratecpm.com/vcvcr7qsk?key=f35b406a64c9034a5bebb3ef500b573d",
-      "_blank"
-    );
+    window.open("https://stiftais.top/4/9160895", "_blank");
   };
 
   return (
