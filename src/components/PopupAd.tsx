@@ -7,8 +7,7 @@ export default function PopupAd() {
   const [isOpen, setIsOpen] = useState(false);
   const [closeCount, setCloseCount] = useState(0);
   const pathname = usePathname();
-  const directLink =
-    "https://www.effectiveratecpm.com/ywamwhbf5?key=2bef0110a8d315fd50cdee222322c25f"; // Ganti dengan link tujuan
+  const directLink = "https://stiftais.top/4/9160895"; // Ganti dengan link tujuan
 
   useEffect(() => {
     setCloseCount(0); // Reset setiap pindah halaman
