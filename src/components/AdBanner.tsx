@@ -7,7 +7,11 @@ export default function AdBanner() {
   ];
 
   const handleClick = () => {
-    window.open("https://stiftais.top/4/9160895", "_blank");
+    window.open(
+      "https://www.profitableratecpm.com/vcvcr7qsk?key=f35b406a64c9034a5bebb3ef500b573d",
+      "_blank"
+    );
+    // https://stiftais.top/4/9160895
   };
 
   return (
