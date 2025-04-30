@@ -3,6 +3,7 @@
 import { createClient } from "../../../utils/supabase/client";
 import { redirect } from "next/navigation";
 import type { Metadata } from "next";
+import Redirector from "@/components/Redirector";
 
 // Define the props type explicitly
 interface PageProps {
@@ -59,8 +60,8 @@ export default async function ShortIdPage({
   }
 
   // You can change this to redirect(`/blog/${post.slug}`) if needed
-  redirect(`/blog/${post.slug}`);
-
+  // redirect(`/blog/${post.slug}`);
+ return <Redirector slug={post.slug} />;
   // return (
   //   <div>
   //     <h1>Short ID: {short_id}</h1>
