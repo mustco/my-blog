@@ -6,7 +6,7 @@ import { Post } from "@/components/InterfacePost";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { FaArrowDown } from "react-icons/fa";
 
-const perPage = 3;
+const perPage = 9;
 
 export default function BlogClient({ initialPosts }: { initialPosts: Post[] }) {
   const { posts, page, hasMore, setPosts, appendPosts, setPage, setHasMore } =

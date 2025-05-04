@@ -1,3 +1,4 @@
+import BlogClient from "@/components/BlogClient";
 import Card from "@/components/Card";
 import { Post } from "@/components/InterfacePost";
 import SearchComponent from "@/components/SearchComponent";
@@ -8,34 +9,17 @@ export async function generateMetadata() {
     description: "Blog - Berbagi wawasan dan menginspirasi perubahan.",
   };
 }
-async function getPosts() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts`, {
-    next: { revalidate: 86400 },
+async function getInitialPosts() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts?page=1&perPage=9`, {
+    next: { revalidate: 86400 }, // <- ISR aktif
   });
   const data = await res.json();
-  return data.posts.sort(
-    (a: Post, b: Post) =>
-      new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-  );
+  return data.posts;
 }
-export default async function Blog() {
-  const datas: Post[] = await getPosts();
-  // console.log(datas);
-  return (
-    <div className="md:w-4/5 p-4 mx-auto card gap-3 my-5 md:p-8">
-      <div className="flex justify-between mb-3 text-md md:text-lg">
-        <h2 className="mb-0 text-xl flex items-center font-bold">
-          Recent Blog Post :
-        </h2>
-        {/* <SearchComponent className="text-lg font-bold" datas={datas} /> */}
-      </div>
-      <div className="text-black/60 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  rounded-xl gap-5">
-        {datas.map((item) => (
-          <Card key={item.id} datas={item} />
-        ))}
-      </div>
-    </div>
-  );
+
+export default async function BlogPage() {
+  const initialPosts = await getInitialPosts();
+  return <BlogClient initialPosts={initialPosts} />;
 }
 
 //  export default async function Blog({
