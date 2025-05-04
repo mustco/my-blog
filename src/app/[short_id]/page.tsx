@@ -1,7 +1,7 @@
 // src/app/blog/[short_id]/page.tsx
 
 import { createClient } from "../../../utils/supabase/client";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import type { Metadata } from "next";
 import Redirector from "@/components/Redirector";
 
@@ -56,7 +56,7 @@ export default async function ShortIdPage({
     .single();
 
   if (error || !post) {
-    redirect("/not-found");
+    notFound();
   }
 
   // You can change this to redirect(`/blog/${post.slug}`) if needed

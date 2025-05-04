@@ -1,11 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "../../../../utils/supabase/server";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+
+  // Ambil query params
+  const page = parseInt(searchParams.get("page") || "1");
+  const perPage = parseInt(searchParams.get("perPage") || "3");
+
+  // Hitung rentang index berdasarkan page
+  const from = (page - 1) * perPage;
+  const to = from + perPage - 1;
+
   const { data: posts, error } = await supabase()
     .from("posts")
     .select("*")
-    
+    .order("created_at", { ascending: false })
+    .range(from, to);
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -13,6 +24,7 @@ export async function GET() {
 
   return NextResponse.json({ posts }, { status: 200 });
 }
+
 
 
 // export async function POST(req:NextRequest) {
