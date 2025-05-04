@@ -6,7 +6,7 @@ export async function GET(req: NextRequest) {
 
   // Ambil query params
   const page = parseInt(searchParams.get("page") || "1");
-  const perPage = parseInt(searchParams.get("perPage") || "3");
+  const perPage = parseInt(searchParams.get("perPage") || "9");
 
   // Hitung rentang index berdasarkan page
   const from = (page - 1) * perPage;

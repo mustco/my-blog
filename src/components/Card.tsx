@@ -11,7 +11,7 @@ export default function Card({ datas }: { datas: Post }) {
       href={`/blog/${datas.slug}/`}
       className="hover:-translate-y-1 transition-all ease-in-out hover:shadow-lg hover:shadow-gray-400 dark:hover:shadow-gray-600 rounded-lg h-full"
     >
-      <div className="border border-gray-400 p-3 flex flex-col space-y-5 rounded-lg h-full">
+      <div className="border border-gray-400 p-3 flex flex-col space-y-5 rounded-lg h-full bg-white dark:bg-[#212121]">
         <div className="h-52 relative w-full flex flex-col justify-center">
           <img
             src={datas.image}
@@ -25,7 +25,7 @@ export default function Card({ datas }: { datas: Post }) {
           />
         </div>
         <div className="flex flex-col space-y-5 flex-grow justify-between">
-          <h1 className="text-2xl font-bold text-gray-800 leading-tight tracking-tight dark:text-gray-300">
+          <h1 className="text-xl font-bold text-gray-800 leading-tight tracking-tight dark:text-gray-300">
             {datas.title}
           </h1>
           <div className="flex justify-between w-full items-center">

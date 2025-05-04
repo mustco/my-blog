@@ -18,6 +18,10 @@ body {
   right: 10px;
   z-index: 9999;
 }
+.image-grid {
+  background-image: url("/grid-back.svg");
+}
+
 
 .image-container {
   /* margin: auto; */
