@@ -11,6 +11,7 @@ export default function Home() {
   //     "https://www.profitableratecpm.com/vcvcr7qsk?key=f35b406a64c9034a5bebb3ef500b573d"
   //   );
   // }, []);
+  
   return (
     <>
       <div className="image-grid absolute inset-0 opacity-25 dark:opacity-90"></div>
