@@ -11,7 +11,7 @@ export async function generateMetadata() {
 }
 async function getInitialPosts() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts?page=1&perPage=9`, {
-    next: { revalidate: 1000 }, // <- ISR aktif
+    next: { revalidate: 86400 }, // <- ISR aktif
   });
   const data = await res.json();
   return data.posts;
