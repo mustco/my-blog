@@ -1,3 +1,4 @@
+"use client"
 export default function HomeContent() {
   return (
     //   <div className="flex flex-col gap-4 text-gray-600 dark:text-gray-300 my-5">
