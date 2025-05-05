@@ -154,10 +154,10 @@ export default function BlogClient({ initialPosts }: { initialPosts: Post[] }) {
                   href="/category/health"
                   className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start text-center"
                 >
-                  health
+                  {post.category}
                 </a>
                 <h2 className="mb-3 text-xl font-semibold text-dark mt-2">
-                  <a href={`/posts/${post.slug}`}>{post.title}</a>
+                  <a href={`/blog/${post.slug}`}>{post.title}</a>
                 </h2>
                 <div className="flex items-center gap-2.5">
                   <p className="text-sm">
