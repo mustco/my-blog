@@ -49,10 +49,6 @@ export default function BlogClient({ initialPosts }: { initialPosts: Post[] }) {
   );
   return (
     <>
-      <div className="image-grid absolute inset-0 opacity-25 dark:opacity-90"></div>
-      {/* <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white opacity-100 dark:to-[#212121] dark:opacity-100"></div> */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[rgba(255,255,255,0.4)] to-white opacity-100 dark:from-[rgba(33,33,33,0.4)] dark:to-[#212121] dark:opacity-100"></div>
-      {/* <div className="absolute inset-0 bg-gradient-to-l from-transparent to-white opacity-100 dark:from-[rgba(33,33,33,0.4)] dark:to-[#212121] dark:opacity-100"></div> */}
 
       <div className="md:w-4/5 p-4 mx-auto card gap-3 my-5 md:p-8 relative ">
         <div className="flex flex-wrap gap-x-6 gap-y-5 mb-12">

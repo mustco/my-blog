@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FaFacebook, FaLinkedin, FaReddit, FaTwitter } from "react-icons/fa";
 
 export default function Footer() {
@@ -23,54 +24,42 @@ export default function Footer() {
           <div>
             <ul className="flex flex-wrap items-center gap-2.5">
               <li>
-                <a
+                <Link
                   className="group flex text-custom-sm leading-none duration-200 ease-in hover:text-dark"
                   href="/privacy-policy"
                 >
                   <span className="bg-gradient-to-r from-dark to-dark bg-[length:0px_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_1px]">
-                    Privacy
+                    Privacy Policy
                   </span>
-                </a>
+                </Link>
               </li>
               <li>
-                <span className="flex h-[3px] w-[3px] rounded-full bg-dark-2"></span>
+                <span className="flex h-[3px] w-[3px] rounded-full bg-gray-400"></span>
               </li>
               <li>
-                <a
+                <Link
                   className="group flex text-custom-sm leading-none duration-200 ease-in hover:text-dark"
                   href="/privacy-policy"
                 >
                   <span className="bg-gradient-to-r from-dark to-dark bg-[length:0px_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_1px]">
                     Terms
                   </span>
-                </a>
+                </Link>
               </li>
               <li>
-                <span className="flex h-[3px] w-[3px] rounded-full bg-dark-2"></span>
+                <span className="flex h-[3px] w-[3px] rounded-full bg-gray-400"></span>
               </li>
               <li>
-                <a
+                <Link
                   className="group flex text-custom-sm leading-none duration-200 ease-in hover:text-dark"
-                  href="/auth/signup"
+                  href="/contact"
                 >
                   <span className="bg-gradient-to-r from-dark to-dark bg-[length:0px_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_1px]">
                     Contact
                   </span>
-                </a>
+                </Link>
               </li>
-              <li>
-                <span className="flex h-[3px] w-[3px] rounded-full bg-dark-2"></span>
-              </li>
-              <li>
-                <a
-                  className="group flex text-custom-sm leading-none duration-200 ease-in hover:text-dark"
-                  href="/auth/signup"
-                >
-                  <span className="bg-gradient-to-r from-dark to-dark bg-[length:0px_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_1px]">
-                    Contribute
-                  </span>
-                </a>
-              </li>
+           
             </ul>
           </div>
 

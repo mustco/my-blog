@@ -1,32 +1,24 @@
-// "use client"; // Agar bisa menggunakan useSession
 
-import NotFound from "@/app/not-found";
+import ContactMe from "@/components/ContactMe";
+import {
+  FaFacebook,
+  FaGithub,
+  FaInstagram,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
 
-// // import { useSession } from "next-auth/react";
-// import { useRouter } from "next/navigation";
-// import { useEffect } from "react";
+export async function generateMetadata() {
+  return {
+    title: "MustcoWeb - Contact Me",
+    description: "Hubungi kami untuk pertanyaan, kritik, atau kerja sama.",
+  };
+}
 
-// export default function Contact() {
-//   const { data: session, status } = useSession();
-//   const router = useRouter();
-
-//   useEffect(() => {
-//     if (status === "unauthenticated") {
-//       router.push("/login"); // Pakai replace agar tidak bisa kembali ke dashboard
-//     }
-//   }, [status, router]);
-
-//   if (status === "loading") {
-//     return <p>Loading...</p>; // Tambahkan layar loading agar tidak flash halaman
-//   }
-
-//   if (!session) {
-//     return null; // Mencegah render konten sebelum redirect selesai
-//   }
-
-//   return <h1>Dashboard</h1>; // Gantilah dengan konten dashboard-mu
-// }
-
-export default function Contact(){
-  return<NotFound/> ;
+export default function Contact() {
+  return (
+    <div className="md:w-4/5 p-4 mx-auto card gap-3 my-5 md:p-8 min-h-screen flex flex-col justify-center">
+    <ContactMe />
+    </div>
+  );
 }

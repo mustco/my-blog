@@ -47,6 +47,9 @@ export default function MainLayout({
   return (
     <div className={`${nunitoSans.className} flex flex-col min-h-screen`}>
       <Navbar show={showNavbar} />
+      <div className="image-grid absolute inset-0 opacity-25 dark:opacity-90"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[rgba(255,255,255,0.4)] to-white opacity-100 dark:from-[rgba(33,33,33,0.4)] dark:to-[#212121] dark:opacity-100"></div>
+
       <Container className="flex-grow mt-16">{children}</Container>
       {/* <AdvertisementBanner /> */}
       <Footer />

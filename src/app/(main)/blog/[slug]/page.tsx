@@ -97,9 +97,6 @@ export default async function DetailBlogTemplate({
   ];
   return (
     <>
-      <div className="image-grid absolute inset-0 opacity-15 dark:opacity-90"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-[rgba(255,255,255,0.4)] to-white opacity-100 dark:from-[rgba(33,33,33,0.4)] dark:to-[#212121] dark:opacity-100"></div>
-
       <div className="md:max-w-3xl p-4 mx-auto card gap-10 my-5 md:p-8 flex flex-col text-gray-700 dark:text-gray-200">
         <div className="flex justify-between">
           <div className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start">
