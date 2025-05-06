@@ -34,7 +34,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <span className="flex h-[3px] w-[3px] rounded-full bg-gray-400"></span>
+                <span className="flex h-[3px] w-[3px] rounded-full bg-gray-800 dark:bg-gray-200"></span>
               </li>
               <li>
                 <Link
@@ -47,7 +47,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <span className="flex h-[3px] w-[3px] rounded-full bg-gray-400"></span>
+                <span className="flex h-[3px] w-[3px] rounded-full bg-gray-800 dark:bg-gray-200"></span>
               </li>
               <li>
                 <Link
@@ -59,7 +59,6 @@ export default function Footer() {
                   </span>
                 </Link>
               </li>
-           
             </ul>
           </div>
 
@@ -74,8 +73,7 @@ export default function Footer() {
                   aria-label="social media link"
                   className="flex h-7.5 w-7.5 items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
-                      <FaFacebook />
-                
+                  <FaFacebook />
                 </a>
                 {/* <!-- X (Twitter) --> */}
                 <a
@@ -83,7 +81,7 @@ export default function Footer() {
                   aria-label="social media link"
                   className="flex h-7.5 w-7.5 items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
-                 <FaTwitter />  
+                  <FaTwitter />
                 </a>
                 {/* <!-- LinkedIn --> */}
                 <a
@@ -91,7 +89,7 @@ export default function Footer() {
                   aria-label="social media link"
                   className="flex h-7.5 w-7.5 items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
-                <FaLinkedin />
+                  <FaLinkedin />
                 </a>
                 {/* <!-- Reddit --> */}
                 <a
@@ -99,7 +97,7 @@ export default function Footer() {
                   aria-label="social media link"
                   className="flex h-7.5 w-7.5 items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
-                 <FaReddit />
+                  <FaReddit />
                 </a>
               </div>
             </div>

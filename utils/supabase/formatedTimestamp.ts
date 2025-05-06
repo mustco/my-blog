@@ -10,3 +10,12 @@ export function formatedTimestamp(dateString: string): string {
   })
     .format(date)
 }
+
+export function formatedTimestampByDetail(dateString:string):string{
+  const date = new Date(dateString);
+
+    return new Intl.DateTimeFormat("id-ID", {
+      month: "short",
+      day: "numeric",
+    }).format(date);
+}

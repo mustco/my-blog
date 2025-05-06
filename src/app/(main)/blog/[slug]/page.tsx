@@ -1,5 +1,5 @@
 import CodeSyntaxHighlight from "@/components/CodeSyntaxHighlight";
-import { formatedTimestamp } from "../../../../../utils/supabase/formatedTimestamp";
+import { formatedTimestamp, formatedTimestampByDetail } from "../../../../../utils/supabase/formatedTimestamp";
 import Image from "next/image";
 import Link from "next/link";
 import AdvertisementBanner from "@/components/AdvertisementBanner";
@@ -76,18 +76,17 @@ export default async function DetailBlogTemplate({
   );
 
   const randomArticles = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/posts`
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/posts?page=1&perPage=50`
   );
   const random = await randomArticles.json();
   const newRandom = random.posts.filter((item: any) => item.slug !== slug);
   const randomThreeArticles = newRandom
     .sort(() => 0.5 - Math.random())
-    .slice(0, 5);
+    .slice(0, 9);
 
   if (!res.ok) {
     return <div className="text-red-500">Error fetching data</div>;
   }
-
   const { post } = await res.json();
   if (!post) return <div>Loading...</div>;
   const underList = [
@@ -253,31 +252,44 @@ export default async function DetailBlogTemplate({
           ))}
         </div>
 
-        <div className="flex flex-col items-center bg-gray-100 dark:bg-[rgba(43,43,43)] px-2 md:px-3 py-5">
+        <div className="flex flex-col items-center bg-gray-100 dark:bg-[#212121] px-2 md:px-3 py-5">
           {randomThreeArticles.length > 0 && (
             <>
               <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200 tracking-normal mb-5">
                 Artikel Lainnya
               </h2>
-              <div className="grid grid-cols-1 gap-4">
-                <div className="grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 mt-5">
+              <div className="grid grid-cols-1 gap-4 px-3">
+                <div className="grid md:grid-cols-3 gap-3 mt-5">
                   {randomThreeArticles.map((article: any) => (
                     <div
-                      className="border-b-[1px] border-dashed md:border md:border-solid md:p-1 md:rounded-md cursor-pointer pb-3 border-gray-500 flex-1 group hover:scale-95 transition-all duration-200"
+                      className="border-b-[1px] border-dashed md:border md:border-solid md:p-1 md:rounded-b-md cursor-pointer pb-3 border-gray-700 flex-1 group hover:scale-95 transition-all duration-200"
                       key={article.id}
                     >
                       <Link
                         href={`/blog/${article.slug}`}
-                        className="relative overflow-hidden rounded-lg w-full flex md:flex-col items-center  gap-3 text-lg font-semibold text-gray-800 dark:text-gray-200"
+                        className="relative overflow-visible w-full h-full flex md:flex-col md:justify-between items-center  gap-3 text-lg font-semibold text-gray-800 dark:text-gray-200"
                       >
-                        <img
-                          src={article.image}
-                          alt={article.category}
-                          className="rounded-lg shadow-md bg-transparent bg-white dark:bg-gray-200 w-1/3 md:w-full md:h-28 border border-gray-300 md:border-none lg:border-none transition-transform duration-300 md:group-hover:scale-110"
-                        />
-                        <p className="text-gray-700 dark:text-gray-200 text-sm">
-                          {article.title}
+                        <p className="absolute z-50 -left-3 top-1 md:top-1 md:-right-3 md:left-auto text-xs font-normal px-[2px] py-[1px] md:py-1 md:px-2 rounded-sm shadow-sm bg-blue-700 dark:bg-green-700 text-white ">
+                          {article.category}
                         </p>
+                        <div className="flex md:flex-col items-center gap-3">
+                          <img
+                            src={article.image}
+                            alt={article.category}
+                            className="shadow-md bg-transparent bg-white dark:bg-gray-200 w-1/3 md:w-full md:h-28 border border-gray-300 md:border-none lg:border-none transition-transform duration-300 "
+                          />
+                          <p className="text-gray-700 dark:text-gray-200 text-[13px] leading-tight">
+                            {article.title}
+                          </p>
+                        </div>
+                        <div className="w-full justify-between px-2 font-normal hidden md:flex">
+                          <p className="text-gray-700 dark:text-gray-200 text-[13px] leading-tight">
+                            By {article.author}
+                          </p>
+                          <p className="text-gray-700 dark:text-gray-200 text-[13px] leading-tight">
+                            {formatedTimestampByDetail(article.created_at)}
+                          </p>
+                        </div>
                       </Link>
                     </div>
                   ))}

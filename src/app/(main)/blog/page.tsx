@@ -29,10 +29,22 @@ async function getPopularPost() {
     .range(0, 10);
   return posts;
 }
+async function getByCategory() {
+ const res = await fetch(
+   `${process.env.NEXT_PUBLIC_SITE_URL}/api/posts?page=1&perPage=50`,
+   {
+     next: { revalidate: 86400 }, // <- ISR aktif
+   }
+ );
+ const data = await res.json();
+ return data.posts;
+}
+
 export default async function BlogPage() {
   const initialPosts = await getInitialPosts();
   const dataPopular = await getPopularPost();
-  return <BlogClient initialPosts={initialPosts} dataPopular={dataPopular} />;
+  const dataCategory = await getByCategory();
+  return <BlogClient initialPosts={initialPosts} dataPopular={dataPopular} dataByCategory={dataCategory}/>;
 }
 
 //  export default async function Blog({

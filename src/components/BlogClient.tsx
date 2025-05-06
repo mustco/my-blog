@@ -12,13 +12,20 @@ const perPage = 9;
 export default function BlogClient({
   initialPosts,
   dataPopular,
+  dataByCategory,
 }: {
   initialPosts: Post[];
   dataPopular: any;
+  dataByCategory: any;
 }) {
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [visibleCount, setVisibleCount] = useState(3);
+
   const { posts, page, hasMore, setPosts, appendPosts, setPage, setHasMore } =
     useBlogStore();
   const [loading, setLoading] = useState(false);
+  const [loadingCategory, setLoadingCategory] = useState(false);
+
   //   const [hasMore, setHasMore] = useState(initialPosts.length === perPage);
   // Hydrate store only once
   useEffect(() => {
@@ -39,6 +46,13 @@ export default function BlogClient({
     setPage(nextPage);
     setLoading(false);
   };
+  const handleLoadMoreCategory = async () => {
+    setLoadingCategory(true);
+    setTimeout(() => {
+      setVisibleCount(visibleCount + 3);
+      setLoadingCategory(false);
+    }, 500);
+  };
 
   useEffect(() => {
     const res = fetch(`/api/posts?page=1&perPage=${perPage}`);
@@ -49,21 +63,41 @@ export default function BlogClient({
   const popularIds = [18];
   const popularIdsTwo = [3, 19];
 
-  const popularPosts = dataPopular.filter((post:any) =>
+  const popularPosts = dataPopular.filter((post: any) =>
     popularIds.includes(post.id)
   );
-  const popularPosts2 = dataPopular.filter((post:any) =>
+  const popularPosts2 = dataPopular.filter((post: any) =>
     popularIdsTwo.includes(post.id)
   );
+
+  const categories = [
+    "All",
+    "Technology",
+    "NextJs",
+    "Frontend",
+    "Web Development",
+    "Tips & Trik",
+    "Environment",
+  ];
+  const filteredPosts =
+    selectedCategory === "All"
+      ? dataByCategory
+      : dataByCategory.filter(
+          (post: any) =>
+            post.category?.toLowerCase() === selectedCategory.toLowerCase()
+        );
+
+  const visiblePosts = filteredPosts.slice(0, visibleCount);
+
   return (
     <>
       <div className="md:w-4/5 p-4 mx-auto card gap-3 my-5 md:p-8 relative ">
         <div className="flex flex-wrap gap-x-6 gap-y-5 mb-12">
           {/* <!-- Card Utama --> */}
-          {popularPosts.map((post:any) => (
+          {popularPosts.map((post: any) => (
             <div
               key={post.id}
-              className="flex w-full max-w-[1170px] flex-col gap-6 rounded-xl p-3 shadow-1 lg:flex-row lg:items-center lg:gap-11 lg:p-3 border border-gray-400 bg-white dark:bg-[#212121]"
+              className="flex w-full max-w-[1170px] flex-col gap-6 rounded-xl p-3 shadow-1 lg:flex-row lg:items-center lg:gap-11 lg:p-3 border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#212121]"
             >
               {/* <!-- Gambar Utama --> */}
               <div className="relative aspect-[536/320] w-full">
@@ -137,10 +171,10 @@ export default function BlogClient({
               </div>
             </div>
           ))}
-          {popularPosts2.map((post:any) => (
+          {popularPosts2.map((post: any) => (
             <div
               key={post.id}
-              className="flex w-full flex-col gap-6 rounded-xl p-3 shadow-1 sm:flex-row sm:items-center lg:max-w-[570px] border border-gray-400 bg-white dark:bg-[#212121]"
+              className="flex w-full flex-col gap-6 rounded-xl p-3 shadow-1 sm:flex-row sm:items-center lg:max-w-[570px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#212121]"
             >
               <div className="relative aspect-[238/180] w-full overflow-hidden">
                 <a href={`/blog/${post.slug}`}>
@@ -179,43 +213,94 @@ export default function BlogClient({
             </div>
           ))}
         </div>
-
-        <h2 className="mb-3 text-xl font-bold">Recent Blog Post :</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {displayPosts.map((post) => (
-            <Card key={post.id} datas={post} />
-          ))}
-        </div>
-        {loading ? (
-          <div className="w-full p-0 mx-auto card gap-3 my-2 md:p-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              <div className="p-4 h-24 w-full rounded-md bg-gray-200 dark:bg-gray-700"></div>
-              <div className="p-4 h-24 w-full rounded-md bg-gray-200 dark:bg-gray-700"></div>
-              <div className="p-4 h-24 w-full rounded-md bg-gray-200 dark:bg-gray-700"></div>
-            </div>
+        <div className="my-3 md:my-7">
+          <h2 className="mb-3 text-xl font-bold">Recent Blog Post :</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {displayPosts.map((post) => (
+              <Card key={post.id} datas={post} />
+            ))}
           </div>
-        ) : (
-          ""
-        )}
-        {hasMore && (
-          <div className="text-center mt-5">
-            <button
-              onClick={handleLoadMore}
-              className={`${
-                loading ? "hidden" : ""
-              } px-5 bg-white text-gray-800 dark:text-gray-100 dark:bg-[#212121]  border border-gray-400 py-3 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700`}
-              disabled={loading}
-            >
-              {loading ? (
-                "Loading..."
-              ) : (
+          {loading ? (
+            <div className="w-full p-0 mx-auto card gap-3 my-2 md:p-0">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="p-4 h-24 w-full rounded-md bg-gray-200 dark:bg-gray-700"></div>
+                <div className="p-4 h-24 w-full rounded-md bg-gray-200 dark:bg-gray-700"></div>
+                <div className="p-4 h-24 w-full rounded-md bg-gray-200 dark:bg-gray-700"></div>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+          {hasMore && (
+            <div className="text-center mt-5">
+              <button
+                onClick={handleLoadMore}
+                className={`${
+                  loading ? "hidden" : ""
+                } px-5 bg-white text-gray-800 dark:text-gray-100 dark:bg-[#212121]  border border-gray-400 py-3 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700`}
+                disabled={loading}
+              >
+                {loading ? (
+                  "Loading..."
+                ) : (
+                  <div className="flex items-center justify-center gap-x-2 font-bold">
+                    <FaArrowDown /> Load More{" "}
+                  </div>
+                )}
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div className="border border-gray-200"></div>
+        <div className="my-3 md:my-7">
+          <h2 className="mb-3 mt-5 text-xl font-bold">Select by Category :</h2>
+
+          <div className="flex flex-wrap gap-2 justify-center my-5">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full border ${
+                  selectedCategory === category
+                    ? "bg-black text-white"
+                    : "bg-white text-black border-gray-300"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {visiblePosts.map((post: any) => (
+              <Card key={post.id} datas={post} />
+            ))}
+          </div>
+          {loadingCategory ? (
+            <div className="w-full p-0 mx-auto card gap-3 my-2 md:p-0">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="p-4 h-24 w-full rounded-md bg-gray-200 dark:bg-gray-700"></div>
+                <div className="p-4 h-24 w-full rounded-md bg-gray-200 dark:bg-gray-700"></div>
+                <div className="p-4 h-24 w-full rounded-md bg-gray-200 dark:bg-gray-700"></div>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+          {visibleCount < filteredPosts.length && (
+            <div className="text-center mt-5">
+              <button
+                onClick={handleLoadMoreCategory}
+                className="px-5 bg-white text-gray-800 dark:text-gray-100 dark:bg-[#212121] border border-gray-400 py-3 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700"
+              >
                 <div className="flex items-center justify-center gap-x-2 font-bold">
                   <FaArrowDown /> Load More{" "}
                 </div>
-              )}
-            </button>
-          </div>
-        )}
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
