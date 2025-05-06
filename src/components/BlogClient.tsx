@@ -9,12 +9,17 @@ import { formatedTimestamp } from "../../utils/supabase/formatedTimestamp";
 
 const perPage = 9;
 
-export default function BlogClient({ initialPosts }: { initialPosts: Post[] }) {
+export default function BlogClient({
+  initialPosts,
+  dataPopular,
+}: {
+  initialPosts: Post[];
+  dataPopular: any;
+}) {
   const { posts, page, hasMore, setPosts, appendPosts, setPage, setHasMore } =
     useBlogStore();
   const [loading, setLoading] = useState(false);
   //   const [hasMore, setHasMore] = useState(initialPosts.length === perPage);
-
   // Hydrate store only once
   useEffect(() => {
     if (posts.length === 0 && initialPosts.length > 0) {
@@ -35,25 +40,27 @@ export default function BlogClient({ initialPosts }: { initialPosts: Post[] }) {
     setLoading(false);
   };
 
+  useEffect(() => {
+    const res = fetch(`/api/posts?page=1&perPage=${perPage}`);
+  });
   // Fallback to initialPosts if store belum kebaca
   const displayPosts = posts.length > 0 ? posts : initialPosts;
   // const popularPosts = displayPosts.slice(0, 1);
   const popularIds = [18];
   const popularIdsTwo = [3, 19];
 
-  const popularPosts = displayPosts.filter((post) =>
+  const popularPosts = dataPopular.filter((post:any) =>
     popularIds.includes(post.id)
   );
-  const popularPosts2 = displayPosts.filter((post) =>
+  const popularPosts2 = dataPopular.filter((post:any) =>
     popularIdsTwo.includes(post.id)
   );
   return (
     <>
-
       <div className="md:w-4/5 p-4 mx-auto card gap-3 my-5 md:p-8 relative ">
         <div className="flex flex-wrap gap-x-6 gap-y-5 mb-12">
           {/* <!-- Card Utama --> */}
-          {popularPosts.map((post) => (
+          {popularPosts.map((post:any) => (
             <div
               key={post.id}
               className="flex w-full max-w-[1170px] flex-col gap-6 rounded-xl p-3 shadow-1 lg:flex-row lg:items-center lg:gap-11 lg:p-3 border border-gray-400 bg-white dark:bg-[#212121]"
@@ -130,7 +137,7 @@ export default function BlogClient({ initialPosts }: { initialPosts: Post[] }) {
               </div>
             </div>
           ))}
-          {popularPosts2.map((post) => (
+          {popularPosts2.map((post:any) => (
             <div
               key={post.id}
               className="flex w-full flex-col gap-6 rounded-xl p-3 shadow-1 sm:flex-row sm:items-center lg:max-w-[570px] border border-gray-400 bg-white dark:bg-[#212121]"
@@ -151,7 +158,7 @@ export default function BlogClient({ initialPosts }: { initialPosts: Post[] }) {
               </div>
               <div className="w-full lg:max-w-[272px]">
                 <a
-                  href="/category/health"
+                  href={`/category/${post.category}`}
                   className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start text-center"
                 >
                   {post.category}

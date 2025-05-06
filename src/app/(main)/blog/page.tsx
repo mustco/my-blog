@@ -2,6 +2,7 @@ import BlogClient from "@/components/BlogClient";
 import Card from "@/components/Card";
 import { Post } from "@/components/InterfacePost";
 import SearchComponent from "@/components/SearchComponent";
+import { supabase } from "../../../../utils/supabase/server";
 
 export async function generateMetadata() {
   return {
@@ -10,16 +11,28 @@ export async function generateMetadata() {
   };
 }
 async function getInitialPosts() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts?page=1&perPage=9`, {
-    next: { revalidate: 86400 }, // <- ISR aktif
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/posts?page=1&perPage=9`,
+    {
+      next: { revalidate: 86400 }, // <- ISR aktif
+    }
+  );
   const data = await res.json();
   return data.posts;
 }
-
+async function getPopularPost() {
+  const supabaseClient = supabase();
+  const { data: posts, error } = await supabaseClient
+    .from("posts")
+    .select("*")
+    .eq("popular", true)
+    .range(0, 10);
+  return posts;
+}
 export default async function BlogPage() {
   const initialPosts = await getInitialPosts();
-  return <BlogClient initialPosts={initialPosts} />;
+  const dataPopular = await getPopularPost();
+  return <BlogClient initialPosts={initialPosts} dataPopular={dataPopular} />;
 }
 
 //  export default async function Blog({
