@@ -63,13 +63,13 @@ export default function RootLayoutClient({
           />
         </head>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#212121] dark:text-[#ECECEC] bg-white text-[#171717] leading-relaxed`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#212121] dark:text-[#ECECEC] bg-white text-[#171717] leading-relaxed flex flex-col min-h-screen ${nunitoSans.className}`}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             {children}
           </ThemeProvider>
           {/* Tambahkan elemen untuk social bar agar bisa diatur posisinya */}
-          <div id="social-bar-ads" className="fixed top-4 right-4 z-50"></div>
+          {/* <div id="social-bar-ads" className="fixed top-4 right-4 z-50"></div> */}
 
           {/* Gunakan dangerouslySetInnerHTML untuk memastikan script masuk ke dalam div */}
 

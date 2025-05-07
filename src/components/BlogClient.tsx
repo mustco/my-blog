@@ -217,7 +217,9 @@ export default function BlogClient({
           <h2 className="mb-3 text-xl font-bold">Recent Blog Post :</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {displayPosts.map((post) => (
-              <Card key={post.id} datas={post} />
+              <article>
+                <Card key={post.id} datas={post} />
+              </article>
             ))}
           </div>
           {loading ? (
@@ -274,7 +276,9 @@ export default function BlogClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {visiblePosts.map((post: any) => (
-              <Card key={post.id} datas={post} />
+              <article>
+                <Card key={post.id} datas={post} />
+              </article>
             ))}
           </div>
           {loadingCategory ? (

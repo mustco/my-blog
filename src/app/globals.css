@@ -12,12 +12,12 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
-#social-bar-ads {
+/* #social-bar-ads {
   position: fixed;
   top: 10px;
   right: 10px;
   z-index: 9999;
-}
+} */
 .image-grid {
   background-image: url("/grid-back.svg");
 }

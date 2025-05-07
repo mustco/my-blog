@@ -252,7 +252,7 @@ export default async function DetailBlogTemplate({
           ))}
         </div>
 
-        <div className="flex flex-col items-center bg-gray-100 dark:bg-[#212121] px-2 md:px-3 py-5">
+        <div className="flex flex-col items-center dark:bg-[#212121] px-2 md:px-3 py-5">
           {randomThreeArticles.length > 0 && (
             <>
               <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200 tracking-normal mb-5">
@@ -262,7 +262,7 @@ export default async function DetailBlogTemplate({
                 <div className="grid md:grid-cols-3 gap-3 mt-5">
                   {randomThreeArticles.map((article: any) => (
                     <div
-                      className="border-b-[1px] border-dashed md:border md:border-solid md:p-1 md:rounded-b-md cursor-pointer pb-3 border-gray-700 flex-1 group hover:scale-95 transition-all duration-200"
+                      className="border-b-[1px] border-dashed md:border md:border-solid md:p-1 md:rounded-b-md cursor-pointer pb-3 border-gray-200 flex-1 group hover:scale-95 transition-all duration-200"
                       key={article.id}
                     >
                       <Link
