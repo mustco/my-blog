@@ -132,13 +132,10 @@ export default function BlogClient({
                 </a>
               </div>
               {/* <!-- Konten Utama --> */}
-              <div className="w-full lg:max-w-[540px]">
-                <a
-                  href={`/category/${post.category}`}
-                  className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start text-center"
-                >
+              <div className="w-full lg:max-w-[540px] flex flex-col">
+                <p className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start text-center">
                   {post.category}
-                </a>
+                </p>
                 <h1 className="mb-4 text-2xl font-bold text-dark xl:text-heading-4 mt-2">
                   <a href={`/blog/${post.slug}`}>{post.title}</a>
                 </h1>
@@ -190,19 +187,16 @@ export default function BlogClient({
                   />
                 </a>
               </div>
-              <div className="w-full lg:max-w-[272px]">
-                <a
-                  href={`/category/${post.category}`}
-                  className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start text-center"
-                >
+              <div className="w-full lg:max-w-[272px] flex flex-col">
+                <p className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start text-center">
                   {post.category}
-                </a>
+                </p>
                 <h2 className="mb-3 text-xl font-semibold text-dark mt-2">
                   <a href={`/blog/${post.slug}`}>{post.title}</a>
                 </h2>
                 <div className="flex items-center gap-2.5">
                   <p className="text-sm">
-                    <a href="/author/mustco">By Mustco</a>
+                    By Mustco
                   </p>
                   <span className="flex h-[3px] w-[3px] rounded-full bg-dark-2"></span>
                   <p className="text-sm">
@@ -217,7 +211,7 @@ export default function BlogClient({
           <h2 className="mb-3 text-xl font-bold">Recent Blog Post :</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {displayPosts.map((post) => (
-              <article>
+              <article key={post.id}>
                 <Card key={post.id} datas={post} />
               </article>
             ))}
@@ -254,7 +248,7 @@ export default function BlogClient({
           )}
         </div>
 
-        <div className="border border-gray-200"></div>
+        <div className="border border-gray-200 dark:border-gray-700"></div>
         <div className="my-3 md:my-7">
           <h2 className="mb-3 mt-5 text-xl font-bold">Select by Category :</h2>
 
@@ -276,7 +270,7 @@ export default function BlogClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {visiblePosts.map((post: any) => (
-              <article>
+              <article key={post.id}>
                 <Card key={post.id} datas={post} />
               </article>
             ))}

@@ -46,6 +46,7 @@ export async function generateMetadata({
     openGraph: {
       title: `MustcoWeb - ${post.title}`,
       description: `Artikel kategori ${post.category}: ${post.title}. Baca selengkapnya di MustcoWeb.`,
+      type: "article",
       images: [
         {
           url: post.image,
@@ -60,7 +61,11 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `MustcoWeb - ${post.title}`,
       description: `Artikel kategori ${post.category}: ${post.title}. Baca selengkapnya di MustcoWeb.`,
-      images: post.image,
+      images: [
+        {
+          url: post.image
+        }
+      ]
     },
   };
 }

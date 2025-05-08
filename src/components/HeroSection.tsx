@@ -1,16 +1,19 @@
 "use client";
 import Image from "next/image";
 
+
 export default function HeroSection() {
   return (
     <div className="relative md:p-8 my-8 p-4 dark:text-white">
       <div className={"image-container md:w-4/5 mx-auto relative"}>
-        <img
-          src="https://fusowjktlpehckfgwebs.supabase.co/storage/v1/object/public/images//myaPqyHDv8eRrvPjXe89EMaeWlvItxPv.jpg"
-          alt="logo"
+        <Image
+          src="/images/r5nGhWdOEn8OT9JGf896GE3LqFR5ly9I.jpg"
+          alt="home_logo"
+          width={600}
+          height={600}
           // fill
           className="image rounded-xl border border-gray-500"
-          // priority={true}
+          priority={true}
           // placeholder="blur"
           // blurDataURL="data:image/jpg;base64"
         />
