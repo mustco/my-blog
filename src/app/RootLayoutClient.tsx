@@ -27,26 +27,26 @@ export default function RootLayoutClient({
 }) {
   return (
     // <SessionProvider>
-      <html lang="en" suppressHydrationWarning>
-        <head>
-          {/* Google Tag Manager */}
-          <Script
-            strategy="beforeInteractive"
-            src="https://www.googletagmanager.com/gtag/js?id=G-BLHPBPTR2D"
-          />
-          <Script id="google-analytics" strategy="beforeInteractive">
-            {`
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Google Tag Manager */}
+        <Script
+          strategy="beforeInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-BLHPBPTR2D"
+        />
+        <Script id="google-analytics" strategy="beforeInteractive">
+          {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-BLHPBPTR2D');
           `}
-          </Script>
-          <Script
-            id="set-theme"
-            strategy="beforeInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
+        </Script>
+        <Script
+          id="set-theme"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
       (function() {
         let theme = localStorage.getItem('theme');
         if (!theme || theme === 'system') {
@@ -59,21 +59,26 @@ export default function RootLayoutClient({
         }
       })();
     `,
-            }}
-          />
-        </head>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#212121] dark:text-[#ECECEC] bg-white text-[#171717] leading-relaxed flex flex-col min-h-screen ${nunitoSans.className}`}
-        >
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
-          </ThemeProvider>
-          {/* Tambahkan elemen untuk social bar agar bisa diatur posisinya */}
-          {/* <div id="social-bar-ads" className="fixed top-4 right-4 z-50"></div> */}
+          }}
+        />
+        <script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="3S5QyjNj5K/1C2dabLbYXQ"
+          async
+        ></script>
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#212121] dark:text-[#ECECEC] bg-white text-[#171717] leading-relaxed flex flex-col min-h-screen ${nunitoSans.className}`}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
+        {/* Tambahkan elemen untuk social bar agar bisa diatur posisinya */}
+        {/* <div id="social-bar-ads" className="fixed top-4 right-4 z-50"></div> */}
 
-          {/* Gunakan dangerouslySetInnerHTML untuk memastikan script masuk ke dalam div */}
+        {/* Gunakan dangerouslySetInnerHTML untuk memastikan script masuk ke dalam div */}
 
-          {/* <script
+        {/* <script
             dangerouslySetInnerHTML={{
               __html: `
       setTimeout(() => {
@@ -87,8 +92,8 @@ export default function RootLayoutClient({
     `,
             }}
           ></script> */}
-        </body>
-      </html>
+      </body>
+    </html>
     // </SessionProvider>
   );
 }
