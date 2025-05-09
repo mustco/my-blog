@@ -69,15 +69,16 @@ export default function BlogClient({
   const popularPosts2 = dataPopular.filter((post: any) =>
     popularIdsTwo.includes(post.id)
   );
-
+  dataByCategory.map((post: any) => {
+    console.log(post.category.toLowerCase());
+  });
   const categories = [
     "All",
     "Technology",
-    "NextJs",
-    "Frontend",
-    "Web Development",
-    "Tips & Trik",
-    "Environment",
+    "Tools & Software",
+    "Produktivitas Digital",
+    "Work-Life Tech",
+    "AI & Otomatisasi",
   ];
   const filteredPosts =
     selectedCategory === "All"
@@ -105,13 +106,13 @@ export default function BlogClient({
                   <img
                     alt="icon"
                     loading="lazy"
-                    width="15"
-                    height="15"
+                    width="25"
+                    height="25"
                     decoding="async"
                     className="mr-1.5"
-                    src={post.image}
+                    src="/J6lMsBKUjgf7pbkD4EMqeX6tteWEe0dY.png"
                   />
-                  <span>pro</span>
+                  <span>Popular</span>
                 </div>
                 <a href={`/blog/${post.slug}`}>
                   <img
@@ -146,7 +147,7 @@ export default function BlogClient({
                   berbagai fitur...
                 </p>
                 <div className="mt-5 flex items-center gap-2.5">
-                  <a href="/author/mustco" className="flex items-center gap-3">
+                  <div className="flex items-center gap-3">
                     <div className="flex h-6 w-6 overflow-hidden rounded-full">
                       <img
                         alt="user"
@@ -154,12 +155,12 @@ export default function BlogClient({
                         width="24"
                         height="24"
                         decoding="async"
-                        src={post.image}
+                        src="/J6lMsBKUjgf7pbkD4EMqeX6tteWEe0dY.png"
                         style={{ color: "transparent" }}
                       />
                     </div>
                     <p className="text-sm">Mustco</p>
-                  </a>
+                  </div>
                   <span className="flex h-[3px] w-[3px] rounded-full bg-dark-2"></span>
                   <p className="text-sm">
                     {formatedTimestamp(post.created_at)}
@@ -195,9 +196,7 @@ export default function BlogClient({
                   <a href={`/blog/${post.slug}`}>{post.title}</a>
                 </h2>
                 <div className="flex items-center gap-2.5">
-                  <p className="text-sm">
-                    By Mustco
-                  </p>
+                  <p className="text-sm">By Mustco</p>
                   <span className="flex h-[3px] w-[3px] rounded-full bg-dark-2"></span>
                   <p className="text-sm">
                     {formatedTimestamp(post.created_at)}
@@ -211,7 +210,10 @@ export default function BlogClient({
           <h2 className="mb-3 text-xl font-bold">Recent Blog Post :</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {displayPosts.map((post) => (
-              <article key={post.id}>
+              <article
+                key={post.id}
+                className="hover:-translate-y-1 transition-all ease-in-out hover:shadow-lg hover:shadow-gray-400 dark:hover:shadow-gray-600 rounded-lg h-full"
+              >
                 <Card key={post.id} datas={post} />
               </article>
             ))}
@@ -233,7 +235,7 @@ export default function BlogClient({
                 onClick={handleLoadMore}
                 className={`${
                   loading ? "hidden" : ""
-                } px-5 bg-white text-gray-800 dark:text-gray-100 dark:bg-[#212121]  border border-gray-400 py-3 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700`}
+                } px-5 bg-white text-gray-800 dark:text-gray-100 dark:bg-[#212121]  border border-gray-300 dark:border-gray-700 py-3 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700`}
                 disabled={loading}
               >
                 {loading ? (
@@ -259,8 +261,8 @@ export default function BlogClient({
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-full border ${
                   selectedCategory === category
-                    ? "bg-black text-white"
-                    : "bg-white text-black border-gray-300"
+                    ? "bg-[#212121] dark:bg-white dark:text-black text-white"
+                    : "bg-white dark:bg-[#212121] text-black dark:text-white border-gray-300"
                 }`}
               >
                 {category}
@@ -270,7 +272,10 @@ export default function BlogClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {visiblePosts.map((post: any) => (
-              <article key={post.id}>
+              <article
+                key={post.id}
+                className="hover:-translate-y-1 transition-all ease-in-out hover:shadow-lg hover:shadow-gray-400 dark:hover:shadow-gray-600 rounded-lg h-full"
+              >
                 <Card key={post.id} datas={post} />
               </article>
             ))}
@@ -290,7 +295,7 @@ export default function BlogClient({
             <div className="text-center mt-5">
               <button
                 onClick={handleLoadMoreCategory}
-                className="px-5 bg-white text-gray-800 dark:text-gray-100 dark:bg-[#212121] border border-gray-400 py-3 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700"
+                className="px-5 bg-white text-gray-800 dark:text-gray-100 dark:bg-[#212121] border border-gray-300 dark:border-gray-700 py-3 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700"
               >
                 <div className="flex items-center justify-center gap-x-2 font-bold">
                   <FaArrowDown /> Load More{" "}

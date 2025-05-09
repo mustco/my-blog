@@ -9,7 +9,6 @@ export default function Card({ datas }: { datas: Post }) {
   return (
     <Link
       href={`/blog/${datas.slug}/`}
-      className="hover:-translate-y-1 transition-all ease-in-out hover:shadow-lg hover:shadow-gray-400 dark:hover:shadow-gray-600 rounded-lg h-full"
     >
       <div className="border border-gray-200 dark:border-gray-700 flex flex-col space-y-5 rounded-b-lg h-full bg-white dark:bg-[#212121]">
         <div className="h-52 relative w-full flex flex-col justify-center">
