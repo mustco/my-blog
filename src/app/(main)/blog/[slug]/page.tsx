@@ -1,5 +1,8 @@
 import CodeSyntaxHighlight from "@/components/CodeSyntaxHighlight";
-import { formatedTimestamp, formatedTimestampByDetail } from "../../../../../utils/supabase/formatedTimestamp";
+import {
+  formatedTimestamp,
+  formatedTimestampByDetail,
+} from "../../../../../utils/supabase/formatedTimestamp";
 import Image from "next/image";
 import Link from "next/link";
 import AdvertisementBanner from "@/components/AdvertisementBanner";
@@ -8,6 +11,8 @@ import PopupAd from "@/components/PopupAd";
 import AdBanner from "@/components/AdBanner";
 import { Metadata } from "next";
 import Card from "@/components/Card";
+import DaftarIsi from "@/components/DaftarIsi";
+import DaftarIsiArticle from "@/components/DaftarIsi";
 
 export const revalidate = 86400;
 export async function generateStaticParams() {
@@ -63,9 +68,9 @@ export async function generateMetadata({
       description: `Artikel kategori ${post.category}: ${post.title}. Baca selengkapnya di MustcoWeb.`,
       images: [
         {
-          url: post.image
-        }
-      ]
+          url: post.image,
+        },
+      ],
     },
   };
 }
@@ -99,6 +104,13 @@ export default async function DetailBlogTemplate({
     "**public/** → Folder ini digunakan untuk menyimpan aset statis seperti gambar, ikon, dan file lainnya yang bisa diakses secara langsung. contoh: logo.",
     "**src/app/** → Merupakan direktori utama, Menggunakan App Router (app/) yang merupakan fitur terbaru Next.js 13+.",
   ];
+  // console.log(post.element)
+  // const daftarIsi = post.articles.map((item: any) => console.log(item.element));
+  const headings = ["h2", "h3", "h4"];
+  const filterDaftarIsi = post.articles.filter((item: any) =>
+    headings.includes(item.element)
+  );
+
   return (
     <>
       <div className="md:max-w-3xl p-4 mx-auto card gap-10 my-5 md:p-8 flex flex-col text-gray-700 dark:text-gray-200">
@@ -123,22 +135,62 @@ export default async function DetailBlogTemplate({
                 </h1>
               )}
               {article.element === "h2" && (
-                <h2 className="text-2xl font-bold dark:text-gray-200 tracking-normal">
+                <h2
+                  id={article.content
+                    .toLowerCase()
+                    .toLowerCase()
+                    .toLowerCase()
+                    .replace(/^\d+\.\s*/, "") // hapus angka + titik di awal, misal "1. "
+                    .replace(/[^\w\s-]/g, "") // hapus karakter non-alfabet
+                    .trim()
+                    .replace(/\s+/g, "-")}
+                  className="text-2xl font-bold dark:text-gray-200 tracking-normal scroll-mt-20 md:scroll-mt-24"
+                >
                   {article.content}
                 </h2>
               )}
               {article.element === "h3" && (
-                <h3 className="text-xl font-bold dark:text-gray-200 tracking-normal">
+                <h3
+                  id={article.content
+                    .toLowerCase()
+                    .toLowerCase()
+                    .toLowerCase()
+                    .replace(/^\d+\.\s*/, "") // hapus angka + titik di awal, misal "1. "
+                    .replace(/[^\w\s-]/g, "") // hapus karakter non-alfabet
+                    .trim()
+                    .replace(/\s+/g, "-")}
+                  className="text-xl font-bold dark:text-gray-200 tracking-normal scroll-mt-20 md:scroll-mt-24"
+                >
                   {article.content}
                 </h3>
               )}
               {article.element === "h4" && (
-                <h4 className="text-lg font-bold dark:text-gray-200 tracking-normal">
+                <h4
+                  id={article.content
+                    .toLowerCase()
+                    .toLowerCase()
+                    .toLowerCase()
+                    .replace(/^\d+\.\s*/, "") // hapus angka + titik di awal, misal "1. "
+                    .replace(/[^\w\s-]/g, "") // hapus karakter non-alfabet
+                    .trim()
+                    .replace(/\s+/g, "-")}
+                  className="text-lg font-bold dark:text-gray-200 tracking-normal scroll-mt-20 md:scroll-mt-24"
+                >
                   {article.content}
                 </h4>
               )}
               {article.element === "h5" && (
-                <h5 className="text-md font-bold dark:text-gray-200 tracking-normal">
+                <h5
+                  id={article.content
+                    .toLowerCase()
+                    .toLowerCase()
+                    .toLowerCase()
+                    .replace(/^\d+\.\s*/, "") // hapus angka + titik di awal, misal "1. "
+                    .replace(/[^\w\s-]/g, "") // hapus karakter non-alfabet
+                    .trim()
+                    .replace(/\s+/g, "-")}
+                  className="text-md font-bold dark:text-gray-200 tracking-normal scroll-mt-20 md:scroll-mt-24"
+                >
                   {article.content}
                 </h5>
               )}
@@ -251,7 +303,9 @@ export default async function DetailBlogTemplate({
                   {article.content}
                 </blockquote>
               )}
-
+              {article.element === "daftar-isi" && (
+                <DaftarIsiArticle filterDaftarIsi={filterDaftarIsi} />
+              )}
               {article.element === "ads" && <AdBanner />}
             </div>
           ))}

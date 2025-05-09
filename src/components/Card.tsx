@@ -7,9 +7,7 @@ import { formatedTimestamp } from "../../utils/supabase/formatedTimestamp";
 export default function Card({ datas }: { datas: Post }) {
   const params = useParams();
   return (
-    <Link
-      href={`/blog/${datas.slug}/`}
-    >
+    <Link href={`/blog/${datas.slug}/`}>
       <div className="border border-gray-200 dark:border-gray-700 flex flex-col space-y-5 rounded-b-lg h-full bg-white dark:bg-[#212121]">
         <div className="h-52 relative w-full flex flex-col justify-center">
           <img

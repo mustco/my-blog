@@ -69,9 +69,6 @@ export default function BlogClient({
   const popularPosts2 = dataPopular.filter((post: any) =>
     popularIdsTwo.includes(post.id)
   );
-  dataByCategory.map((post: any) => {
-    console.log(post.category.toLowerCase());
-  });
   const categories = [
     "All",
     "Technology",
