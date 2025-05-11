@@ -328,7 +328,7 @@ export default async function DetailBlogTemplate({
                         href={`/blog/${article.slug}`}
                         className="relative overflow-visible w-full h-full flex md:flex-col md:justify-between items-center  gap-3 text-lg font-semibold text-gray-800 dark:text-gray-200"
                       >
-                        <p className="absolute z-50 -left-3 top-1 md:top-1 md:-right-3 md:left-auto text-xs font-normal px-[2px] py-[1px] md:py-1 md:px-2 rounded-sm shadow-sm bg-blue-700 dark:bg-green-700 text-white ">
+                        <p className="absolute z-20 -left-3 top-1 md:top-1 md:-right-3 md:left-auto text-xs font-normal px-[2px] py-[1px] md:py-1 md:px-2 rounded-sm shadow-sm bg-blue-700 dark:bg-green-700 text-white ">
                           {article.category}
                         </p>
                         <div className="flex md:flex-col items-center gap-3 overflow-hidden">
