@@ -10,12 +10,13 @@ export default function Card({ datas }: { datas: Post }) {
     <Link href={`/blog/${datas.slug}/`}>
       <div className="border border-gray-200 dark:border-gray-700 flex flex-col space-y-5 rounded-b-lg h-full bg-white dark:bg-[#212121]">
         <div className="h-52 relative w-full flex flex-col justify-center">
-          <img
+          <Image
             src={datas.image}
             alt="logo"
             width={600}
-            height={600}
+            height={400}
             className=" dark:bg-gray-100 h-full object-center"
+            priority={true}
             // loading="lazy"
             // unoptimized
             // quality={50}

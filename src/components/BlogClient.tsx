@@ -7,7 +7,7 @@ import { IoMdArrowRoundDown } from "react-icons/io";
 import { FaArrowDown } from "react-icons/fa";
 import { formatedTimestamp } from "../../utils/supabase/formatedTimestamp";
 
-const perPage = 9;
+const perPage = 6;
 
 export default function BlogClient({
   initialPosts,
@@ -174,6 +174,8 @@ export default function BlogClient({
               <div className="relative aspect-[238/180] w-full overflow-hidden">
                 <a href={`/blog/${post.slug}`}>
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src={post.image}
                     alt="logo"
                     width={600}

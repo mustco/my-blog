@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 
-
 export default function HeroSection() {
   return (
     <div className="relative md:p-8 my-8 p-4 dark:text-white">
@@ -10,7 +9,7 @@ export default function HeroSection() {
           src="/images/r5nGhWdOEn8OT9JGf896GE3LqFR5ly9I.jpg"
           alt="home_logo"
           width={600}
-          height={600}
+          height={400}
           // fill
           className="image rounded-xl border border-gray-500"
           priority={true}
