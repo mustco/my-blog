@@ -27,7 +27,7 @@ function DaftarIsiArticle({ filterDaftarIsi }: { filterDaftarIsi: any }) {
           showTOC ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <ul className="list-outside ms-7 list-decimal dark:text-green-600 text-blue-700">
+        <ul className="list-outside ms-7 list-decimal dark:text-green-400 text-blue-700">
           {filterDaftarIsi.map((item: any, index: number) => {
             const anchorId = item.content
               .toLowerCase()

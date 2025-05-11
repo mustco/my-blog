@@ -231,13 +231,13 @@ export default async function DetailBlogTemplate({
               )}
 
               {article.element === "img" && (
-                <img
+                <Image
                   src={article.content}
                   alt="Article image"
                   width={600}
-                  height={600}
-                  className="mb-5 rounded-lg shadow-md bg-transparent border-gray-100 dark:bg-gray-200 pointer-events-none"
-                  // priority
+                  height={340}
+                  className="mb-5 rounded-lg shadow-md bg-transparent border-gray-100 bg-gray-100 dark:bg-gray-700 pointer-events-none"
+                  priority
                   // loading="lazy"
                   // quality={50}
                 />
@@ -321,7 +321,7 @@ export default async function DetailBlogTemplate({
                 <div className="grid md:grid-cols-3 gap-3 mt-5">
                   {randomThreeArticles.map((article: any) => (
                     <div
-                      className="border-b-[1px] border-dashed md:border md:border-solid md:p-1 md:rounded-b-md cursor-pointer pb-3 border-gray-200 flex-1 group hover:scale-95 transition-all duration-200"
+                      className="border-b-[1px] border-dashed md:border md:border-solid md:p-1 md:rounded-b-md cursor-pointer pb-3 border-gray-200 dark:border-gray-700 flex-1 group hover:scale-95 transition-all duration-200"
                       key={article.id}
                     >
                       <Link
@@ -331,11 +331,11 @@ export default async function DetailBlogTemplate({
                         <p className="absolute z-50 -left-3 top-1 md:top-1 md:-right-3 md:left-auto text-xs font-normal px-[2px] py-[1px] md:py-1 md:px-2 rounded-sm shadow-sm bg-blue-700 dark:bg-green-700 text-white ">
                           {article.category}
                         </p>
-                        <div className="flex md:flex-col items-center gap-3">
+                        <div className="flex md:flex-col items-center gap-3 overflow-hidden">
                           <img
                             src={article.image}
                             alt={article.category}
-                            className="shadow-md bg-transparent bg-white dark:bg-gray-200 w-1/3 md:w-full md:h-28 border border-gray-300 md:border-none lg:border-none transition-transform duration-300 "
+                            className="w-[130px] h-[100px] shadow-md bg-transparent bg-white dark:bg-gray-200 md:w-full md:h-28 border border-gray-700 md:border-none lg:border-none transition-transform duration-300 "
                           />
                           <p className="text-gray-700 dark:text-gray-200 text-[13px] leading-tight">
                             {article.title}

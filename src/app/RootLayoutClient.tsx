@@ -7,6 +7,7 @@ import { Nunito_Sans } from "next/font/google";
 // import { SessionProvider } from "next-auth/react";
 import "./globals.css";
 import Script from "next/script";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 const nunitoSans = Nunito_Sans({ subsets: ["latin"], weight: ["400", "900"] });
 
@@ -92,6 +93,7 @@ export default function RootLayoutClient({
     `,
             }}
           ></script> */}
+          <ScrollToTopButton />
       </body>
     </html>
     // </SessionProvider>
