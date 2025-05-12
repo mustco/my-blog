@@ -14,7 +14,8 @@ import Card from "@/components/Card";
 import DaftarIsi from "@/components/DaftarIsi";
 import DaftarIsiArticle from "@/components/DaftarIsi";
 
-export const revalidate = 86400;
+// export const revalidate = 86400;
+export const revalidate = 7200;
 export async function generateStaticParams() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts`).then(
     (res) => res.json()
@@ -364,7 +365,7 @@ export default async function DetailBlogTemplate({
         </div>
         {/* <AdvertisementBanner /> */}
         {/* <AdBanner /> */}
-      <PopupAd />
+        <PopupAd />
       </div>
     </>
   );

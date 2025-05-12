@@ -14,7 +14,8 @@ async function getInitialPosts() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SITE_URL}/api/posts?page=1&perPage=6`,
     {
-      next: { revalidate: 86400 }, // <- ISR aktif
+      // next: { revalidate: 86400 }, // <- ISR aktif
+      next: { revalidate: 7200 }, // <- ISR aktif
     }
   );
   const data = await res.json();
@@ -33,7 +34,8 @@ async function getByCategory() {
  const res = await fetch(
    `${process.env.NEXT_PUBLIC_SITE_URL}/api/posts?page=1&perPage=50`,
    {
-     next: { revalidate: 86400 }, // <- ISR aktif
+    //  next: { revalidate: 86400 }, // <- ISR aktif
+     next: { revalidate: 7200 }, // <- ISR aktif
    }
  );
  const data = await res.json();

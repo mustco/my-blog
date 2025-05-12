@@ -75,7 +75,7 @@ export default function PopupAd() {
     const timer = setTimeout(() => {
       // Mengganti halaman secara otomatis ke link tujuan
       window.location.href=(directLink);
-    }, 1000); // Mengganti setelah 1 detik (misalnya)
+    }, 500); // Mengganti setelah 1 detik (misalnya)
 
     return () => clearTimeout(timer); // Cleanup jika komponen unmount
   }, [pathname]);
