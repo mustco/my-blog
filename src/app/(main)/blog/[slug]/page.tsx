@@ -363,8 +363,8 @@ export default async function DetailBlogTemplate({
           )}
         </div>
         {/* <AdvertisementBanner /> */}
-        <PopupAd />
         {/* <AdBanner /> */}
+      <PopupAd />
       </div>
     </>
   );
