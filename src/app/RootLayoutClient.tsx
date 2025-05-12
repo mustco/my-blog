@@ -71,6 +71,12 @@ export default function RootLayoutClient({
           type="text/javascript"
           src="//pl26618439.profitableratecpm.com/9f/b6/cb/9fb6cb939f95da38df0850d1383a8791.js"
         ></script> */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5863931134363900"
+          crossOrigin="anonymous"
+        ></script>
+        
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#212121] dark:text-[#ECECEC] bg-white text-[#171717] leading-relaxed flex flex-col min-h-screen ${nunitoSans.className}`}
