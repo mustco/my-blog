@@ -88,23 +88,26 @@ export default function ContactMe(){
                 <a
                   href="https://twitter.com/MustcoWeb"
                   target="_blank"
-                  className="text-blue-500"
                 >
                   <FaTwitter />
                 </a>
                 <a
                   href="https://instagram.com/MustcoWeb"
                   target="_blank"
-                  className="text-pink-500"
                 >
                   <FaInstagram />
                 </a>
                 <a
                   href="https://facebook.com/MustcoWeb"
                   target="_blank"
-                  className="text-blue-700"
                 >
                   <FaFacebook />
+                </a>
+                <a
+                  href="https://github.com/MustcoWeb"
+                  target="_blank"
+                >
+                  <FaGithub />
                 </a>
               </div>
             </div>

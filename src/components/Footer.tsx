@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FaFacebook, FaLinkedin, FaReddit, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaReddit, FaTwitter } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -89,7 +89,7 @@ export default function Footer() {
                   aria-label="social media link"
                   className="flex h-7.5 w-7.5 items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
-                  <FaLinkedin />
+                  <FaInstagram />
                 </a>
                 {/* <!-- Reddit --> */}
                 <a
@@ -97,7 +97,7 @@ export default function Footer() {
                   aria-label="social media link"
                   className="flex h-7.5 w-7.5 items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
-                  <FaReddit />
+                  <FaGithub />
                 </a>
               </div>
             </div>
