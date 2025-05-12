@@ -67,10 +67,10 @@ export default function RootLayoutClient({
           data-key="3S5QyjNj5K/1C2dabLbYXQ"
           async
         ></script>
-        <script
+        {/* <script
           type="text/javascript"
           src="//pl26618439.profitableratecpm.com/9f/b6/cb/9fb6cb939f95da38df0850d1383a8791.js"
-        ></script>
+        ></script> */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#212121] dark:text-[#ECECEC] bg-white text-[#171717] leading-relaxed flex flex-col min-h-screen ${nunitoSans.className}`}

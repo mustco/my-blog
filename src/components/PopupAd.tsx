@@ -67,18 +67,18 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 export default function PopupAd() {
-  const pathname = usePathname();
-  const directLink =
-    "https://www.profitableratecpm.com/vcvcr7qsk?key=f35b406a64c9034a5bebb3ef500b573d"; // Ganti dengan link tujuan
+  // const pathname = usePathname();
+  // const directLink =
+  //   "https://www.profitableratecpm.com/vcvcr7qsk?key=f35b406a64c9034a5bebb3ef500b573d"; // Ganti dengan link tujuan
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      // Mengganti halaman secara otomatis ke link tujuan
-      window.location.href=(directLink);
-    }, 500); // Mengganti setelah 1 detik (misalnya)
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     // Mengganti halaman secara otomatis ke link tujuan
+  //     window.location.href=(directLink);
+  //   }, 500); // Mengganti setelah 1 detik (misalnya)
 
-    return () => clearTimeout(timer); // Cleanup jika komponen unmount
-  }, [pathname]);
+  //   return () => clearTimeout(timer); // Cleanup jika komponen unmount
+  // }, [pathname]);
 
   return null; // Tidak ada UI yang perlu dirender
 }

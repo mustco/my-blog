@@ -39,7 +39,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="group flex text-custom-sm leading-none duration-200 ease-in hover:text-dark"
-                  href="/privacy-policy"
+                  href="/terms-of-service"
                 >
                   <span className="bg-gradient-to-r from-dark to-dark bg-[length:0px_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_1px]">
                     Terms
