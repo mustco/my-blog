@@ -71,7 +71,7 @@ export default function Footer() {
                 <a
                   href="#"
                   aria-label="social media link"
-                  className="flex h-7.5 w-7.5 items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
+                  className="flex h-5 w-5 text-xl items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
                   <FaFacebook />
                 </a>
@@ -79,7 +79,7 @@ export default function Footer() {
                 <a
                   href="#"
                   aria-label="social media link"
-                  className="flex h-7.5 w-7.5 items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
+                  className="flex h-5 w-5 text-xl items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
                   <FaTwitter />
                 </a>
@@ -87,7 +87,7 @@ export default function Footer() {
                 <a
                   href="#"
                   aria-label="social media link"
-                  className="flex h-7.5 w-7.5 items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
+                  className="flex h-5 w-5 text-xl items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
                   <FaInstagram />
                 </a>
@@ -95,7 +95,7 @@ export default function Footer() {
                 <a
                   href="#"
                   aria-label="social media link"
-                  className="flex h-7.5 w-7.5 items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
+                  className="flex h-5 w-5 text-xl items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
                   <FaGithub />
                 </a>

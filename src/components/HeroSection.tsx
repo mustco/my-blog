@@ -6,12 +6,12 @@ export default function HeroSection() {
     <div className="relative md:p-8 my-8 p-4 dark:text-white">
       <div className={"image-container md:w-4/5 mx-auto relative"}>
         <Image
-          src="https://fusowjktlpehckfgwebs.supabase.co/storage/v1/object/public/images//r5nGhWdOEn8OT9JGf896GE3LqFR5ly9I%20(1)%20(3).webp"
+          src="/images/0r5nGhWdOEn8OT9JGf896GE3LqFR5ly9I.webp"
           alt="home_logo"
           width={600}
           height={300}
           // fill
-          className="image rounded-xl border border-gray-500 pointer-events-none"
+          className="image rounded-md border border-gray-500 pointer-events-none"
           priority={true}
           // placeholder="blur"
           // blurDataURL="data:image/jpg;base64"

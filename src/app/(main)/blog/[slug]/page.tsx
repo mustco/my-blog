@@ -334,7 +334,7 @@ export default async function DetailBlogTemplate({
               <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200 tracking-normal mb-5">
                 Artikel Lainnya
               </h2>
-              <div className="grid grid-cols-1 gap-4 px-3">
+              <div className="grid grid-cols-1 gap-4">
                 <div className="grid md:grid-cols-3 gap-3 mt-5">
                   {randomThreeArticles.map((article: any) => (
                     <div
@@ -348,11 +348,11 @@ export default async function DetailBlogTemplate({
                         <p className="absolute z-20 -left-3 top-1 md:top-1 md:-right-3 md:left-auto text-xs font-normal px-[2px] py-[1px] md:py-1 md:px-2 rounded-sm shadow-sm bg-blue-700 dark:bg-green-700 text-white ">
                           {article.category}
                         </p>
-                        <div className="flex md:flex-col items-center gap-3 overflow-hidden">
+                        <div className="flex md:flex-col items-center justify-center gap-3 overflow-hidden">
                           <img
                             src={article.image}
                             alt={article.category}
-                            className="w-[130px] h-[100px] shadow-md bg-transparent bg-white dark:bg-gray-200 md:w-full md:h-28 border border-gray-700 md:border-none lg:border-none transition-transform duration-300 "
+                            className="w-[140px] h-[90px] shadow-md bg-transparent bg-white dark:bg-gray-200 md:w-full md:h-28 border border-gray-200 md:border-none lg:border-none transition-transform duration-300 "
                           />
                           <p className="text-gray-700 dark:text-gray-200 text-[13px] leading-tight">
                             {article.title}

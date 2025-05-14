@@ -41,7 +41,7 @@ export default function Navbar({ className, show }: Post) {
         <ul className="md:flex space-x-2 hidden text-base h-full my-0">
           <li className="p-0">
             <Link
-              className={`py-6 px-5 hover:text-blue-500 active:text-blue-800 dark:hover:text-green-500 dark:active:text-green-800 border-blue-700 dark:border-green-600 ${pathname === "/" ? "text-blue-500 dark:text-green-500  border-b-2 border-blue-500 dark:border-green-500" : ""}`}
+              className={`py-6 px-5 hover:text-blue-900 active:text-blue-800 dark:hover:text-green-500 dark:active:text-green-800 border-blue-700 dark:border-green-600 ${pathname === "/" ? "text-blue-700 dark:text-green-500  border-b-2 border-blue-800 dark:border-green-500" : ""}`}
               href="/"
             >
               Home
@@ -49,7 +49,7 @@ export default function Navbar({ className, show }: Post) {
           </li>
           <li>
             <Link
-              className={`py-6 px-5 hover:text-blue-500 active:text-blue-800 dark:hover:text-green-500 dark:active:text-green-800 ${pathname.includes("blog") ? "text-blue-500 dark:text-green-500  border-b-2 border-blue-500 dark:border-green-500" : ""}`}
+              className={`py-6 px-5 hover:text-blue-900 active:text-blue-800 dark:hover:text-green-500 dark:active:text-green-800 ${pathname.includes("blog") ? "text-blue-700 dark:text-green-500  border-b-2 border-blue-800 dark:border-green-500" : ""}`}
               href="/blog"
             >
               Blog
@@ -57,7 +57,7 @@ export default function Navbar({ className, show }: Post) {
           </li>
           <li>
             <Link
-              className={`py-6 px-5 hover:text-blue-500 active:text-blue-800 dark:hover:text-green-500 dark:active:text-green-800 ${pathname === "/about" ? "text-blue-500 dark:text-green-500 border-b-2 border-blue-500 dark:border-green-500" : ""}`}
+              className={`py-6 px-5 hover:text-blue-900 active:text-blue-800 dark:hover:text-green-500 dark:active:text-green-800 ${pathname === "/about" ? "text-blue-700 dark:text-green-500 border-b-2 border-blue-800 dark:border-green-500" : ""}`}
               href="/about"
             >
               About
@@ -66,6 +66,7 @@ export default function Navbar({ className, show }: Post) {
         </ul>
         <div className="flex space-x-3">
           <button
+          aria-label="Toggle Theme"
             onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
             className="px-3 py-2 text-3xl hidden md:block"
           >
