@@ -1,7 +1,7 @@
 import CodeSyntaxHighlight from "@/components/CodeSyntaxHighlight";
 import {
-  formatedTimestamp,
   formatedTimestampByDetail,
+  getRelativeOrFormattedDate,
 } from "../../../../../utils/supabase/formatedTimestamp";
 import Image from "next/image";
 import Link from "next/link";
@@ -112,6 +112,41 @@ export default async function DetailBlogTemplate({
     headings.includes(item.element)
   );
 
+  const renderFormattedContent = (content: string) => {
+    return content
+      .split(/(\*\*\*.*?\*\*\*|\*\*.*?\*\*|!.*?!|_.*?_)/g)
+      .map((part: string, index: number) => {
+        if (part.startsWith("***") && part.endsWith("***")) {
+          return <strong key={index}>{part.replace(/\*\*\*/g, "")}</strong>;
+        } else if (part.startsWith("**") && part.endsWith("**")) {
+          return (
+            <span
+              key={index}
+              className="bg-blue-700 dark:bg-green-700 text-white px-2 rounded"
+            >
+              {part.replace(/\*\*/g, "")}
+            </span>
+          );
+        } else if (part.startsWith("!") && part.endsWith("!")) {
+          const link = part.replace(/!/g, "");
+          return (
+            <a
+              key={index}
+              href={link.startsWith("http") ? link : `https://${link}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 underline"
+            >
+              {link}
+            </a>
+          );
+        } else if (part.startsWith("_") && part.endsWith("_")) {
+          return <em key={index}>{part.replace(/_/g, "")}</em>;
+        } else {
+          return part;
+        }
+      });
+  };
   return (
     <>
       <div className="md:max-w-3xl p-4 mx-auto card gap-10 my-5 md:p-8 flex flex-col text-gray-700 dark:text-gray-200">
@@ -120,7 +155,7 @@ export default async function DetailBlogTemplate({
             {post.category}
           </div>
           <div className=" text-gray-800 dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start">
-            {formatedTimestamp(post.created_at)}
+            {getRelativeOrFormattedDate(post.created_at)}
           </div>
         </div>
         {/* <AdvertisementBanner /> */}
@@ -132,7 +167,7 @@ export default async function DetailBlogTemplate({
             <div key={article.id}>
               {article.element === "h1" && (
                 <h1 className="text-3xl font-bold dark:text-gray-200 tracking-normal">
-                  {article.content}
+                  {renderFormattedContent(article.content)}
                 </h1>
               )}
               {article.element === "h2" && (
@@ -147,7 +182,7 @@ export default async function DetailBlogTemplate({
                     .replace(/\s+/g, "-")}
                   className="text-2xl font-bold dark:text-gray-200 tracking-normal scroll-mt-20 md:scroll-mt-24"
                 >
-                  {article.content}
+                  {renderFormattedContent(article.content)}
                 </h2>
               )}
               {article.element === "h3" && (
@@ -162,7 +197,7 @@ export default async function DetailBlogTemplate({
                     .replace(/\s+/g, "-")}
                   className="text-xl font-bold dark:text-gray-200 tracking-normal scroll-mt-20 md:scroll-mt-24"
                 >
-                  {article.content}
+                  {renderFormattedContent(article.content)}
                 </h3>
               )}
               {article.element === "h4" && (
@@ -177,7 +212,7 @@ export default async function DetailBlogTemplate({
                     .replace(/\s+/g, "-")}
                   className="text-lg font-bold dark:text-gray-200 tracking-normal scroll-mt-20 md:scroll-mt-24"
                 >
-                  {article.content}
+                  {renderFormattedContent(article.content)}
                 </h4>
               )}
               {article.element === "h5" && (
@@ -192,49 +227,19 @@ export default async function DetailBlogTemplate({
                     .replace(/\s+/g, "-")}
                   className="text-md font-bold dark:text-gray-200 tracking-normal scroll-mt-20 md:scroll-mt-24"
                 >
-                  {article.content}
+                  {renderFormattedContent(article.content)}
                 </h5>
               )}
               {article.element === "p" && (
                 <p className="text-gray-800 dark:text-gray-200 tracking-normal">
-                  {article.content
-                    .split(/(\*\*.*?\*\*|!.*?!)/g) // Tambahkan regex untuk mendeteksi teks diapit `!`
-                    .map((part: string, index: number) => {
-                      if (part.startsWith("**") && part.endsWith("**")) {
-                        return (
-                          <span
-                            key={index}
-                            className="bg-blue-700 dark:bg-green-700 text-white px-2 rounded"
-                          >
-                            {part.replace(/\*\*/g, "")}
-                          </span>
-                        );
-                      } else if (part.startsWith("!") && part.endsWith("!")) {
-                        const link = part.replace(/!/g, ""); // Ambil teks dalam tanda `!`
-                        return (
-                          <a
-                            key={index}
-                            href={
-                              link.startsWith("http") ? link : `https://${link}`
-                            } // Tambahkan "https://" jika belum ada
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-500 underline"
-                          >
-                            {link}
-                          </a>
-                        );
-                      } else {
-                        return part;
-                      }
-                    })}
+                  {renderFormattedContent(article.content)}
                 </p>
               )}
 
               {article.element === "img" && (
                 <Image
                   src={article.content}
-                  alt="Article image"
+                  alt={article.alt}
                   width={600}
                   height={340}
                   className="mb-5 rounded-lg shadow-md bg-transparent border-gray-100 bg-gray-100 dark:bg-gray-700 pointer-events-none"
@@ -246,48 +251,59 @@ export default async function DetailBlogTemplate({
 
               {article.element === "li" && (
                 <ul className="list-disc list-outside ms-5">
-                  <li className=" dark:text-gray-200">
-                    {article.content
-                      .split(/(\*\*.*?\*\*)/g)
-                      .map((part: any, index: any) =>
-                        part.startsWith("**") && part.endsWith("**") ? (
-                          <span
-                            key={index}
-                            className="bg-blue-700 dark:bg-green-700 text-white px-2 rounded"
-                          >
-                            {part.replace(/\*\*/g, "")}
-                          </span>
-                        ) : (
-                          part
-                        )
-                      )}
+                  <li className="dark:text-gray-200">
+                    {renderFormattedContent(article.content)}
                   </li>
                 </ul>
               )}
 
               {article.element === "ul" && (
                 <ul className="list-disc list-outside ms-5 flex flex-col gap-4">
-                  {JSON.parse(article.content).map(
-                    (item: string, index: number) => (
-                      <li key={index} className="dark:text-gray-200">
-                        {item
-                          .split(/(\*\*.*?\*\*)/g)
-                          .map((part: any, index: any) =>
-                            part.startsWith("**") && part.endsWith("**") ? (
-                              <span
-                                key={index}
-                                className="bg-blue-700 dark:bg-green-700 text-white px-2 rounded"
-                              >
-                                {part.replace(/\*\*/g, "")}
-                              </span>
-                            ) : (
-                              part
-                            )
-                          )}
-                      </li>
-                    )
-                  )}
+                  {(() => {
+                    try {
+                      const items = JSON.parse(article.content);
+                      return Array.isArray(items) ? (
+                        items.map((item, index) => (
+                          <li key={index} className="dark:text-gray-200">
+                            {renderFormattedContent(item)}
+                          </li>
+                        ))
+                      ) : (
+                        <li className="text-red-500">Invalid list format</li>
+                      );
+                    } catch (e) {
+                      return (
+                        <li className="text-red-500">
+                          Error parsing list: {article.content}
+                        </li>
+                      );
+                    }
+                  })()}
                 </ul>
+              )}
+              {article.element === "ol" && (
+                <ol className="list-decimal list-outside ms-5 flex flex-col gap-4">
+                  {(() => {
+                    try {
+                      const items = JSON.parse(article.content);
+                      return Array.isArray(items) ? (
+                        items.map((item, index) => (
+                          <li key={index} className="dark:text-gray-200">
+                            {renderFormattedContent(item)}
+                          </li>
+                        ))
+                      ) : (
+                        <li className="text-red-500">Invalid list format</li>
+                      );
+                    } catch (e) {
+                      return (
+                        <li className="text-red-500">
+                          Error parsing list: {article.content}
+                        </li>
+                      );
+                    }
+                  })()}
+                </ol>
               )}
 
               {/*             
@@ -301,7 +317,7 @@ export default async function DetailBlogTemplate({
               )}
               {article.element === "blockquote" && (
                 <blockquote className="border-l-4 text-lg border-blue-500 dark:border-green-500 pl-4 pe-1 italic text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-[rgba(43,43,43)] py-1">
-                  {article.content}
+                  {renderFormattedContent(article.content)}
                 </blockquote>
               )}
               {article.element === "daftar-isi" && (

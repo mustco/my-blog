@@ -46,7 +46,21 @@ export default async function BlogPage() {
   const initialPosts = await getInitialPosts();
   const dataPopular = await getPopularPost();
   const dataCategory = await getByCategory();
-  return <BlogClient initialPosts={initialPosts} dataPopular={dataPopular} dataByCategory={dataCategory}/>;
+  const popularIds = [18];
+  const popularIdsTwo = [3, 19];
+  const popularPosts = dataPopular!.filter((post: any) =>
+    popularIds?.includes(post.id)
+  );
+  const popularPosts2 = dataPopular!.filter((post: any) =>
+    popularIdsTwo.includes(post.id)
+  );
+  return <BlogClient 
+    initialPosts={initialPosts} 
+    dataPopular={dataPopular} 
+    popularPosts={popularPosts} 
+    popularPosts2={popularPosts2} 
+    dataByCategory={dataCategory}
+  />;
 }
 
 //  export default async function Blog({

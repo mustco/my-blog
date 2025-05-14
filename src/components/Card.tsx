@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Post } from "./InterfacePost";
 import { useParams } from "next/navigation";
-import { formatedTimestamp } from "../../utils/supabase/formatedTimestamp";
+import { getRelativeOrFormattedDate } from "../../utils/supabase/formatedTimestamp";
 export default function Card({ datas }: { datas: Post }) {
   const params = useParams();
   return (
@@ -12,7 +12,7 @@ export default function Card({ datas }: { datas: Post }) {
         <div className="h-52 relative w-full flex flex-col justify-center">
           <Image
             src={datas.image}
-            alt="logo"
+            alt={datas.title}
             width={600}
             height={400}
             className=" dark:bg-gray-100 h-full object-center"
@@ -33,7 +33,7 @@ export default function Card({ datas }: { datas: Post }) {
               </div>
             </div>
             <div className="dark:text-gray-300 text-sm text-end">
-              {formatedTimestamp(datas.created_at)}
+              {getRelativeOrFormattedDate(datas.created_at)}
             </div>
           </div>
         </div>

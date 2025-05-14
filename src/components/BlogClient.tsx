@@ -5,17 +5,22 @@ import Card from "@/components/Card";
 import { Post } from "@/components/InterfacePost";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { FaArrowDown } from "react-icons/fa";
-import { formatedTimestamp } from "../../utils/supabase/formatedTimestamp";
+import { getRelativeOrFormattedDate } from "../../utils/supabase/formatedTimestamp";
+import Image from "next/image";
+import Link from "next/link";
 
 const perPage = 6;
 
 export default function BlogClient({
   initialPosts,
-  dataPopular,
+  popularPosts,
+  popularPosts2,
   dataByCategory,
 }: {
   initialPosts: Post[];
   dataPopular: any;
+  popularPosts: Post[];
+  popularPosts2: Post[];
   dataByCategory: any;
 }) {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -60,15 +65,7 @@ export default function BlogClient({
   // Fallback to initialPosts if store belum kebaca
   const displayPosts = posts.length > 0 ? posts : initialPosts;
   // const popularPosts = displayPosts.slice(0, 1);
-  const popularIds = [18];
-  const popularIdsTwo = [3, 19];
 
-  const popularPosts = dataPopular.filter((post: any) =>
-    popularIds.includes(post.id)
-  );
-  const popularPosts2 = dataPopular.filter((post: any) =>
-    popularIdsTwo.includes(post.id)
-  );
   const categories = [
     "All",
     "Technology",
@@ -95,59 +92,40 @@ export default function BlogClient({
           {popularPosts.map((post: any) => (
             <div
               key={post.id}
-              className="flex w-full max-w-[1170px] flex-col gap-6 rounded-xl p-3 shadow-1 lg:flex-row lg:items-center lg:gap-11 lg:p-3 border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#212121]"
+              className="flex w-full max-w-[1170px] flex-col gap-6 shadow-1 rounded-b-lg lg:rounded-b-none lg:rounded-r-lg lg:flex-row lg:items-center lg:gap-11 border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#212121]"
             >
               {/* <!-- Gambar Utama --> */}
               <div className="relative aspect-[536/320] w-full">
-                <div className="absolute right-0 z-10 m-5 flex rounded-md bg-orange px-2.5 py-2 text-base uppercase text-white">
-                  <img
-                    alt="icon"
-                    loading="lazy"
-                    width="25"
-                    height="25"
-                    decoding="async"
-                    className="mr-1.5"
-                    src="/J6lMsBKUjgf7pbkD4EMqeX6tteWEe0dY.png"
-                  />
-                  <span>Popular</span>
-                </div>
-                <a href={`/blog/${post.slug}`}>
-                  <img
-                    alt="Wellness Unveiled: Empowering Your Journey to a Balanced and Vibrant Life"
-                    loading="eager"
-                    decoding="async"
-                    className="w-full rounded-lg object-cover"
-                    sizes="100vw"
+                <Link href={`/blog/${post.slug}`}>
+                  <Image
                     src={post.image}
-                    style={{
-                      position: "absolute",
-                      height: "100%",
-                      width: "100%",
-                      inset: "0",
-                      color: "transparent",
-                    }}
+                    alt={post.title}
+                    fill
+                    priority={true}
+                    className="object-cover"
+                    style={{ color: "transparent" }}
                   />
-                </a>
+                </Link>
               </div>
               {/* <!-- Konten Utama --> */}
-              <div className="w-full lg:max-w-[540px] flex flex-col">
+              <div className="w-full lg:max-w-[540px] flex flex-col px-2 pb-3 md:py-5">
                 <p className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start text-center">
                   {post.category}
                 </p>
-                <h1 className="mb-4 text-2xl font-bold text-dark xl:text-heading-4 mt-2">
+                <h1 className="text-2xl font-bold text-dark xl:text-heading-4 mt-2 mb-3">
                   <a href={`/blog/${post.slug}`}>{post.title}</a>
                 </h1>
-                <p className="max-w-[524px]">
+                <p className="max-w-[524px] hidden 2xl:block mb-3">
                   Framework adalah kerangka kerja atau sekumpulan kode yang
                   sudah dibuat sebelumnya untuk mempermudah pengembangan
                   perangkat lunak. Framework menyediakan struktur dasar dan
                   berbagai fitur...
                 </p>
-                <div className="mt-5 flex items-center gap-2.5">
+                <div className="flex items-center gap-2.5">
                   <div className="flex items-center gap-3">
                     <div className="flex h-6 w-6 overflow-hidden rounded-full">
-                      <img
-                        alt="user"
+                      <Image
+                        alt="icon"
                         loading="lazy"
                         width="24"
                         height="24"
@@ -160,7 +138,7 @@ export default function BlogClient({
                   </div>
                   <span className="flex h-[3px] w-[3px] rounded-full bg-dark-2"></span>
                   <p className="text-sm">
-                    {formatedTimestamp(post.created_at)}
+                    {getRelativeOrFormattedDate(post.created_at)}
                   </p>
                 </div>
               </div>
@@ -169,25 +147,23 @@ export default function BlogClient({
           {popularPosts2.map((post: any) => (
             <div
               key={post.id}
-              className="flex w-full flex-col gap-6 rounded-xl p-3 shadow-1 sm:flex-row sm:items-center lg:max-w-[570px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#212121]"
+              className="flex w-full flex-col gap-6 rounded-b-lg md:rounded-b-none md:rounded-r-lg shadow-1 sm:flex-row sm:items-center lg:max-w-[570px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#212121]"
             >
               <div className="relative aspect-[238/180] w-full overflow-hidden">
-                <a href={`/blog/${post.slug}`}>
-                  <img
-                    loading="lazy"
-                    decoding="async"
+                <Link href={`/blog/${post.slug}`}>
+                  <Image
+                    priority
+                    fill
                     src={post.image}
-                    alt="logo"
-                    width={600}
-                    height={600}
-                    className="rounded-md dark:bg-gray-100 h-full object-center"
+                    alt={post.title}
+                    className=" dark:bg-gray-100 h-full object-center"
                     // loading="lazy"
                     // unoptimized
                     // quality={50}
                   />
-                </a>
+                </Link>
               </div>
-              <div className="w-full lg:max-w-[272px] flex flex-col">
+              <div className="w-full lg:max-w-[272px] flex flex-col px-2 pb-3">
                 <p className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start text-center">
                   {post.category}
                 </p>
@@ -198,7 +174,7 @@ export default function BlogClient({
                   <p className="text-sm">By Mustco</p>
                   <span className="flex h-[3px] w-[3px] rounded-full bg-dark-2"></span>
                   <p className="text-sm">
-                    {formatedTimestamp(post.created_at)}
+                    {getRelativeOrFormattedDate(post.created_at)}
                   </p>
                 </div>
               </div>
