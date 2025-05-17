@@ -26,6 +26,8 @@ export default function Dashboard() {
   const [reviewTitle, setReviewTitle] = useState("");
   const [reviewCategory, setReviewCategory] = useState("");
   const [author, setAuthor] = useState("");
+  const [copied, setCopied] = useState<string | null>(null);
+
 
   const [selected, setSelected] = useState("h1");
   const [content, setContent] = useState("");
@@ -199,73 +201,96 @@ export default function Dashboard() {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
+  const handleCopy = (url: string, label: string) => {
+    navigator.clipboard.writeText(url);
+    setCopied(label);
+    setTimeout(() => setCopied(null), 2000);
+  };
   return (
-    <div className="container mx-auto p-4">
+    <div className="w-full">
       {/* Success Message Alert */}
       {successMessage && (
         <div className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg z-50 transition-all duration-500 ease-in-out">
           {successMessage}
         </div>
       )}
-
-      <div className="w-full md:w-1/2 lg:w-1/3">
-        <h1 className="text-xl md:text-3xl">
-          Welcome Back, <span className="font-bold">Adnan</span>! 👀
-        </h1>
-        <form onSubmit={handleUpload}>
-          <p className="mb-0">Input Title Blog</p>
-          <input
-            type="text"
-            onChange={(e) => {
-              setTitle(e.target.value);
-              setReviewTitle(e.target.value);
-            }}
-            value={title}
-            placeholder="Title Blog"
-            className="border border-black/30 rounded-md py-1 px-2 w-full mb-3 dark:bg-white dark:text-black"
-            required
-          />
-          <p className="mb-0">Input Author</p>
-          <input
-            type="text"
-            onChange={(e) => setAuthor(e.target.value)}
-            value={author}
-            placeholder="Author"
-            className="border border-black/30 rounded-md py-1 px-2 w-full mb-3 dark:bg-white dark:text-black"
-            required
-          />
-          <p className="mb-0">Input Category</p>
-          <select
-            onChange={(e) => {
-              setCategory(e.target.value);
-              setReviewCategory(e.target.value);
-            }}
-            value={category}
-            className="border border-black/30 rounded-md py-1 px-2 w-full mb-3 dark:bg-white dark:text-black"
-            required
-          >
-            <option value="" disabled>
-              Pilih kategori
-            </option>
-            {Object.keys(categoryImages).map((categoryName) => (
-              <option key={categoryName} value={categoryName}>
-                {categoryName}
-              </option>
-            ))}
-          </select>
-          <div className="flex space-x-2 items-center">
-            <button
-              type="submit"
-              className="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all duration-500 ease-in-out"
-              disabled={isLoading}
+      <div className="flex gap-x-10">
+        <div className="w-full md:w-1/2 lg:w-1/3">
+          <h1 className="text-xl md:text-3xl mb-5">
+            Welcome Back, <span className="font-bold">Adnan</span>! 👀
+          </h1>
+          <form onSubmit={handleUpload}>
+            <input
+              type="text"
+              onChange={(e) => {
+                setTitle(e.target.value);
+                setReviewTitle(e.target.value);
+              }}
+              value={title}
+              placeholder="Title Blog"
+              className="border border-black/30 rounded-md py-1 px-2 w-full mb-3 dark:bg-white dark:text-black"
+              required
+            />
+            <input
+              type="text"
+              onChange={(e) => setAuthor(e.target.value)}
+              value={author}
+              placeholder="Author"
+              className="border border-black/30 rounded-md py-1 px-2 w-full mb-3 dark:bg-white dark:text-black"
+              required
+            />
+            <select
+              onChange={(e) => {
+                setCategory(e.target.value);
+                setReviewCategory(e.target.value);
+              }}
+              value={category}
+              className="border border-black/30 rounded-md py-1 px-2 w-full mb-3 dark:bg-white dark:text-black"
+              required
             >
-              {isLoading ? "Loading..." : "Create Post"}
-            </button>
-          </div>
-        </form>
-      </div>
+              <option value="" disabled>
+                Pilih kategori
+              </option>
+              {Object.keys(categoryImages).map((categoryName) => (
+                <option key={categoryName} value={categoryName}>
+                  {categoryName}
+                </option>
+              ))}
+            </select>
+            <div className="flex space-x-2 items-center">
+              <button
+                type="submit"
+                className="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all duration-500 ease-in-out"
+                disabled={isLoading}
+              >
+                {isLoading ? "Loading..." : "Create Post"}
+              </button>
+            </div>
+          </form>
+        </div>
+        <div className="w-full md:w-1/2 lg:w-1/3">
+          <h1 className="text-xl md:text-3xl mb-5 ">
+            Select Copy Link <span className="font-bold">Category</span>! 👀
+          </h1>
 
+          <ul className="text-md">
+            {Object.entries(categoryImages).map(([categoryName, url]) => (
+              <li
+                key={categoryName}
+                className="flex items-center space-x-2 space-y-2"
+              >
+                <button
+                  onClick={() => handleCopy(url, categoryName)}
+                  className="text-xs bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
+                >
+                  {copied === categoryName ? "Disalin!" : "Salin Link"}
+                </button>
+                <span>{categoryName}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
       <MarkdownInput
         post_id={postId ?? 0}
         session={session}

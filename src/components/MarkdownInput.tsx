@@ -1,14 +1,11 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import "react-markdown-editor-lite/lib/index.css";
 import { useState } from "react";
 import { parseMarkdownToBlocks } from "./parseMarkdownToBlocks";
 import { marked } from "marked";
+import dynamic from "next/dynamic";
 
-const MdEditor = dynamic(() => import("react-markdown-editor-lite"), {
-  ssr: false,
-});
+const MdEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false });
 
 export default function MarkdownInput({
   post_id,
@@ -26,10 +23,10 @@ export default function MarkdownInput({
   const [markdown, setMarkdown] = useState("");
   const [isSaving, setIsSaving] = useState(false);
 
-  const handleChange = ({ text }: { html: string; text: string }) => {
-    setMarkdown(text);
+  const handleChange = (markdown?: string) => {
+    setMarkdown(markdown || "");
   };
-console.log(markdown);
+  console.log(markdown);
   const handleSubmit = async () => {
     if (post_id === 0) {
       setSuccessMessage("Please create a post first before publishing content");
@@ -83,31 +80,54 @@ console.log(markdown);
 
   return (
     <div className="p-4 mt-6">
-      <h2 className="text-xl font-bold mb-4">
-        {post_id === 0
-          ? "Create a post first to enable editor"
-          : "Write your article content"}
-      </h2>
-      <MdEditor
-        style={{ height: "500px" }}
-        value={markdown}
-        renderHTML={(text) => marked(text)}
-        onChange={handleChange}
-        // readOnly={post_id === 0}
-      />
-      <button
-        onClick={handleSubmit}
-        disabled={isSaving || post_id === 0}
-        className={`mt-4 px-4 py-2 ${
-          post_id === 0
-            ? "bg-gray-400 cursor-not-allowed"
-            : isSaving
-            ? "bg-blue-400"
-            : "bg-blue-600 hover:bg-blue-700"
-        } text-white rounded transition-colors duration-300`}
-      >
-        {isSaving ? "Saving..." : "Simpan ke Supabase"}
-      </button>
+      <div className="flex items-center justify-between mb-2">
+        <h2 className="text-xl font-bold">
+          {post_id === 0
+            ? "Create a post first to enable editor"
+            : "Write your article content"}
+        </h2>
+        <button
+          onClick={handleSubmit}
+          disabled={isSaving || post_id === 0}
+          className={`px-4 py-2 ${
+            post_id === 0
+              ? "bg-gray-400 cursor-not-allowed"
+              : isSaving
+              ? "bg-blue-400"
+              : "bg-blue-600 hover:bg-blue-700"
+          } text-white rounded transition-colors duration-300`}
+        >
+          {isSaving ? "Saving..." : "Publish Content"}
+        </button>
+      </div>
+      {post_id === 0 ? (
+        <MdEditor
+          value={markdown}
+          onChange={handleChange}
+          height={500}
+          className="custom-md-editor"
+          previewOptions={{
+            disallowedElements: ["style"],
+          }}
+          textareaProps={{
+            placeholder: "Please enter Markdown text",
+            disabled: true,
+          }}
+        />
+      ) : (
+        <MdEditor
+          value={markdown}
+          onChange={handleChange}
+          height={500}
+          className="custom-md-editor"
+          previewOptions={{
+            disallowedElements: ["style"],
+          }}
+          textareaProps={{
+            placeholder: "Please enter Markdown text",
+          }}
+        />
+      )}
     </div>
   );
 }
