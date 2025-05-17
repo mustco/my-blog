@@ -9,7 +9,7 @@ function DaftarIsiArticle({ filterDaftarIsi }: { filterDaftarIsi: any }) {
   }
 
   return (
-    <div className="dark:text-gray-300 border p-1 border-gray-200 dark:border-gray-700 rounded-md max-w-[600px]">
+    <div className="dark:text-gray-300 border bg-white dark:bg-[#212121] p-1 border-gray-200 dark:border-gray-700 rounded-md max-w-[600px]">
       <button
         onClick={() => setShowTOC(!showTOC)}
         className={`text-2xl font-bold text-gray-700 dark:text-gray-200 tracking-normal ${
@@ -27,7 +27,7 @@ function DaftarIsiArticle({ filterDaftarIsi }: { filterDaftarIsi: any }) {
           showTOC ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <ul className="list-outside ms-7 list-decimal dark:text-green-400 text-blue-700">
+        <ul className="list-outside ms-7 list-decimal dark:text-green-600 text-blue-700">
           {filterDaftarIsi.map((item: any, index: number) => {
             const anchorId = item.content
               .toLowerCase()

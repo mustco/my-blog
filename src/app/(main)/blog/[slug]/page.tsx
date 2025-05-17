@@ -113,21 +113,45 @@ export default async function DetailBlogTemplate({
   );
 
   const renderFormattedContent = (content: string) => {
-    return content
-      .split(/(\*\*\*.*?\*\*\*|\*\*.*?\*\*|!.*?!|_.*?_)/g)
+    // First handle Markdown links [text](url)
+    const processedContent = content.replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      (match, text, url) => {
+        return `<a href="${url}">${text}</a>`;
+      }
+    );
+
+    return processedContent
+      .split(/(\*\*.*?\*\*|\*.*?\*|!.*?!|_.*?_|<a.*?<\/a>|`.*?`)/g)
       .map((part: string, index: number) => {
-        if (part.startsWith("***") && part.endsWith("***")) {
-          return <strong key={index}>{part.replace(/\*\*\*/g, "")}</strong>;
+        if (part.startsWith("<a") && part.endsWith("</a>")) {
+          // Extract href and text from the generated anchor tag
+          const hrefMatch = part.match(/href="([^"]+)"/);
+          const textMatch = part.match(/>([^<]+)</);
+
+          if (hrefMatch && textMatch) {
+            const url = hrefMatch[1];
+            const text = textMatch[1];
+
+            return (
+              <a
+                key={index}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-700 dark:text-green-700 underline"
+              >
+                {text}
+              </a>
+            );
+          }
+          return part;
         } else if (part.startsWith("**") && part.endsWith("**")) {
-          return (
-            <span
-              key={index}
-              className="bg-blue-700 dark:bg-green-700 text-white px-2 rounded"
-            >
-              {part.replace(/\*\*/g, "")}
-            </span>
-          );
+          return <strong key={index}>{part.replace(/\*\*/g, "")}</strong>;
+        } else if (part.startsWith("*") && part.endsWith("*")) {
+          return <em key={index}>{part.replace(/\*/g, "")}</em>;
         } else if (part.startsWith("!") && part.endsWith("!")) {
+          // Keep the old link format as fallback
           const link = part.replace(/!/g, "");
           return (
             <a
@@ -135,13 +159,23 @@ export default async function DetailBlogTemplate({
               href={link.startsWith("http") ? link : `https://${link}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-500 underline"
+              className="text-blue-500 dark:text-green-700 underline"
             >
               {link}
             </a>
           );
         } else if (part.startsWith("_") && part.endsWith("_")) {
+          // Keep the old underscore formatting as a fallback
           return <em key={index}>{part.replace(/_/g, "")}</em>;
+        } else if (part.startsWith("`") && part.endsWith("`")) {
+          return (
+            <span
+              key={index}
+              className="bg-blue-700 dark:bg-green-700 text-white px-2 rounded"
+            >
+              {part.replace(/`/g, "")}
+            </span>
+          );
         } else {
           return part;
         }
@@ -352,7 +386,7 @@ export default async function DetailBlogTemplate({
                           <img
                             src={article.image}
                             alt={article.category}
-                            className="w-[140px] h-[90px] shadow-md bg-transparent bg-white dark:bg-gray-200 md:w-full md:h-28 border border-gray-200 md:border-none lg:border-none transition-transform duration-300 "
+                            className="w-[140px] h-[90px] shadow-md bg-transparent bg-white dark:bg-gray-200 md:w-full md:h-28 border border-gray-700 md:border-none lg:border-none transition-transform duration-300 "
                           />
                           <p className="text-gray-700 dark:text-gray-200 text-[13px] leading-tight">
                             {article.title}
