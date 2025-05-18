@@ -38,8 +38,8 @@ body {
 
 
 .image-container {
-  /* margin: auto; */
-  /* width: 90%; */
+
+  width: 100%;
 
   > div {
     position: unset !important;
