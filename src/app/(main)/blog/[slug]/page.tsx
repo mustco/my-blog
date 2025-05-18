@@ -13,6 +13,9 @@ import { Metadata } from "next";
 import Card from "@/components/Card";
 import DaftarIsi from "@/components/DaftarIsi";
 import DaftarIsiArticle from "@/components/DaftarIsi";
+import RelatedPosts from "@/components/RelatedPosts";
+import NotFound from "@/app/not-found";
+import { notFound } from "next/navigation";
 
 // export const revalidate = 86400;
 export const revalidate = 7200;
@@ -96,7 +99,7 @@ export default async function DetailBlogTemplate({
     .slice(0, 9);
 
   if (!res.ok) {
-    return <div className="text-red-500">Error fetching data</div>;
+    return notFound();
   }
   const { post } = await res.json();
   if (!post) return <div>Loading...</div>;
@@ -181,6 +184,13 @@ export default async function DetailBlogTemplate({
         }
       });
   };
+  function formatSlugToTitle(slug:any) {
+    // Ubah 'build-tersakit-lancelot' menjadi 'Build Tersakit Lancelot'
+    return slug
+      .split("-")
+      .map((word:any) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
   return (
     <>
       <div className="md:max-w-3xl p-4 mx-auto card gap-10 my-5 md:p-8 flex flex-col text-gray-700 dark:text-gray-200">
@@ -358,6 +368,67 @@ export default async function DetailBlogTemplate({
                 <DaftarIsiArticle filterDaftarIsi={filterDaftarIsi} />
               )}
               {article.element === "ads" && <AdBanner />}
+              {article.element === "baca-juga" && (
+                <div className="baca-juga-container p-4 bg-gray-100 shadow-sm dark:bg-[#2B2B2B] rounded-lg border  border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center mb-3 italic">
+                    <h4 className="text-lg font-medium  mr-2">
+                      Baca Juga :
+                    </h4>
+                    <div className="h-0.5 rounded-md bg-blue-600 dark:bg-green-700 flex-grow"></div>
+                  </div>
+                  <ul className="space-y-2">
+                    {(() => {
+                      try {
+                        // First check if content is already an array
+                        const items =
+                          typeof article.content === "string"
+                            ? JSON.parse(article.content)
+                            : article.content;
+
+                        return Array.isArray(items) ? (
+                          items.map((item, index) => {
+                            // Try to find the article in randomThreeArticles by slug
+                            const relatedPost = newRandom.find(
+                              (post: any) => post.slug === item
+                            );
+                            const title = relatedPost
+                              ? relatedPost.title
+                              : item;
+
+                            return (
+                              <li
+                                key={index}
+                                className="flex items-center italic"
+                              >
+                                <span className="text-blue-600 dark:text-green-600 mr-2">
+                                  •
+                                </span>
+                                <Link
+                                  href={`/blog/${item}`}
+                                  className="text-blue-600  hover:underline hover:text-blue-800 dark:text-green-600 dark:hover:text-green-400"
+                                >
+                                  {formatSlugToTitle(title)}
+                                </Link>
+                              </li>
+                            );
+                          })
+                        ) : (
+                          <li className="text-gray-600 dark:text-gray-400">
+                            Tidak ada artikel terkait
+                          </li>
+                        );
+                      } catch (e) {
+                        console.error("Error parsing baca-juga content:", e);
+                        return (
+                          <li className="text-gray-600 dark:text-gray-400">
+                            Tidak ada artikel terkait
+                          </li>
+                        );
+                      }
+                    })()}
+                  </ul>
+                </div>
+              )}
             </div>
           ))}
         </div>

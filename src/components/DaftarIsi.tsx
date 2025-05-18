@@ -9,16 +9,20 @@ function DaftarIsiArticle({ filterDaftarIsi }: { filterDaftarIsi: any }) {
   }
 
   return (
-    <div className="dark:text-gray-300 border bg-white dark:bg-[#212121] p-1 border-gray-200 dark:border-gray-700 rounded-md max-w-[600px]">
+    <div className="dark:text-gray-300 border bg-gray-100 dark:bg-[#2B2B2B] px-2 py-4 shadow-sm border-gray-200 dark:border-gray-700 rounded-md max-w-[600px]">
       <button
         onClick={() => setShowTOC(!showTOC)}
         className={`text-2xl font-bold text-gray-700 dark:text-gray-200 tracking-normal ${
           showTOC ? "mb-2" : "transition-all duration-500 ease-in-out"
         } flex justify-between items-center w-full`}
       >
-        <span className="transition-none ms-2">Daftar Isi</span>
-        <span>
-          {showTOC ? <MdKeyboardArrowDown /> : <MdKeyboardArrowRight />}
+        <span className="transition-none ms-1 text-lg">Daftar Isi</span>
+        <span
+          className={`mr-2 text-4xl transform transition-transform duration-300 ease-in-out ${
+            showTOC ? "rotate-0" : "-rotate-90"
+          }`}
+        >
+          <MdKeyboardArrowDown />
         </span>
       </button>
 
@@ -27,7 +31,7 @@ function DaftarIsiArticle({ filterDaftarIsi }: { filterDaftarIsi: any }) {
           showTOC ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <ul className="list-outside ms-7 list-decimal dark:text-green-600 text-blue-700">
+        <ul className="list-outside ms-10 list-decimal dark:text-green-600 text-blue-700">
           {filterDaftarIsi.map((item: any, index: number) => {
             const anchorId = item.content
               .toLowerCase()
