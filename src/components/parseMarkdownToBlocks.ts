@@ -3,7 +3,7 @@ import { marked } from "marked";
 export function parseMarkdownToBlocks(markdown: string, postId: number) {
   const tokens = marked.lexer(markdown);
   const blocks = [];
-  let level = 0;
+  let level = 1;
   console.log(postId);
   for (const token of tokens) {
     switch (token.type) {
