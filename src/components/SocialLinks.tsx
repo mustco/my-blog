@@ -34,7 +34,7 @@ export function Instagram() {
 export function Facebook() {
   return (
     <a
-      href="https://facebook.com/mustcoweb"
+      href="https://facebook.com/profile.php?id=61576746560829"
       target="_blank"
       className="text-blue-700 hover:underline"
     >

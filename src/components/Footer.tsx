@@ -68,37 +68,33 @@ export default function Footer() {
               <p className="text-custom-sm font-medium text-dark">Follow Us:</p>
               <div className="flex items-center gap-1.5">
                 {/* <!-- Facebook --> */}
-                <a
-                  href="#"
-                  aria-label="social media link"
-                  className="flex h-5 w-5 text-xl items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
-                >
-                  <FaFacebook />
-                </a>
                 {/* <!-- X (Twitter) --> */}
                 <a
-                  href="#"
+                  href="https://x.com/mustcoweb"
                   aria-label="social media link"
+                  target="_blank"
                   className="flex h-5 w-5 text-xl items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
                   <FaTwitter />
                 </a>
-                {/* <!-- LinkedIn --> */}
                 <a
-                  href="#"
+                  href="https://www.instagram.com/MustcoWeb/"
                   aria-label="social media link"
+                  target="_blank"
                   className="flex h-5 w-5 text-xl items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
                   <FaInstagram />
                 </a>
-                {/* <!-- Reddit --> */}
                 <a
-                  href="#"
+                  href="https://facebook.com/profile.php?id=61576746560829"
                   aria-label="social media link"
+                  target="_blank"
                   className="flex h-5 w-5 text-xl items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
-                  <FaGithub />
+                  <FaFacebook />
                 </a>
+                {/* <!-- LinkedIn --> */}
+                {/* <!-- Reddit --> */}
               </div>
             </div>
           </div>
