@@ -103,7 +103,6 @@ export default function BlogClient({
                     fill
                     priority={true}
                     className="object-cover"
-                    style={{ color: "transparent" }}
                   />
                 </Link>
               </div>
@@ -131,7 +130,6 @@ export default function BlogClient({
                         height="24"
                         decoding="async"
                         src="/J6lMsBKUjgf7pbkD4EMqeX6tteWEe0dY.png"
-                        style={{ color: "transparent" }}
                       />
                     </div>
                     <p className="text-sm">Mustco</p>

@@ -270,7 +270,7 @@ export default function Dashboard() {
         </div>
         <div className="w-full md:w-1/2 lg:w-1/3">
           <h1 className="text-xl md:text-3xl mb-5 ">
-            Select Copy Link <span className="font-bold">Category</span>! 👀
+            Select Copy Link <span className="font-bold">Category</span>! 👀 #{postId}
           </h1>
 
           <ul className="text-md">
