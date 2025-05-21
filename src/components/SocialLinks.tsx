@@ -12,6 +12,7 @@ export function Twitter() {
     <a
       href="https://twitter.com/mustcoweb"
       target="_blank"
+      rel="noopener noreferrer"
       className="text-blue-500 hover:underline"
     >
       <FaTwitter />
@@ -24,6 +25,7 @@ export function Instagram() {
     <a
       href="https://instagram.com/mustcoweb"
       target="_blank"
+      rel="noopener noreferrer"
       className="text-pink-500 hover:underline"
     >
       <FaInstagram />
@@ -36,6 +38,7 @@ export function Facebook() {
     <a
       href="https://facebook.com/profile.php?id=61576746560829"
       target="_blank"
+      rel="noopener noreferrer"
       className="text-blue-700 hover:underline"
     >
       <FaFacebook />
@@ -48,6 +51,7 @@ export function Youtube() {
     <a
       href="https://youtube.com/mustcoweb"
       target="_blank"
+      rel="noopener noreferrer"
       className="text-red-500 hover:underline"
     >
       <FaYoutube />
@@ -60,6 +64,7 @@ export function Github() {
     <a
       href="https://github.com/mustcoweb"
       target="_blank"
+      rel="noopener noreferrer"
       className="dark:text-white hover:underline"
     >
       <FaGithub />

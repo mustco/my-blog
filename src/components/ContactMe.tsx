@@ -71,6 +71,7 @@ export default function ContactMe() {
             <a
               href="https://mail.google.com/mail/?view=cm&to=mustcoweb@gmail.com&su=Kerja%20Sama%20dengan%20MustcoWeb&body=Halo%20tim%20MustcoWeb%2C%0A%0ASaya%20tertarik%20untuk%20..."
               target="_blank"
+              rel="noopener noreferrer"
               className="text-blue-500 underline"
             >
               mustcoweb@gmail.com
@@ -83,6 +84,7 @@ export default function ContactMe() {
               href="https://wa.me/6285817172164"
               className="text-green-500 underline"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Klik untuk chat
             </a>
@@ -92,15 +94,24 @@ export default function ContactMe() {
           <div className="mt-8">
             <h2 className="text-xl font-semibold">Sosial Media</h2>
             <div className="flex gap-4 mt-3 text-4xl">
-              <a href="https://x.com/MustcoWeb" target="_blank">
+              <a
+                href="https://x.com/MustcoWeb"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaTwitter />
               </a>
-              <a href="https://instagram.com/MustcoWeb" target="_blank">
+              <a
+                href="https://instagram.com/MustcoWeb"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaInstagram />
               </a>
               <a
                 href="https://facebook.com/profile.php?id=61576746560829"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaFacebook />
               </a>

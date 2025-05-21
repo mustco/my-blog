@@ -73,6 +73,7 @@ export default function Footer() {
                   href="https://x.com/mustcoweb"
                   aria-label="social media link"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="flex h-5 w-5 text-xl items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
                   <FaTwitter />
@@ -81,6 +82,7 @@ export default function Footer() {
                   href="https://www.instagram.com/MustcoWeb/"
                   aria-label="social media link"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="flex h-5 w-5 text-xl items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
                   <FaInstagram />
@@ -89,6 +91,7 @@ export default function Footer() {
                   href="https://facebook.com/profile.php?id=61576746560829"
                   aria-label="social media link"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="flex h-5 w-5 text-xl items-center justify-center rounded-full hover:bg-gray-2 hover:text-dark lg:transition-all lg:duration-300 lg:ease-linear"
                 >
                   <FaFacebook />
