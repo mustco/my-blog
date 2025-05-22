@@ -29,7 +29,7 @@ export default function About() {
         </h2>
         <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-2">
           Kami mengumpulkan informasi non-pribadi seperti jenis browser, sistem
-          operasi, alamat IP, halaman yang dikunjungi, dan waktu kunjungan. Jika
+          operasi, halaman yang dikunjungi, dan waktu kunjungan. Jika
           Anda mengisi formulir, kami dapat menyimpan nama dan email Anda.
         </p>
 

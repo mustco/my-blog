@@ -76,7 +76,11 @@ export default function RootLayoutClient({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5863931134363900"
           crossOrigin="anonymous"
         ></script>
-        
+        <script
+          id="cookieyes"
+          type="text/javascript"
+          src="https://cdn-cookieyes.com/client_data/bb2893cbec1aab2be627328b/script.js"
+        ></script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#212121] dark:text-[#ECECEC] bg-white text-[#171717] leading-relaxed flex flex-col min-h-screen ${nunitoSans.className}`}
