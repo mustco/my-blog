@@ -52,6 +52,19 @@ export default function Footer() {
               <li>
                 <Link
                   className="group flex text-custom-sm leading-none duration-200 ease-in hover:text-dark"
+                  href="/disclaimer"
+                >
+                  <span className="bg-gradient-to-r from-dark to-dark bg-[length:0px_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_1px]">
+                    Discaimer
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <span className="flex h-[3px] w-[3px] rounded-full bg-gray-800 dark:bg-gray-200"></span>
+              </li>
+              <li>
+                <Link
+                  className="group flex text-custom-sm leading-none duration-200 ease-in hover:text-dark"
                   href="/contact"
                 >
                   <span className="bg-gradient-to-r from-dark to-dark bg-[length:0px_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_1px]">
