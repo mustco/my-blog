@@ -46,7 +46,7 @@
 //         >
 //           <CgClose />
 //         </button>
-//         <div className="flex items-center justify-center text-gray-700">
+//         <div className="flex items-center justify-center text-gray-800">
 //           <img
 //             src="https://fusowjktlpehckfgwebs.supabase.co/storage/v1/object/public/images//kZz9iDdRyXDacyMoy85KBAxqON41qUDW.gif"
 //             alt="Ads"

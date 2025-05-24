@@ -18,16 +18,16 @@ export default function DashboardLayout({
               Blog Admin
             </h1>
             <nav className="mt-4">
-              <Link href={"/dashboard/overview"} className="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+              <Link href={"/dashboard/overview"} className="flex items-center px-4 py-3 text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
                 Overview
               </Link>
-              <Link href={"/dashboard/posts"} className="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+              <Link href={"/dashboard/posts"} className="flex items-center px-4 py-3 text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
                 Posts
               </Link>
             </nav>
           </div>
           <a
-            className="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+            className="flex items-center px-4 py-3 text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
             onClick={() => logout()}
           >
             Logout

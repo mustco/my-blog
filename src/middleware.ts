@@ -23,6 +23,7 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: ["/dashboard/:path*"],
+  
   // matcher: [
   //   /*
   //    * Match all request paths except for the ones starting with:

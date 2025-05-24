@@ -15,7 +15,7 @@ export default function ContactMe() {
       <div className="flex-1 flex flex-col ">
         <h1 className="text-2xl md:text-3xl font-bold pb-3">Hubungi Kami</h1>
 
-        <p className="text-gray-700 dark:text-gray-300 leading-relaxed -tracking-tighter mb-6">
+        <p className="text-gray-800 dark:text-gray-300 leading-relaxed -tracking-tighter mb-6">
           Punya pertanyaan, kritik, atau kerja sama? Silakan isi form di bawah
           atau kontak langsung lewat sosial media kami.
         </p>
@@ -65,7 +65,7 @@ export default function ContactMe() {
       <div className="flex-1 md:flex flex-col items-center mt-10 md:mt-0">
         <div className="flex flex-col items-start">
           <h2 className="text-xl font-semibold">Kontak Alternatif</h2>
-          <p className="text-gray-700 dark:text-gray-300 mt-2 flex items-center gap-x-2">
+          <p className="text-gray-800 dark:text-gray-300 mt-2 flex items-center gap-x-2">
             <MdEmail />
             Email:{" "}
             <a
@@ -77,7 +77,7 @@ export default function ContactMe() {
               mustcoweb@gmail.com
             </a>
           </p>
-          <p className="text-gray-700 dark:text-gray-300 mt-1 flex items-center gap-x-2">
+          <p className="text-gray-800 dark:text-gray-300 mt-1 flex items-center gap-x-2">
             <MdWhatsapp />
             WhatsApp:{" "}
             <a

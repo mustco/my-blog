@@ -24,7 +24,7 @@ export default function HomeContent() {
     <div className="md:w-4/5 p-4 mx-auto card gap-3 my-5 md:p-8 flex flex-col justify-center">
       <h1 className="text-2xl font-bold pb-5">Selamat Datang di MustcoWeb</h1>
 
-      <p className="text-gray-700 dark:text-gray-300 -tracking-tighter leading-relaxed">
+      <p className="text-gray-800 dark:text-gray-300 -tracking-tighter leading-relaxed">
         MustcoWeb adalah platform berbagi wawasan yang bertujuan untuk
         menghadirkan informasi berkualitas dan menginspirasi perubahan positif.
         Dengan visi <strong>"Berbagi Wawasan, Menginspirasi Perubahan"</strong>,
@@ -32,13 +32,13 @@ export default function HomeContent() {
         menarik.
       </p>
 
-      <ul className="list-inside text-gray-700 dark:text-gray-300 -tracking-tighter mt-4 list-none">
+      <ul className="list-inside text-gray-800 dark:text-gray-300 -tracking-tighter mt-4 list-none">
         <li>📌 Artikel informatif dan edukatif</li>
         <li>📌 Analisis mendalam dari berbagai perspektif</li>
         <li>📌 Ide dan gagasan untuk mengembangkan wawasan</li>
       </ul>
 
-      <p className="text-gray-700 mt-4 dark:text-gray-300 -tracking-tighter">
+      <p className="text-gray-800 mt-4 dark:text-gray-300 -tracking-tighter">
         Kami percaya bahwa berbagi ilmu adalah langkah kecil namun berarti dalam
         menciptakan perubahan. Selamat menjelajahi MustcoWeb, semoga setiap
         artikel dapat memberikan inspirasi dan wawasan baru bagi Anda.

@@ -45,7 +45,7 @@ import NotFound from "@/app/not-found";
 //           <div>
 //             <label
 //               htmlFor="email"
-//               className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+//               className="block text-sm font-medium text-gray-800 dark:text-gray-300"
 //             >
 //               Email
 //             </label>
@@ -63,7 +63,7 @@ import NotFound from "@/app/not-found";
 //           <div>
 //             <label
 //               htmlFor="password"
-//               className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+//               className="block text-sm font-medium text-gray-800 dark:text-gray-300"
 //             >
 //               Password
 //             </label>

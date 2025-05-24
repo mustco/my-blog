@@ -12,7 +12,7 @@ function DaftarIsiArticle({ filterDaftarIsi }: { filterDaftarIsi: any }) {
     <div className="dark:text-gray-300 border bg-gray-100 dark:bg-[#2B2B2B] px-2 py-4 shadow-sm border-gray-200 dark:border-gray-700 rounded-md max-w-[600px]">
       <button
         onClick={() => setShowTOC(!showTOC)}
-        className={`text-2xl font-bold text-gray-700 dark:text-gray-200 tracking-normal ${
+        className={`text-2xl font-bold text-gray-800 dark:text-gray-200 tracking-normal ${
           showTOC ? "mb-2" : "transition-all duration-500 ease-in-out"
         } flex justify-between items-center w-full`}
       >

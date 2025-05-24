@@ -193,7 +193,7 @@ export default async function DetailBlogTemplate({
   }
   return (
     <>
-      <div className="md:max-w-3xl p-4 mx-auto card gap-10 my-5 md:p-8 flex flex-col text-gray-700 dark:text-gray-200">
+      <div className="md:max-w-3xl p-4 mx-auto card gap-10 my-5 md:p-8 flex flex-col text-gray-800 dark:text-gray-200">
         <div className="flex justify-between">
           <div className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start">
             {post.category}
@@ -360,7 +360,7 @@ export default async function DetailBlogTemplate({
                 <CodeSyntaxHighlight code={article.content} />
               )}
               {article.element === "blockquote" && (
-                <blockquote className="border-l-4 text-lg border-blue-500 dark:border-green-500 pl-4 pe-1 italic text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-[rgba(43,43,43)] py-1">
+                <blockquote className="border-l-4 text-lg border-blue-500 dark:border-green-500 pl-4 pe-1 italic text-gray-800 dark:text-gray-300 bg-gray-200 dark:bg-[rgba(43,43,43)] py-1">
                   {renderFormattedContent(article.content)}
                 </blockquote>
               )}
@@ -436,7 +436,7 @@ export default async function DetailBlogTemplate({
         <div className="flex flex-col items-center dark:bg-[#212121] px-2 md:px-3 py-5">
           {randomThreeArticles.length > 0 && (
             <>
-              <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200 tracking-normal mb-5">
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 tracking-normal mb-5">
                 Artikel Lainnya
               </h2>
               <div className="grid grid-cols-1 gap-4">
@@ -457,17 +457,17 @@ export default async function DetailBlogTemplate({
                           <img
                             src={article.image}
                             alt={article.category}
-                            className="w-[140px] h-[90px] shadow-md bg-transparent bg-white dark:bg-gray-200 md:w-full md:h-28 border border-gray-700 md:border-none lg:border-none transition-transform duration-300 "
+                            className="w-[140px] h-[90px] shadow-md bg-transparent bg-white dark:bg-gray-200 md:w-full md:h-28 border border-gray-300 dark:border-gray-700 md:border-none lg:border-none transition-transform duration-300 "
                           />
-                          <p className="text-gray-700 dark:text-gray-200 text-[13px] leading-tight">
+                          <p className="text-gray-800 dark:text-gray-200 text-[13px] leading-tight">
                             {article.title}
                           </p>
                         </div>
                         <div className="w-full justify-between px-2 font-normal hidden md:flex">
-                          <p className="text-gray-700 dark:text-gray-200 text-[13px] leading-tight">
+                          <p className="text-gray-800 dark:text-gray-200 text-[13px] leading-tight">
                             By {article.author}
                           </p>
-                          <p className="text-gray-700 dark:text-gray-200 text-[13px] leading-tight">
+                          <p className="text-gray-800 dark:text-gray-200 text-[13px] leading-tight">
                             {formatedTimestampByDetail(article.created_at)}
                           </p>
                         </div>
@@ -479,7 +479,7 @@ export default async function DetailBlogTemplate({
             </>
           )}
           {randomThreeArticles.length === 0 && (
-            <div className="text-center text-gray-700 dark:text-gray-300 mt-5">
+            <div className="text-center text-gray-800 dark:text-gray-300 mt-5">
               Tidak ada artikel terkait
             </div>
           )}
