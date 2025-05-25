@@ -1,5 +1,4 @@
 "use client";
-import { ThemeProvider } from "next-themes";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Container from "@/components/Container";
@@ -8,8 +7,6 @@ import Footer from "@/components/Footer";
 import { Nunito_Sans } from "next/font/google";
 // import { SessionProvider } from "next-auth/react";
 import { useEffect, useState } from "react";
-import AdvertisementBanner from "@/components/AdvertisementBanner";
-import PopupAd from "@/components/PopupAd";
 
 const nunitoSans = Nunito_Sans({ subsets: ["latin"], weight: ["400", "900"] });
 const geistSans = Geist({

@@ -9,14 +9,15 @@ export default function Card({ datas }: { datas: Post }) {
   return (
     <Link href={`/blog/${datas.slug}/`}>
       <div className="border border-gray-200 dark:border-gray-700 flex flex-col space-y-5 rounded-b-lg h-full bg-white dark:bg-[#212121]">
-        <div className="h-52 relative w-full flex flex-col justify-center">
+        {/* <div className="h-52 relative  aspect-[238/180] w-full flex flex-col justify-center"> */}
+        <div className="relative aspect-[312/180] w-full overflow-hidden">
           <Image
             src={datas.image}
             alt={datas.title}
             width={600}
             height={400}
             className=" dark:bg-gray-100 h-full object-center"
-            priority={true}
+            priority={false}
             // loading="lazy"
             // unoptimized
             // quality={50}

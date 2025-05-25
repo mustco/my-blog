@@ -1,5 +1,4 @@
 import BlogClient from "@/components/BlogClient";
-import Card from "@/components/Card";
 import { Post } from "@/components/InterfacePost";
 import SearchComponent from "@/components/SearchComponent";
 import { supabase } from "../../../../utils/supabase/server";

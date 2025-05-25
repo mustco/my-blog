@@ -5,16 +5,9 @@ import {
 } from "../../../../../utils/supabase/formatedTimestamp";
 import Image from "next/image";
 import Link from "next/link";
-import AdvertisementBanner from "@/components/AdvertisementBanner";
-import dynamic from "next/dynamic";
 import PopupAd from "@/components/PopupAd";
 import AdBanner from "@/components/AdBanner";
-import { Metadata } from "next";
-import Card from "@/components/Card";
-import DaftarIsi from "@/components/DaftarIsi";
 import DaftarIsiArticle from "@/components/DaftarIsi";
-import RelatedPosts from "@/components/RelatedPosts";
-import NotFound from "@/app/not-found";
 import { notFound } from "next/navigation";
 
 // export const revalidate = 86400;

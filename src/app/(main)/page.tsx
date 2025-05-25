@@ -1,8 +1,6 @@
 "use client";
-import { useTheme } from "next-themes";
 import HeroSection from "@/components/HeroSection";
 import HomeContent from "@/components/HomeContent";
-import { useEffect } from "react";
 
 export default function Home() {
   

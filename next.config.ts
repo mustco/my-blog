@@ -8,11 +8,13 @@ const nextConfig: NextConfig = {
         hostname: "fusowjktlpehckfgwebs.supabase.co",
       },
     ],
+    // Ini adalah properti tambahan yang mungkin perlu disesuaikan atau dipertimbangkan:
+    // formats: ["image/webp", "image/avif"], // Default Next.js sudah mengoptimalkan ini
+    // deviceSizes: [640, 750, 828, 1080, 1200, 1920], // Default sudah cukup lengkap
+    // imageSizes: [16, 32, 48, 64, 96, 128, 256, 384], // Default sudah cukup lengkap
+    // minimumCacheTTL: 60, // Default 60 detik. Mungkin terlalu rendah untuk produksi.
   },
-  formats: ["image/webp", "image/avif"],
-  deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-  imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-  minimumCacheTTL: 60,
+  // ... bagian lain dari nextConfig jika ada (misal: webpack)
 };
 
 export default nextConfig;

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useBlogStore } from "@/store/useBlogStore";
 import Card from "@/components/Card";
 import { Post } from "@/components/InterfacePost";
-import { IoMdArrowRoundDown } from "react-icons/io";
 import { FaArrowDown } from "react-icons/fa";
 import { getRelativeOrFormattedDate } from "../../utils/supabase/formatedTimestamp";
 import Image from "next/image";
@@ -59,9 +58,6 @@ export default function BlogClient({
     }, 500);
   };
 
-  useEffect(() => {
-    const res = fetch(`/api/posts?page=1&perPage=${perPage}`);
-  });
   // Fallback to initialPosts if store belum kebaca
   const displayPosts = posts.length > 0 ? posts : initialPosts;
   // const popularPosts = displayPosts.slice(0, 1);
@@ -95,17 +91,19 @@ export default function BlogClient({
               className="flex w-full max-w-[1170px] flex-col gap-6 shadow-1 rounded-b-lg lg:rounded-b-none lg:rounded-r-lg lg:flex-row lg:items-center lg:gap-11 border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#212121]"
             >
               {/* <!-- Gambar Utama --> */}
-              <div className="relative aspect-[536/320] w-full">
-                <Link href={`/blog/${post.slug}`}>
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    priority={true}
-                    className="object-cover"
-                  />
-                </Link>
-              </div>
+              <Link
+                href={`/blog/${post.slug}`}
+                className="relative aspect-[536/320] w-full"
+              >
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={true}
+                  className="object-cover"
+                />
+              </Link>
               {/* <!-- Konten Utama --> */}
               <div className="w-full lg:max-w-[540px] flex flex-col px-2 pb-3 md:py-5">
                 <p className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start text-center">
@@ -115,10 +113,10 @@ export default function BlogClient({
                   <a href={`/blog/${post.slug}`}>{post.title}</a>
                 </h1>
                 <p className="max-w-[524px] hidden 2xl:block mb-3">
-                  Framework adalah kerangka kerja atau sekumpulan kode yang
-                  sudah dibuat sebelumnya untuk mempermudah pengembangan
-                  perangkat lunak. Framework menyediakan struktur dasar dan
-                  berbagai fitur...
+                  Secara sederhana, framework adalah kumpulan komponen, tools,
+                  dan struktur kode yang sudah dirancang sebelumnya untuk
+                  membantu developer membangun aplikasi lebih cepat dan
+                  efisien...
                 </p>
                 <div className="flex items-center gap-2.5">
                   <div className="flex items-center gap-3">
@@ -147,12 +145,17 @@ export default function BlogClient({
               key={post.id}
               className="flex w-full flex-col gap-6 rounded-b-lg md:rounded-b-none md:rounded-r-lg shadow-1 sm:flex-row sm:items-center lg:max-w-[570px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#212121]"
             >
-              <div className="relative aspect-[238/180] w-full overflow-hidden">
-                <Link href={`/blog/${post.slug}`}>
+              {/* <div className=" aspect-[312/180] sm:aspect-[238/180] w-full overflow-hidden"> */}
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="relative aspect-[536/320] w-full"
+                >
                   <Image
-                    priority
-                    fill
+                    priority={true}
                     src={post.image}
+                    fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+
                     alt={post.title}
                     className=" dark:bg-gray-100 h-full object-center"
                     // loading="lazy"
@@ -160,7 +163,7 @@ export default function BlogClient({
                     // quality={50}
                   />
                 </Link>
-              </div>
+              {/* </div> */}
               <div className="w-full lg:max-w-[272px] flex flex-col px-2 pb-3">
                 <p className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start text-center">
                   {post.category}
@@ -181,7 +184,7 @@ export default function BlogClient({
         </div>
         <div className="my-3 md:my-7">
           <h2 className="mb-3 text-xl font-bold">Recent Blog Post :</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
             {displayPosts.map((post) => (
               <article
                 key={post.id}
@@ -243,7 +246,7 @@ export default function BlogClient({
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
             {visiblePosts.map((post: any) => (
               <article
                 key={post.id}

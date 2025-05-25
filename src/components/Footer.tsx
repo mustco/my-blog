@@ -22,7 +22,7 @@ export default function Footer() {
 
           {/* <!-- Links --> */}
           <div>
-            <ul className="flex flex-wrap items-center gap-2.5">
+            <ul className="flex flex-wrap items-center justify-center gap-2">
               <li>
                 <Link
                   className="group flex text-custom-sm leading-none duration-200 ease-in hover:text-dark"
