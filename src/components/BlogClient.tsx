@@ -146,23 +146,22 @@ export default function BlogClient({
               className="flex w-full flex-col gap-6 rounded-b-lg md:rounded-b-none md:rounded-r-lg shadow-1 sm:flex-row sm:items-center lg:max-w-[570px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#212121]"
             >
               {/* <div className=" aspect-[312/180] sm:aspect-[238/180] w-full overflow-hidden"> */}
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="relative aspect-[536/320] w-full"
-                >
-                  <Image
-                    priority={true}
-                    src={post.image}
-                    fill
+              <Link
+                href={`/blog/${post.slug}`}
+                className="relative aspect-[312/180] sm:aspect-[238/180] w-full"
+              >
+                <Image
+                  src={post.image}
+                  fill
+                  priority={true}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-
-                    alt={post.title}
-                    className=" dark:bg-gray-100 h-full object-center"
-                    // loading="lazy"
-                    // unoptimized
-                    // quality={50}
-                  />
-                </Link>
+                  alt={post.title}
+                  className=" dark:bg-gray-100 h-full object-center"
+                  // loading="lazy"
+                  // unoptimized
+                  // quality={50}
+                />
+              </Link>
               {/* </div> */}
               <div className="w-full lg:max-w-[272px] flex flex-col px-2 pb-3">
                 <p className="bg-blue-700 dark:bg-green-800 text-white dark:text-gray-300 px-2 py-1 rounded-md text-xs self-start text-center">
